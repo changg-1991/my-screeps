@@ -31,7 +31,7 @@ if (typeof(Memory.containers) == "undefined") {
     Memory.containers = new Object();
     Memory.containers.left = Game.getObjectById('58da2768a3467e793134676f');
     Memory.containers.right = Game.getObjectById('58da18c857c1f5f93164d3ee');
-    Memory.containers.down = Game.getObjectById('58db616f2229d345295302ec');
+    Memory.containers.down = Game.getObjectById('58dcf858d6b3d1910534e0a8');
 }
 
 module.exports.loop = function () {

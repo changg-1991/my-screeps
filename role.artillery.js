@@ -7,10 +7,10 @@ var roleArtillery = {
         }
         if (creep.memory.status != 'UNPACKING' && creep.carry.energy == creep.carryCapacity) {
             creep.memory.status = 'UNPACKING';
-            if (!creep.memory.towerTargetIndex || creep.memory.towerTargetIndex == 0) {
-                creep.memory.towerTargetIndex = 1;
-            } else {
+            if (!creep.memory.towerTargetIndex) {
                 creep.memory.towerTargetIndex = 0;
+            } else {
+                creep.memory.towerTargetIndex = (creep.memory.towerTargetIndex + 1) % 2;
             }
         }
         
@@ -23,20 +23,23 @@ var roleArtillery = {
         } else {
             var towers = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {
-                    return structure.structureType == STRUCTURE_TOWER && structure.energy < structure.energyCapacity;
+                    return structure.structureType == STRUCTURE_TOWER;
                 }
             });
 
-            if (towers.length > 1) {
+            if (towers[creep.memory.towerTargetIndex].energy < towers[creep.memory.towerTargetIndex].energyCapacity) {
                 if (creep.transfer(towers[creep.memory.towerTargetIndex], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(towers[creep.memory.towerTargetIndex], {visualizePathStyle: {stroke: '#05ff05'}});
                 }
-            } else if (towers.length == 1) {
-                if (creep.transfer(towers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(towers[0], {visualizePathStyle: {stroke: '#05ff05'}});
-                }
             } else {
+                creep.memory.towerTargetIndex = (creep.memory.towerTargetIndex + 1) % 2;
+                if (towers[creep.memory.towerTargetIndex].energy < towers[creep.memory.towerTargetIndex].energyCapacity) {
+                    if (creep.transfer(towers[creep.memory.towerTargetIndex], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(towers[creep.memory.towerTargetIndex], {visualizePathStyle: {stroke: '#05ff05'}});
+                    }
+                } else {
 
+                }
             }
         }
     }
