@@ -5,6 +5,7 @@ var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleEva = require('role.eva');
 var roleTower = require('role.tower');
+var roleArtillery = require('role.artillery');
 
 if (typeof(Memory.repairList) == "undefined") {
     Memory.repairList = new Array();
@@ -54,8 +55,10 @@ module.exports.loop = function () {
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     
     var evas = _.filter(Game.creeps, (creep) => creep.memory.role == 'eva');
+
+    var artilleries = _.filter(Game.creeps, (creep) => creep.memory.role == 'artillery');
     
-    console.log('energyDigger: ' + energyDiggers.length + ', carrierToController: ' + carrierToControllers.length + ', carrierToExtension: ' + carrierToExtensions.length + ', upgrader: ' + upgraders.length + ', builder: ' + builders.length);
+    console.log('energyDigger: ' + energyDiggers.length + ', carrierToController: ' + carrierToControllers.length + ', carrierToExtension: ' + carrierToExtensions.length + ', upgrader: ' + upgraders.length + ', builder: ' + builders.length + ', artillery: ' + artilleries.length);
 
     if (energyDiggers.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'energyDigger'});
@@ -67,6 +70,8 @@ module.exports.loop = function () {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
     } else if (Memory.buildList.length > 0 && builders.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
+    } else if (artilleries.length < 1) {
+        var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'artillery'});
     } else {
         //
     }
@@ -130,6 +135,9 @@ module.exports.loop = function () {
                 break;
             case 'eva':
                 roleEva.run(creep);
+                break;
+            case 'artillery':
+                roleArtillery.run(creep);
                 break;
             default:
                 //

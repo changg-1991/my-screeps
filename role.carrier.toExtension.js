@@ -27,26 +27,13 @@ var roleCarrierToExtension = {
                 if (creep.transfer(extension, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(extension, {visualizePathStyle: {stroke: '#05ff05'}});
                 }
-            // 其次检查tower是否充满
+            // 检查storage是否充满
             } else {
-                var tower = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return structure.structureType == STRUCTURE_TOWER && structure.energy < structure.energyCapacity;
-                    }
-                });
+                var storage = Game.getObjectById('58d9396b459b881b0d438215');
 
-                if (tower) {
-                    if (creep.transfer(tower, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(tower, {visualizePathStyle: {stroke: '#05ff05'}});
-                    }
-                // 最后检查storage是否充满
-                } else {
-                    var storage = Game.getObjectById('58d9396b459b881b0d438215');
-
-                    if (storage.store[RESOURCE_ENERGY] < storage.storeCapacity) {
-                        if (creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(storage, {visualizePathStyle: {stroke: '#05ff05'}});
-                        }
+                if (storage.store[RESOURCE_ENERGY] < storage.storeCapacity) {
+                    if (creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(storage, {visualizePathStyle: {stroke: '#05ff05'}});
                     }
                 }
             }
