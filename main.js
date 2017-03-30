@@ -4,6 +4,7 @@ var roleCarrierToExtension = require('role.carrier.toExtension');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
+var roleEva = require('role.eva');
 
 if (typeof(Memory.repairList) == "undefined") {
     Memory.repairList = new Array();
@@ -54,6 +55,8 @@ module.exports.loop = function () {
     
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     
+    var evas = _.filter(Game.creeps, (creep) => creep.memory.role == 'eva');
+    
     console.log('energyDigger: ' + energyDiggers.length + ', carrierToController: ' + carrierToControllers.length + ', carrierToExtension: ' + carrierToExtensions.length + ', upgrader: ' + upgraders.length + ', repairer: ' + repairers.length + ', builder: ' + builders.length);
 
     if (energyDiggers.length < 2) {
@@ -81,6 +84,10 @@ module.exports.loop = function () {
             Game.spawns['Spawn1'].pos.y, 
             {align: 'left', opacity: 0.8});
         console.log('Spawning new ' + spawningCreep.memory.role + ': ' + Game.spawns['Spawn1'].spawning.name);
+    } else {
+        if (Game.spawns['Spawn1'].room.energyAvailable < 600 && energyDiggers.length < 2 && carrierToExtensions.length < 1 && evas.length < 1) {
+            var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,MOVE], undefined, {role: 'eva'});
+        }
     }
 
     // 分配工作
@@ -130,6 +137,9 @@ module.exports.loop = function () {
                 break;
             case 'builder':
                 roleBuilder.run(creep);
+                break;
+            case 'eva':
+                roleEva.run(creep);
                 break;
             default:
                 //
