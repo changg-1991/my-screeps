@@ -7,6 +7,7 @@ var roleEva = require('role.eva');
 var roleTower = require('role.tower');
 var roleArtillery = require('role.artillery');
 var roleClaimer = require('role.claimer');
+var roleExploiter = require('role.exploiter');
 
 if (typeof(Memory.repairList) == "undefined") {
     Memory.repairList = new Array();
@@ -64,9 +65,9 @@ module.exports.loop = function () {
     if (energyDiggers.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'energyDigger'});
     } else if (carrierToExtensions.length < 2) {
-        var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'carrierToExtension'});
+        var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'carrierToExtension'});
     } else if (carrierToControllers.length < 2) {
-        var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'carrierToController'});
+        var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'carrierToController'});
     } else if (upgraders.length < 3) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
     } else if (Memory.buildList.length > 0 && builders.length < 2) {
@@ -142,6 +143,9 @@ module.exports.loop = function () {
                 break;
             case 'claimer':
                 roleClaimer.run(creep);
+                break;
+            case 'exploiter':
+                roleExploiter.run(creep);
                 break;
             default:
                 //
