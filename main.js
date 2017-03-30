@@ -6,6 +6,7 @@ var roleBuilder = require('role.builder');
 var roleEva = require('role.eva');
 var roleTower = require('role.tower');
 var roleArtillery = require('role.artillery');
+var roleClaimer = require('role.claimer');
 
 if (typeof(Memory.repairList) == "undefined") {
     Memory.repairList = new Array();
@@ -138,6 +139,9 @@ module.exports.loop = function () {
                 break;
             case 'artillery':
                 roleArtillery.run(creep);
+                break;
+            case 'claimer':
+                roleClaimer.run(creep);
                 break;
             default:
                 //
