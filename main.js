@@ -3,8 +3,8 @@ var roleCarrierToController = require('role.carrier.toController');
 var roleCarrierToExtension = require('role.carrier.toExtension');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
-var roleRepairer = require('role.repairer');
 var roleEva = require('role.eva');
+var roleTower = require('role.tower');
 
 if (typeof(Memory.repairList) == "undefined") {
     Memory.repairList = new Array();
@@ -50,14 +50,12 @@ module.exports.loop = function () {
     var carrierToExtensions = _.filter(Game.creeps, (creep) => creep.memory.role == 'carrierToExtension');
 
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-
-    var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
     
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     
     var evas = _.filter(Game.creeps, (creep) => creep.memory.role == 'eva');
     
-    console.log('energyDigger: ' + energyDiggers.length + ', carrierToController: ' + carrierToControllers.length + ', carrierToExtension: ' + carrierToExtensions.length + ', upgrader: ' + upgraders.length + ', repairer: ' + repairers.length + ', builder: ' + builders.length);
+    console.log('energyDigger: ' + energyDiggers.length + ', carrierToController: ' + carrierToControllers.length + ', carrierToExtension: ' + carrierToExtensions.length + ', upgrader: ' + upgraders.length + ', builder: ' + builders.length);
 
     if (energyDiggers.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'energyDigger'});
@@ -67,8 +65,6 @@ module.exports.loop = function () {
         var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'carrierToController'});
     } else if (upgraders.length < 3) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
-    } else if (Memory.repairList.length > 0 && repairers.length < 3) {
-        var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'repairer'});
     } else if (Memory.buildList.length > 0 && builders.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
     } else {
@@ -94,7 +90,7 @@ module.exports.loop = function () {
     // 获取需要repair的列表
     Memory.repairList = Game.spawns['Spawn1'].room.find(FIND_STRUCTURES, {
         filter: (structure) => {
-            return (structure.structureType != STRUCTURE_WALL && structure.hits < structure.hitsMax * 0.8) || (structure.structureType == STRUCTURE_WALL && structure.hits < 30000);
+            return (structure.structureType != STRUCTURE_WALL && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800) || (structure.structureType == STRUCTURE_WALL && structure.hits < 30000);
         }
     });
     
@@ -110,10 +106,7 @@ module.exports.loop = function () {
     
     for (var index in towers) {
         var tower = towers[index];
-        var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-        if (closestHostile) {
-            tower.attack(closestHostile);
-        }
+        roleTower.run(tower);
     }
 
     for (var name in Game.creeps) {
@@ -131,9 +124,6 @@ module.exports.loop = function () {
                 break;
             case 'upgrader':
                 roleUpgrader.run(creep);
-                break;
-            case 'repairer':
-                roleRepairer.run(creep);
                 break;
             case 'builder':
                 roleBuilder.run(creep);
