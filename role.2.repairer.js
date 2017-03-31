@@ -18,14 +18,14 @@ var role2Repairer = {
             }
         // repairer处于建造状态
         } else {
-            var structures = Game.spawns['Spawn1'].room.find(FIND_STRUCTURES, {
+            var structures = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {
                     return (structure.structureType != STRUCTURE_WALL && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800) || (structure.structureType == STRUCTURE_WALL && structure.hits < 30000);
                 }
             });
 
             if (structures.length > 0) {
-                if (creep.build(structures[0]) == ERR_NOT_IN_RANGE) {
+                if (creep.repair(structures[0]) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(structures[0], {visualizePathStyle: {stroke: '#09d5ff'}});
                 }
             }

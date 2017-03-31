@@ -12,6 +12,7 @@ var roleSecurity = require('role.security');
 var role2Farmer = require('role.2.farmer');
 var role2Builder = require('role.2.builder');
 var role2Repairer = require('role.2.repairer');
+var roleAvenger = require('role.avenger');
 
 if (typeof(Memory.repairList) == "undefined") {
     Memory.repairList = new Array();
@@ -184,6 +185,9 @@ module.exports.loop = function () {
                 break;
             case '2Repairer':
                 role2Repairer.run(creep);
+                break;
+            case 'avenger':
+                roleAvenger.run(creep);
                 break;
             default:
                 //
