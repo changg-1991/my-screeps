@@ -9,6 +9,9 @@ var roleArtillery = require('role.artillery');
 var roleClaimer = require('role.claimer');
 var roleExploiter = require('role.exploiter');
 var roleSecurity = require('role.security');
+var role2Farmer = require('role.2.farmer');
+var role2Builder = require('role.2.builder');
+var role2Repairer = require('role.2.repairer');
 
 if (typeof(Memory.repairList) == "undefined") {
     Memory.repairList = new Array();
@@ -60,6 +63,16 @@ module.exports.loop = function () {
     var evas = _.filter(Game.creeps, (creep) => creep.memory.role == 'eva');
 
     var artilleries = _.filter(Game.creeps, (creep) => creep.memory.role == 'artillery');
+
+    var exploiters = _.filter(Game.creeps, (creep) => creep.memory.role == 'exploiter');
+
+    var securities = _.filter(Game.creeps, (creep) => creep.memory.role == 'security');
+
+    var 2Farmers = _.filter(Game.creeps, (creep) => creep.memory.role == '2Farmer');
+
+    var 2Builders = _.filter(Game.creeps, (creep) => creep.memory.role == '2Builder');
+
+    var 2Repairers = _.filter(Game.creeps, (creep) => creep.memory.role == '2Repairer');
     
     console.log('energyDigger: ' + energyDiggers.length + ', carrierToController: ' + carrierToControllers.length + ', carrierToExtension: ' + carrierToExtensions.length + ', upgrader: ' + upgraders.length + ', builder: ' + builders.length + ', artillery: ' + artilleries.length);
 
@@ -75,9 +88,23 @@ module.exports.loop = function () {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
     } else if (artilleries.length < 1) {
         var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'artillery'});
+    } else if (exploiters.length < 1) {
+        var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'exploiter'});
+    } else if (securities.length < 1) {
+        var newName = Game.spawns['Spawn1'].createCreep([ATTACK,MOVE,MOVE], undefined, {role: 'security'});
     } else {
         //
     }
+
+    if (2Farmers.length < 2) {
+        var newName = Game.spawns['Spawn2'].createCreep([WORK,CARRY,MOVE,MOVE], undefined, {role: '2Farmer'});
+    } else if (2Builders.length < 2) {
+        var newName = Game.spawns['Spawn2'].createCreep([WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '2Builder'});
+    } else if (2Repairers.length < 1) {
+        var newName = Game.spawns['Spawn2'].createCreep([WORK,CARRY,MOVE], undefined, {role: '2Repairer'});
+    } else {
+        //
+    }    
 
     // 显示正在生产的角色
     if (Game.spawns['Spawn1'].spawning) {
@@ -94,7 +121,6 @@ module.exports.loop = function () {
         }
     }
 
-    // 分配工作
     // 获取需要repair的列表
     Memory.repairList = Game.spawns['Spawn1'].room.find(FIND_STRUCTURES, {
         filter: (structure) => {
@@ -105,13 +131,12 @@ module.exports.loop = function () {
     // 获取需要builder的列表
     Memory.buildList = Game.spawns['Spawn1'].room.find(FIND_CONSTRUCTION_SITES);
 
-    // 让塔攻击
+    // 让塔工作
     var towers = Game.spawns['Spawn1'].room.find(FIND_STRUCTURES, {
         filter: (structure) => {
             return structure.structureType == STRUCTURE_TOWER;
         }
     });
-    
     for (var index in towers) {
         var tower = towers[index];
         roleTower.run(tower);
@@ -149,6 +174,15 @@ module.exports.loop = function () {
                 roleExploiter.run(creep);
                 break;
             case 'security':
+                roleSecurity.run(creep);
+                break;
+            case '2Farmer':
+                roleSecurity.run(creep);
+                break;
+            case '2Builder':
+                roleSecurity.run(creep);
+                break;
+            case '2Repairer':
                 roleSecurity.run(creep);
                 break;
             default:
