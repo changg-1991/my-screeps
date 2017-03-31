@@ -68,11 +68,11 @@ module.exports.loop = function () {
 
     var securities = _.filter(Game.creeps, (creep) => creep.memory.role == 'security');
 
-    var 2Farmers = _.filter(Game.creeps, (creep) => creep.memory.role == '2Farmer');
+    var _2Farmers = _.filter(Game.creeps, (creep) => creep.memory.role == '2Farmer');
 
-    var 2Builders = _.filter(Game.creeps, (creep) => creep.memory.role == '2Builder');
+    var _2Builders = _.filter(Game.creeps, (creep) => creep.memory.role == '2Builder');
 
-    var 2Repairers = _.filter(Game.creeps, (creep) => creep.memory.role == '2Repairer');
+    var _2Repairers = _.filter(Game.creeps, (creep) => creep.memory.role == '2Repairer');
     
     console.log('energyDigger: ' + energyDiggers.length + ', carrierToController: ' + carrierToControllers.length + ', carrierToExtension: ' + carrierToExtensions.length + ', upgrader: ' + upgraders.length + ', builder: ' + builders.length + ', artillery: ' + artilleries.length);
 
@@ -96,11 +96,11 @@ module.exports.loop = function () {
         //
     }
 
-    if (2Farmers.length < 2) {
+    if (_2Farmers.length < 2) {
         var newName = Game.spawns['Spawn2'].createCreep([WORK,CARRY,MOVE,MOVE], undefined, {role: '2Farmer'});
-    } else if (2Builders.length < 2) {
+    } else if (_2Builders.length < 2) {
         var newName = Game.spawns['Spawn2'].createCreep([WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '2Builder'});
-    } else if (2Repairers.length < 1) {
+    } else if (_2Repairers.length < 1) {
         var newName = Game.spawns['Spawn2'].createCreep([WORK,CARRY,MOVE], undefined, {role: '2Repairer'});
     } else {
         //
@@ -177,13 +177,13 @@ module.exports.loop = function () {
                 roleSecurity.run(creep);
                 break;
             case '2Farmer':
-                roleSecurity.run(creep);
+                role2Farmer.run(creep);
                 break;
             case '2Builder':
-                roleSecurity.run(creep);
+                role2Builder.run(creep);
                 break;
             case '2Repairer':
-                roleSecurity.run(creep);
+                role2Repairer.run(creep);
                 break;
             default:
                 //
