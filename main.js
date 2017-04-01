@@ -13,6 +13,7 @@ var role2Farmer = require('role.2.farmer');
 var role2Builder = require('role.2.builder');
 var role2Repairer = require('role.2.repairer');
 var roleAvenger = require('role.avenger');
+var config = require('config');
 
 if (typeof(Memory.repairList) == "undefined") {
     Memory.repairList = new Array();
@@ -99,10 +100,10 @@ module.exports.loop = function () {
 
     if (_2Farmers.length < 1) {
         var newName = Game.spawns['Spawn2'].createCreep([WORK,CARRY,MOVE,MOVE], undefined, {role: '2Farmer'});
-    } else if (_2Builders.length < 3) {
+    } else if (_2Builders.length < 2) {
         var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '2Builder'});
     } else if (_2Repairers.length < 1) {
-        var newName = Game.spawns['Spawn2'].createCreep([WORK,CARRY,MOVE], undefined, {role: '2Repairer'});
+        var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '2Repairer'});
     } else {
         //
     }    
