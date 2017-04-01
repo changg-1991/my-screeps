@@ -99,7 +99,7 @@ module.exports.loop = function () {
     }
 
     if (_2Farmers.length < 1) {
-        var newName = Game.spawns['Spawn2'].createCreep([WORK,CARRY,MOVE,MOVE], undefined, {role: '2Farmer'});
+        var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: '2Farmer'});
     } else if (_2Builders.length < 2) {
         var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '2Builder'});
     } else if (_2Repairers.length < 1) {

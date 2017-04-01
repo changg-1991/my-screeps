@@ -8,6 +8,8 @@ var roleSecurity = {
                 if (creep.attack(closestHostile) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(closestHostile);
                 }
+            } else {
+                creep.moveTo(3, 13);
             }
         } else {
             //
