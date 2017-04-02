@@ -23,6 +23,10 @@ var role2Builder = {
                 if (creep.build(constructionSites[0]) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(constructionSites[0], {visualizePathStyle: {stroke: '#09d5ff'}});
                 }
+            } else {
+                if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#fff905'}});
+                }
             }
         }
     }

@@ -20,13 +20,17 @@ var role2Repairer = {
         } else {
             var structures = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {
-                    return (structure.structureType != STRUCTURE_WALL && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800) || (structure.structureType == STRUCTURE_WALL && structure.hits < 500);
+                    return (structure.structureType != STRUCTURE_WALL && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800) || (structure.structureType == STRUCTURE_WALL && structure.hits < 20000);
                 }
             });
 
             if (structures.length > 0) {
                 if (creep.repair(structures[0]) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(structures[0], {visualizePathStyle: {stroke: '#09d5ff'}});
+                }
+            } else {
+                if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#fff905'}});
                 }
             }
         }
