@@ -12,9 +12,14 @@ var role2Farmer = {
         
         // 判断farmer是否处于采集状态
         if (creep.memory.status == 'HARVESTING') {
-            var sources = creep.room.find(FIND_SOURCES);
+            /*var sources = creep.room.find(FIND_SOURCES);
             if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffffff'}});
+            }*/
+            var container = Game.getObjectById('58de653068259520574e024c');
+
+            if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(container, {visualizePathStyle: {stroke: '#ffffff'}});
             }
         } else {
             var targets = creep.room.find(FIND_STRUCTURES, {
@@ -26,6 +31,10 @@ var role2Farmer = {
             if (targets.length > 0) {
                 if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
+                }
+            } else {
+                if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#fff905'}});
                 }
             }
         }

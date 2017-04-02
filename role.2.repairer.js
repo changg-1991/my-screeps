@@ -12,9 +12,14 @@ var role2Repairer = {
         
         // 判断repairer是否处于采集状态
         if (creep.memory.status == 'HARVESTING') {
-            var sources = creep.room.find(FIND_SOURCES);
+            /*var sources = creep.room.find(FIND_SOURCES);
             if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffffff'}});
+            }*/
+            var container = Game.getObjectById('58de653068259520574e024c');
+
+            if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(container, {visualizePathStyle: {stroke: '#ffffff'}});
             }
         // repairer处于建造状态
         } else {
