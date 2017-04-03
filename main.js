@@ -14,6 +14,8 @@ var role2Builder = require('role.2.builder');
 var role2Repairer = require('role.2.repairer');
 var roleAvenger = require('role.avenger');
 var config = require('config');
+var role2Carrier = require('role.2.carrier');
+var role2Upgrader = require('role.2.upgrader');
 
 if (typeof(Memory.repairList) == "undefined") {
     Memory.repairList = new Array();
@@ -100,10 +102,14 @@ module.exports.loop = function () {
 
     if (_2Farmers.length < 1) {
         var newName = Game.spawns['Spawn2'].createCreep([WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: '2Farmer'});
-    } else if (_2Builders.length < 3) {
-        var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '2Builder'});
+    } else if (_2Builders.length < 2) {
+        var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE], undefined, {role: '2Builder'});
     } else if (_2Repairers.length < 1) {
         var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '2Repairer'});
+    } else if (_2Carrier.length < 1) {
+        var newName = Game.spawns['Spawn2'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: '2Carrier'});
+    } else if (_2Upgrader.length < 1) {
+        var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: '2Upgrader'});
     } else {
         //
     }    
@@ -189,6 +195,12 @@ module.exports.loop = function () {
                 break;
             case 'avenger':
                 roleAvenger.run(creep);
+                break;
+            case '2Carrier':
+                role2Carrier.run(creep);
+                break;
+            case '2Upgrader':
+                role2Upgrader.run(creep);
                 break;
             default:
                 //

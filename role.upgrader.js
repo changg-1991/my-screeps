@@ -4,8 +4,6 @@ var roleUpgrader = {
     run: function(creep) {
         if (creep.memory.status != 'PACKING' && creep.carry.energy == 0) {
             creep.memory.status = 'PACKING';
-            var sourceChoosePool = new Array(0, 1, 1);
-            creep.memory.sourceTarget = sourceChoosePool[Math.floor(Math.random() * sourceChoosePool.length)];
         }
         if (creep.memory.status != 'UPGRADING' && creep.carry.energy == creep.carryCapacity) {
             creep.memory.status = 'UPGRADING';
