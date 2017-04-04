@@ -33,9 +33,21 @@ var role2Farmer = {
                     creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             } else {
-                if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#fff905'}});
-                }
+                var towers = creep.room.find(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return structure.structureType == STRUCTURE_TOWER && structure.energy < structure.energyCapacity;
+                    }
+                });
+
+                if (towers.length > 0) {
+                    if (creep.transfer(towers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(towers[0], {visualizePathStyle: {stroke: '#05ff05'}});
+                    }
+                } else {
+                    if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#fff905'}});
+                    }
+                }                
             }
         }
     }

@@ -16,6 +16,7 @@ var roleAvenger = require('role.avenger');
 var config = require('config');
 var role2Carrier = require('role.2.carrier');
 var role2Upgrader = require('role.2.upgrader');
+var role2Tower = require('role.2.tower');
 
 if (typeof(Memory.repairList) == "undefined") {
     Memory.repairList = new Array();
@@ -94,7 +95,7 @@ module.exports.loop = function () {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
     } else if (Memory.buildList.length > 0 && builders.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
-    } else if (artilleries.length < 1) {
+    } else if (artilleries.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'artillery'});
     } else if (exploiters.length < 1) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'exploiter'});
@@ -112,8 +113,8 @@ module.exports.loop = function () {
         var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '2Repairer'});
     } else if (_2Carriers.length < 1) {
         var newName = Game.spawns['Spawn2'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: '2Carrier'});
-    } else if (_2Upgraders.length < 1) {
-        var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: '2Upgrader'});
+    } else if (_2Upgraders.length < 2) {
+        var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: '2Upgrader'});
     } else {
         //
     }  
@@ -153,6 +154,9 @@ module.exports.loop = function () {
         var tower = towers[index];
         roleTower.run(tower);
     }
+
+    var _2Tower = Game.getObjectById('58e099210fae7f090807ddee');
+    role2Tower.run(_2Tower);
 
     for (var name in Game.creeps) {
         var creep = Game.creeps[name];
