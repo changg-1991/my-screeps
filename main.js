@@ -77,6 +77,10 @@ module.exports.loop = function () {
     var _2Builders = _.filter(Game.creeps, (creep) => creep.memory.role == '2Builder');
 
     var _2Repairers = _.filter(Game.creeps, (creep) => creep.memory.role == '2Repairer');
+
+    var _2Carriers = _.filter(Game.creeps, (creep) => creep.memory.role == '2Carrier');
+
+    var _2Upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == '2Upgrader');
     
     console.log('energyDigger: ' + energyDiggers.length + ', carrierToController: ' + carrierToControllers.length + ', carrierToExtension: ' + carrierToExtensions.length + ', upgrader: ' + upgraders.length + ', builder: ' + builders.length + ', artillery: ' + artilleries.length);
 
@@ -87,7 +91,7 @@ module.exports.loop = function () {
     } else if (carrierToControllers.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'carrierToController'});
     } else if (upgraders.length < 3) {
-        var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
+        var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
     } else if (Memory.buildList.length > 0 && builders.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
     } else if (artilleries.length < 1) {
@@ -102,17 +106,17 @@ module.exports.loop = function () {
 
     if (_2Farmers.length < 1) {
         var newName = Game.spawns['Spawn2'].createCreep([WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: '2Farmer'});
-    } else if (_2Builders.length < 2) {
+    } else if (_2Builders.length < 1) {
         var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE], undefined, {role: '2Builder'});
     } else if (_2Repairers.length < 1) {
         var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '2Repairer'});
-    } else if (_2Carrier.length < 1) {
-        var newName = Game.spawns['Spawn2'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: '2Carrier'});
-    } else if (_2Upgrader.length < 1) {
+    } else if (_2Carriers.length < 1) {
+        var newName = Game.spawns['Spawn2'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: '2Carrier'});
+    } else if (_2Upgraders.length < 1) {
         var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: '2Upgrader'});
     } else {
         //
-    }    
+    }  
 
     // 显示正在生产的角色
     if (Game.spawns['Spawn1'].spawning) {
