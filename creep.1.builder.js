@@ -14,15 +14,15 @@ var roleBuilder = {
         
         // 判断builder是否处于采集状态
         if (creep.memory.status == 'HARVESTING') {
-            var sources = creep.room.find(FIND_SOURCES);
-            var source = sources[creep.memory.sourceTargetIndex];
-            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(source, {visualizePathStyle: {stroke: '#ffffff'}});
+            var storage = Game.getObjectById('58d9396b459b881b0d438215');
+
+            if(creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(storage, {visualizePathStyle: {stroke: '#ffffff'}});
             }
         // builder处于建造状态
         } else {
             if (Memory.buildList.length > 0) {
-                var constructionSite = Memory.buildList[0];
+                var constructionSite = Game.getObjectById(Memory.buildList[0].id);
                 if (creep.build(constructionSite) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(constructionSite, {visualizePathStyle: {stroke: '#09d5ff'}});
                 }
