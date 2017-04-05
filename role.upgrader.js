@@ -1,6 +1,5 @@
 var roleUpgrader = {
 
-    /** @param {Creep} creep **/
     run: function(creep) {
         if (creep.memory.status != 'PACKING' && creep.carry.energy == 0) {
             creep.memory.status = 'PACKING';
@@ -13,10 +12,10 @@ var roleUpgrader = {
         }
         
         if (creep.memory.status == 'PACKING') {
-            var container = Game.getObjectById(Memory.containers.down.id);
+            var link = Game.getObjectById('58e3d21f298292fe252676f7');
 
-            if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(container, {visualizePathStyle: {stroke: '#ffffff'}});
+            if(creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(link, {visualizePathStyle: {stroke: '#ffffff'}});
             }
         } else {
             if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {

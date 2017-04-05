@@ -38,10 +38,10 @@ var roleArtillery = {
                         creep.moveTo(towers[creep.memory.towerTargetIndex], {visualizePathStyle: {stroke: '#05ff05'}});
                     }
                 } else {
-                    var container = Game.getObjectById(Memory.containers.down.id);
-                    var result = creep.transfer(container, RESOURCE_ENERGY);
+                    var link = Game.getObjectById('58e3d21f298292fe252676f7');
+                    var result = creep.transfer(link, RESOURCE_ENERGY);
                     if (result == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(container, {visualizePathStyle: {stroke: '#ffffff'}});
+                        creep.moveTo(link, {visualizePathStyle: {stroke: '#ffffff'}});
                     }
                 }
             }

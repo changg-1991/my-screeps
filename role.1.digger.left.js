@@ -1,19 +1,7 @@
 var roleEnergyDigger = {
 
-    /** @param {Creep} creep **/
     run: function(creep) {
-        // 给energyDigger分配工作
-        if (creep.memory.sourceTarget == null) {
-            for (var source in Memory.sourceList) {
-                if (Memory.sourceList[source] == 0) {
-                    creep.memory.sourceTarget = source;
-                    Memory.sourceList[source] = 1;
-                    break;
-                }
-            }
-        }
-
-        // 确定当前energyDigger的状态
+        // 确定当前digger的状态
         if (creep.memory.status != 'HARVESTING' && creep.carry.energy == 0) {
             creep.memory.status = 'HARVESTING';
         }
@@ -22,17 +10,13 @@ var roleEnergyDigger = {
         }
 
         if (creep.memory.status == 'HARVESTING') {
-            var source = Game.getObjectById(creep.memory.sourceTarget);
+            var source = Game.getObjectById('5873bb8a11e3e4361b4d602a');
             var result = creep.harvest(source);
             if (result == ERR_NOT_IN_RANGE) {
                 creep.moveTo(source, {visualizePathStyle: {stroke: '#ffffff'}});
             }
         } else {
-            var container = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return structure.structureType == STRUCTURE_CONTAINER;
-                }
-            });
+            var container = Game.getObjectById('58da2768a3467e793134676f');
 
             if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(container, {visualizePathStyle: {stroke: '#05ff05'}});

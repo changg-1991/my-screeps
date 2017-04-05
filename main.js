@@ -17,6 +17,8 @@ var config = require('config');
 var role2Carrier = require('role.2.carrier');
 var role2Upgrader = require('role.2.upgrader');
 var role2Tower = require('role.2.tower');
+var _1DiggerLeft = require('role.1.digger.left');
+var _1DiggerRight = require('role.1.digger.right');
 
 if (typeof(Memory.repairList) == "undefined") {
     Memory.repairList = new Array();
@@ -82,20 +84,26 @@ module.exports.loop = function () {
     var _2Carriers = _.filter(Game.creeps, (creep) => creep.memory.role == '2Carrier');
 
     var _2Upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == '2Upgrader');
+
+    var _1DiggerLefts = _.filter(Game.creeps, (creep) => creep.memory.role == '_1DiggerLeft');
+
+    var _1DiggerRights = _.filter(Game.creeps, (creep) => creep.memory.role == '_1DiggerRight');
     
     console.log('energyDigger: ' + energyDiggers.length + ', carrierToController: ' + carrierToControllers.length + ', carrierToExtension: ' + carrierToExtensions.length + ', upgrader: ' + upgraders.length + ', builder: ' + builders.length + ', artillery: ' + artilleries.length);
 
-    if (energyDiggers.length < 2) {
-        var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'energyDigger'});
-    } else if (carrierToExtensions.length < 2) {
-        var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'carrierToExtension'});
-    } else if (carrierToControllers.length < 2) {
+    if (_1DiggerLefts.length < 1) {
+        var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: '_1DiggerLeft'});
+    } else if (_1DiggerRights.length < 1) {
+        var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: '_1DiggerRight'});
+    } else if (carrierToExtensions.length < 1) {
+        var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], undefined, {role: 'carrierToExtension'});
+    } else if (carrierToControllers.length < 0) {
         var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'carrierToController'});
-    } else if (upgraders.length < 3) {
+    } else if (upgraders.length < 4) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
     } else if (Memory.buildList.length > 0 && builders.length < 2) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'builder'});
-    } else if (artilleries.length < 2) {
+    } else if (artilleries.length < 1) {
         var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'artillery'});
     } else if (exploiters.length < 1) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'exploiter'});
@@ -209,6 +217,12 @@ module.exports.loop = function () {
                 break;
             case '2Upgrader':
                 role2Upgrader.run(creep);
+                break;
+            case '_1DiggerLeft':
+                _1DiggerLeft.run(creep);
+                break;
+            case '_1DiggerRight':
+                _1DiggerRight.run(creep);
                 break;
             default:
                 //
