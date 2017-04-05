@@ -41,10 +41,6 @@ module.exports.loop = function () {
             Game.spawns['Spawn1'].pos.x + 1, 
             Game.spawns['Spawn1'].pos.y, 
             {align: 'left', opacity: 0.8});
-    } else {
-        if (Game.spawns['Spawn1'].room.energyAvailable < 600 && energyDiggers.length < 2 && carrierToExtensions.length < 1 && evas.length < 1) {
-            var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,MOVE], undefined, {role: 'eva'});
-        }
     }
 
     // 获取需要repair的列表

@@ -5,6 +5,7 @@ config.creep = new Object();
 config.creep._1DiggerLeft = require('creep.1.digger.left');
 config.creep._1CarrierLeft = require('creep.1.carrier.left');
 config.creep._1DiggerRight = require('creep.1.digger.right');
+config.creep._1CarrierDown = require('creep.1.carrier.down');
 config.creep._1Upgrader = require('creep.1.upgrader');
 config.creep._1Builder = require('creep.1.builder');
 config.creep._1Eva = require('creep.1.eva');

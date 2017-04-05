@@ -10,7 +10,7 @@ var roleEva = {
         }
 
         if (creep.memory.status == 'PACKING') {
-            var storage = Game.getObjectById('58d9396b459b881b0d438215');
+            var storage = Game.getObjectById('58e5620346189d7d36531063');
 
             if(creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(storage, {visualizePathStyle: {stroke: '#ffffff'}});

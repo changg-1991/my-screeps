@@ -29,12 +29,14 @@ var creepController = {
 
         // Room 1
         // TODO: 之后有多个Spawn之后，可以在外层加一个循环解决问题
-        if (roleCount._1DiggerRight == null || roleCount._1DiggerLeft < 1) {
-            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: '_1DiggerLeft'});
+        if (roleCount._1DiggerLeft == null || roleCount._1DiggerLeft < 1) {
+            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE], undefined, {role: '_1DiggerLeft'});
         } else if (roleCount._1CarrierLeft == null || roleCount._1CarrierLeft < 1) {
             var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], undefined, {role: '_1CarrierLeft'});
         } else if (roleCount._1DiggerRight == null || roleCount._1DiggerRight < 1) {
-            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: '_1DiggerRight'});
+            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE], undefined, {role: '_1DiggerRight'});
+        } else if (roleCount._1CarrierDown == null || roleCount._1CarrierDown < 1) {
+            var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_1CarrierDown'});
         } else if (roleCount._1Upgrader == null || roleCount._1Upgrader < 3) {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: '_1Upgrader'});
         } else if (roleCount._1Artillery == null || roleCount._1Artillery < 1) {
@@ -69,7 +71,3 @@ var creepController = {
 };
 
 module.exports = creepController;
-
-
-
-
