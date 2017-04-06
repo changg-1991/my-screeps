@@ -4,8 +4,8 @@ var structureModule = {
         if (closestHostile) {
             structure.attack(closestHostile);
         } else if (Memory.repairList.length > 0 && structure.room.name == 'W88S58') {
-            var structure = Game.getObjectById(Memory.repairList.shift().id);
-            structure.repair(structure);
+            var structureToRepair = Game.getObjectById(Memory.repairList.shift().id);
+            structure.repair(structureToRepair);
         }
     }
 };
