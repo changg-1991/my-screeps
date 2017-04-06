@@ -31,8 +31,6 @@ if (typeof(Memory.containers) == "undefined") {
 
 module.exports.loop = function () {
 
-    creepController.run(config.creep);
-
     // 显示正在生产的角色
     if (Game.spawns['Spawn1'].spawning) {
         var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
@@ -66,4 +64,6 @@ module.exports.loop = function () {
 
     var _2Tower = Game.getObjectById('58e099210fae7f090807ddee');
     role2Tower.run(_2Tower);
+
+    creepController.run(config.creep);
 }

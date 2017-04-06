@@ -18,8 +18,21 @@ var roleEnergyDigger = {
         } else {
             var container = Game.getObjectById('58da2768a3467e793134676f');
 
-            if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(container, {visualizePathStyle: {stroke: '#05ff05'}});
+            if (container.store < container.storeCapacity) {
+                if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(container, {visualizePathStyle: {stroke: '#05ff05'}});
+                }
+            } else {
+                var link = Game.getObjectById('58e5981373632c3f3c64ff53');
+
+                if (creep.transfer(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(link, {visualizePathStyle: {stroke: '#05ff05'}});
+                }
+
+                if (link.energy > 400) {
+                    var linkDown = Game.getObjectById('58e3d21f298292fe252676f7');
+                    link.transferEnergy(linkDown, 400);
+                }
             }
         }
     }
