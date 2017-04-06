@@ -21,11 +21,6 @@ var creepModule = {
             if (creep.transfer(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(link, {visualizePathStyle: {stroke: '#05ff05'}});
             }
-
-            if (link.energy > 400) {
-                var linkDown = Game.getObjectById('58e3d21f298292fe252676f7');
-                link.transferEnergy(linkDown, 400);
-            }
         }
     }
 };

@@ -21,5 +21,8 @@ config.creep._2Repairer = require('creep.2.repairer');
 config.creep._2Carrier = require('creep.2.carrier');
 config.creep._2Upgrader = require('creep.2.upgrader');
 
+config.structure = new Object();
+config.structure.link = require('structure.link');
+config.structure.tower = require('structure.tower');
 
 module.exports = config;

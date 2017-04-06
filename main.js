@@ -1,9 +1,6 @@
 var config = require('config');
 var creepController = require('creep.controller');
-
-var roleTower = require('role.tower');
-
-var role2Tower = require('role.2.tower');
+var structureController = require('structure.controller');
 
 if (typeof(Memory.repairList) == "undefined") {
     Memory.repairList = new Array();
@@ -65,5 +62,6 @@ module.exports.loop = function () {
     var _2Tower = Game.getObjectById('58e099210fae7f090807ddee');
     role2Tower.run(_2Tower);
 
+    structureController.run(config.structure);
     creepController.run(config.creep);
 }
