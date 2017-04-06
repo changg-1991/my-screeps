@@ -1,4 +1,4 @@
-var roleAvenger = {
+var creepModule = {
     run: function(creep) {
         if (creep.room.name == 'W88S58') {
             creep.moveTo(17, 49);
@@ -22,4 +22,4 @@ var roleAvenger = {
     }
 };
 
-module.exports = roleAvenger;
+module.exports = creepModule;

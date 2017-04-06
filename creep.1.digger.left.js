@@ -1,4 +1,4 @@
-var roleEnergyDigger = {
+var creepModule = {
 
     run: function(creep) {
         // 确定当前digger的状态
@@ -38,4 +38,4 @@ var roleEnergyDigger = {
     }
 };
 
-module.exports = roleEnergyDigger;
+module.exports = creepModule;

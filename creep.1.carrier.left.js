@@ -1,4 +1,4 @@
-var roleCarrierToExtension = {
+var creepModule = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
@@ -34,4 +34,4 @@ var roleCarrierToExtension = {
     }
 };
 
-module.exports = roleCarrierToExtension;
+module.exports = creepModule;

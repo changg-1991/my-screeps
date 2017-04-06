@@ -1,4 +1,4 @@
-var role2Repairer = {
+var creepModule = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
@@ -42,4 +42,4 @@ var role2Repairer = {
     }
 };
 
-module.exports = role2Repairer;
+module.exports = creepModule;

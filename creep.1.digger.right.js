@@ -1,4 +1,4 @@
-var role1DiggerRight = {
+var creepModule = {
 
     run: function(creep) {
         // 确定当前digger的状态
@@ -22,12 +22,12 @@ var role1DiggerRight = {
                 creep.moveTo(link, {visualizePathStyle: {stroke: '#05ff05'}});
             }
 
-            if (link.energy > 500) {
+            if (link.energy > 400) {
                 var linkDown = Game.getObjectById('58e3d21f298292fe252676f7');
-                link.transferEnergy(linkDown);
+                link.transferEnergy(linkDown, 400);
             }
         }
     }
 };
 
-module.exports = role1DiggerRight;
+module.exports = creepModule;

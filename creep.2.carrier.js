@@ -1,4 +1,4 @@
-var role2Carrier = {
+var creepModule = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
@@ -24,4 +24,4 @@ var role2Carrier = {
     }
 };
 
-module.exports = role2Carrier;
+module.exports = creepModule;

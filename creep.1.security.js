@@ -1,4 +1,4 @@
-var roleSecurity = {
+var creepModule = {
     run: function(creep) {
         if (creep.room.name == 'W88S58') {
             creep.moveTo(12, 49);
@@ -17,4 +17,4 @@ var roleSecurity = {
     }
 };
 
-module.exports = roleSecurity;
+module.exports = creepModule;

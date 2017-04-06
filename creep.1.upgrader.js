@@ -1,4 +1,4 @@
-var roleUpgrader = {
+var creepModule = {
 
     run: function(creep) {
         if (creep.memory.status != 'PACKING' && creep.carry.energy == 0) {
@@ -25,4 +25,4 @@ var roleUpgrader = {
     }
 };
 
-module.exports = roleUpgrader;
+module.exports = creepModule;
