@@ -41,8 +41,8 @@ var creepController = {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: '_1Upgrader'});
         } else if (roleCount._1Artillery == null || roleCount._1Artillery < 1) {
             var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_1Artillery'});
-        } else if ((roleCount._1Builder == null || roleCount._1Builder < 2) && spwanOrder._1Builder) {
-            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_1Builder'});
+        } else if ((roleCount._1Builder == null || roleCount._1Builder < 1) && spwanOrder._1Builder) {
+            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: '_1Builder'});
         } else if (roleCount._1Exploiter == null || roleCount._1Exploiter < 1) {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_1Exploiter'});
         } else if ((roleCount._1Eva == null || roleCount._1Eva < 1) && spwanOrder._1Eva) {
