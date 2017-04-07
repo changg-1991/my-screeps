@@ -14,6 +14,7 @@ config.creep._1Claimer = require('creep.1.claimer');
 config.creep._1Exploiter = require('creep.1.exploiter');
 config.creep._1Security = require('creep.1.security');
 config.creep._1Avenger = require('creep.1.avenger');
+config.creep._1Stealler = require('creep.1.stealler');
 // Room 2
 config.creep._2Farmer = require('creep.2.farmer');
 config.creep._2Builder = require('creep.2.builder');

@@ -49,6 +49,8 @@ var creepController = {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_1Eva'});
         } else if ((roleCount._1Security == null || roleCount._1Security < 1) && spwanOrder._1Security) {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_1Security'});
+        } else if (roleCount._1Stealler == null || roleCount._1Stealler < 1) {
+            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: '_1Stealler'});
         } else {
             //
         }

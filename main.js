@@ -24,6 +24,9 @@ module.exports.loop = function () {
     // 获取需要builder的列表
     Memory.buildList = Game.spawns['Spawn1'].room.find(FIND_CONSTRUCTION_SITES);
 
+    var spawnOrder = new Object();
+    spawnOrder._1Builder = false;
+
     structureController.run(config.structure);
-    creepController.run(config.creep);
+    creepController.run(config.creep, spawnOrder);
 }
