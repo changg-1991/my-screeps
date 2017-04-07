@@ -37,8 +37,8 @@ var creepController = {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE], undefined, {role: '_1DiggerRight'});
         } else if (roleCount._1CarrierDown == null || roleCount._1CarrierDown < 1) {
             var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_1CarrierDown'});
-        } else if (roleCount._1Upgrader == null || roleCount._1Upgrader < 2) {
-            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_1Upgrader'});
+        } else if (roleCount._1Upgrader == null || roleCount._1Upgrader < 3) {
+            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE], undefined, {role: '_1Upgrader'});
         } else if (roleCount._1Artillery == null || roleCount._1Artillery < 1) {
             var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_1Artillery'});
         } else if ((roleCount._1Builder == null || roleCount._1Builder < 2) && spwanOrder._1Builder) {
@@ -62,7 +62,7 @@ var creepController = {
             var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_2Repairer'});
         } else if (roleCount._2Carrier == null || roleCount._2Carrier < 1) {
             var newName = Game.spawns['Spawn2'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], undefined, {role: '_2Carrier'});
-        } else if (roleCount._2Upgrader == null || roleCount._2Upgrader < 2) {
+        } else if (roleCount._2Upgrader == null || roleCount._2Upgrader < 1) {
             var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: '_2Upgrader'});
         } else {
             //
