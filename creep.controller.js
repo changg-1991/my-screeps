@@ -57,7 +57,7 @@ var creepController = {
 
         // Room 2
         if (roleCount._2Farmer == null || roleCount._2Farmer < 1) {
-            var newName = Game.spawns['Spawn2'].createCreep([WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_2Farmer'});
+            var newName = Game.spawns['Spawn2'].createCreep([CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_2Farmer'});
         } else if (roleCount._2Builder == null || roleCount._2Builder < 1) {
             var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE], undefined, {role: '_2Builder'});
         } else if (roleCount._2Repairer == null || roleCount._2Repairer < 1) {

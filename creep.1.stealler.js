@@ -6,8 +6,8 @@ var creepModule = {
         if (creep.memory.status != 'HARVESTING' && creep.carry.energy == 0) {
             creep.memory.status = 'HARVESTING';
         }
-        if (creep.memory.status != 'BUILDING' && creep.carry.energy == creep.carryCapacity) {
-            creep.memory.status = 'BUILDING';
+        if (creep.memory.status != 'TRANSFERING' && creep.carry.energy == creep.carryCapacity) {
+            creep.memory.status = 'TRANSFERING';
         }
 
         if (creep.memory.status == 'HARVESTING') {
@@ -30,7 +30,18 @@ var creepModule = {
                     creep.moveTo(link, {visualizePathStyle: {stroke: '#05ff05'}});
                 }
             } else if (creep.room.name == 'W88S57') {
-                creep.moveTo(22, 49);
+                var structures = creep.room.find(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return structure.hits < structure.hitsMax * 0.5;
+                    }
+                });
+                if (structures.length > 0) {
+                    if (creep.repair(structures[0]) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(structures[0], {visualizePathStyle: {stroke: '#09d5ff'}});
+                    }
+                } else {
+                    creep.moveTo(22, 49);
+                }
             } else {
 
             }
