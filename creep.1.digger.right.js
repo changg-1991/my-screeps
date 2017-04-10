@@ -10,13 +10,13 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'HARVESTING') {
-            var source = Game.getObjectById('5873bb8a11e3e4361b4d602b');
+            var source = Game.getObjectById(Memory.objectId._1SourceRight);
             var result = creep.harvest(source);
             if (result == ERR_NOT_IN_RANGE) {
                 creep.moveTo(source, {visualizePathStyle: {stroke: '#ffffff'}});
             }
         } else {
-            var link = Game.getObjectById('58e4a05c5191d96b2e9ad865');
+            var link = Game.getObjectById(Memory.objectId._1LinkRight);
 
             if (creep.transfer(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(link, {visualizePathStyle: {stroke: '#05ff05'}});

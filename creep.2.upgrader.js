@@ -22,7 +22,7 @@ var creepModule = {
             }
         } else {
             if (creep.memory.status == 'PACKING') {
-                var storage = Game.getObjectById('58e79fe0bca059b021f8d443');
+                var storage = Game.getObjectById(Memory.objectId._2Storage);
 
                 if(creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(storage, {visualizePathStyle: {stroke: '#ffffff'}});

@@ -12,7 +12,7 @@ var creepModule = {
         
         // 判断farmer是否处于采集状态
         if (creep.memory.status == 'HARVESTING') {
-            var container = Game.getObjectById('58de653068259520574e024c');
+            var container = Game.getObjectById(Memory.objectId._2ContainerLeft);
 
             if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(container, {visualizePathStyle: {stroke: '#ffffff'}});

@@ -12,7 +12,7 @@ var creepModule = {
         
         // 判断builder是否处于采集状态
         if (creep.memory.status == 'HARVESTING') {
-            var storage = Game.getObjectById('58e79fe0bca059b021f8d443');
+            var storage = Game.getObjectById(Memory.objectId._2Storage);
 
             if(creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(storage, {visualizePathStyle: {stroke: '#ffffff'}});

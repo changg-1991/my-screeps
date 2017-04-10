@@ -14,7 +14,7 @@ var creepModule = {
             if (creep.room.name == 'W88S58') {
                 creep.moveTo(22, 0);
             } else if (creep.room.name == 'W88S57') {
-                var source = Game.getObjectById('5873bb8a11e3e4361b4d6028');
+                var source = Game.getObjectById(Memory.objectId._1SourceSteal);
                 var result = creep.harvest(source);
                 if (result == ERR_NOT_IN_RANGE) {
                     creep.moveTo(source, {visualizePathStyle: {stroke: '#ffffff'}});
@@ -24,7 +24,7 @@ var creepModule = {
             }
         } else {
             if (creep.room.name == 'W88S58') {
-                var link = Game.getObjectById('58e5981373632c3f3c64ff53');
+                var link = Game.getObjectById(Memory.objectId._1LinkLeft);
 
                 if (creep.transfer(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(link, {visualizePathStyle: {stroke: '#05ff05'}});

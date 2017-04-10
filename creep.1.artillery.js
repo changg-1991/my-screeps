@@ -15,7 +15,7 @@ var creepModule = {
         }
         
         if (creep.memory.status == 'PACKING') {
-            var storage = Game.getObjectById('58e5620346189d7d36531063');
+            var storage = Game.getObjectById(Memory.objectId._1Storage);
 
             if(creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(storage, {visualizePathStyle: {stroke: '#ffffff'}});

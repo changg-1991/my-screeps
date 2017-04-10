@@ -13,7 +13,7 @@ var creepModule = {
         // 判断builder是否处于采集状态
         if (creep.memory.status == 'HARVESTING') {
             if (creep.room.name == 'W88S58') {
-                var storage = Game.getObjectById('58e5620346189d7d36531063');
+                var storage = Game.getObjectById(Memory.objectId._1Storage);
 
                 if(creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(storage, {visualizePathStyle: {stroke: '#ffffff'}});
@@ -25,8 +25,8 @@ var creepModule = {
             }
         // builder处于建造状态
         } else {
-            if (Memory.buildList.length > 1) {
-                var constructionSite = Game.getObjectById(Memory.buildList[1].id);
+            if (Memory.buildList.length > 0) {
+                var constructionSite = Game.getObjectById(Memory.buildList[0].id);
                 if (creep.build(constructionSite) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(constructionSite, {visualizePathStyle: {stroke: '#09d5ff'}});
                 }
