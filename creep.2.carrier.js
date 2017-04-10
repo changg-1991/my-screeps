@@ -8,17 +8,18 @@ var creepModule = {
         if (creep.memory.status != 'UNPACKING' && creep.carry.energy == creep.carryCapacity) {
             creep.memory.status = 'UNPACKING';
         }
-
+        
         if (creep.memory.status == 'PACKING') {
-            var container = Game.getObjectById('58de653068259520574e024c');
-            if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(container, {visualizePathStyle: {stroke: '#ffffff'}});
+            var link = Game.getObjectById('58e9d9d3d233d37b682eb041');
+
+            if(creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(link, {visualizePathStyle: {stroke: '#ffffff'}});
             }
         } else {
-            var container = Game.getObjectById('58e1c63055d00e8359a2d41e');
-            var result = creep.transfer(container, RESOURCE_ENERGY);
-            if (result == ERR_NOT_IN_RANGE) {
-                creep.moveTo(container, {visualizePathStyle: {stroke: '#ffffff'}});
+            var storage = Game.getObjectById('58e79fe0bca059b021f8d443');
+            
+            if (creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(storage, {visualizePathStyle: {stroke: '#05ff05'}});
             }
         }
     }

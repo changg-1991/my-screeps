@@ -1,0 +1,49 @@
+var creepModule = {
+
+    run: function(creep) {
+        // 确定当前digger的状态
+        if (creep.memory.status != 'HARVESTING' && creep.carry.energy == 0) {
+            creep.memory.status = 'HARVESTING';
+        }
+        if (creep.memory.status != 'TRANSFERING' && creep.carry.energy == creep.carryCapacity) {
+            creep.memory.status = 'TRANSFERING';
+        }
+
+        if (!creep.memory.renewing && creep.ticksToLive < 500){
+            creep.memory.renewing = true;
+        }
+        if (creep.memory.renewing && creep.ticksToLive >= 1000) {
+            creep.memory.renewing = false;
+        }
+
+        if (creep.memory.renewing) {
+            if (Game.spawns['Spawn2'].renewCreep(creep) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(Game.spawns['Spawn2']);
+            }
+        } else {
+            if (creep.memory.status == 'HARVESTING') {
+                var source = Game.getObjectById('5873bb8a11e3e4361b4d602e');
+                var result = creep.harvest(source);
+                if (result == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(9, 21);
+                }
+            } else {
+                var container = Game.getObjectById('58de653068259520574e024c');
+
+                if (container.store[RESOURCE_ENERGY] < container.storeCapacity) {
+                    if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(container, {visualizePathStyle: {stroke: '#05ff05'}});
+                    }
+                } else {
+                    var link = Game.getObjectById('58ea2075a72631fe48c93314');
+
+                    if (creep.transfer(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(link, {visualizePathStyle: {stroke: '#05ff05'}});
+                    }
+                }
+            }
+        }
+    }
+};
+
+module.exports = creepModule;

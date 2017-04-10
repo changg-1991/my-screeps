@@ -43,7 +43,7 @@ var creepController = {
             var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_1Artillery'});
         } else if ((roleCount._1Builder == null || roleCount._1Builder < 1) && spwanOrder._1Builder) {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: '_1Builder'});
-        } else if (roleCount._1Exploiter == null || roleCount._1Exploiter < 1) {
+        } else if ((roleCount._1Exploiter == null || roleCount._1Exploiter < 1) && spwanOrder._1Exploiter) {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_1Exploiter'});
         } else if ((roleCount._1Eva == null || roleCount._1Eva < 1) && spwanOrder._1Eva) {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_1Eva'});
@@ -56,16 +56,18 @@ var creepController = {
         }
 
         // Room 2
-        if (roleCount._2Farmer == null || roleCount._2Farmer < 1) {
-            var newName = Game.spawns['Spawn2'].createCreep([CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_2Farmer'});
+        if (roleCount._2Digger == null || roleCount._2Digger < 1) {
+            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE], undefined, {role: '_2Digger'});
+        } else if (roleCount._2Farmer == null || roleCount._2Farmer < 1) {
+            var newName = Game.spawns['Spawn2'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: '_2Farmer'});
         } else if (roleCount._2Builder == null || roleCount._2Builder < 1) {
-            var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE], undefined, {role: '_2Builder'});
+            var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_2Builder'});
         } else if (roleCount._2Repairer == null || roleCount._2Repairer < 1) {
             var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_2Repairer'});
         } else if (roleCount._2Carrier == null || roleCount._2Carrier < 1) {
-            var newName = Game.spawns['Spawn2'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], undefined, {role: '_2Carrier'});
+            var newName = Game.spawns['Spawn2'].createCreep([CARRY,CARRY,MOVE], undefined, {role: '_2Carrier'});
         } else if (roleCount._2Upgrader == null || roleCount._2Upgrader < 1) {
-            var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: '_2Upgrader'});
+            var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_2Upgrader'});
         } else {
             //
         }

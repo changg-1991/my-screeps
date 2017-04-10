@@ -22,10 +22,10 @@ var creepModule = {
             }
         } else {
             if (creep.memory.status == 'PACKING') {
-                var container = Game.getObjectById('58e1c63055d00e8359a2d41e');
+                var storage = Game.getObjectById('58e79fe0bca059b021f8d443');
 
-                if(creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(container, {visualizePathStyle: {stroke: '#ffffff'}});
+                if(creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(storage, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             } else {
                 if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
