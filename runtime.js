@@ -1,5 +1,21 @@
 var runtime = {
     run: function() {
+        var formatStr = "<table border='1'>"
+        for(var name in Game.rooms){
+            // console.log(Game.rooms[name]);
+            var isUnderAttack = "#C0FF3E";
+            if(Game.rooms[name].find(FIND_HOSTILE_CREEPS).length){
+                isUnderAttack = "#CD5B45";
+            }
+            var rcl = "RCL: " + Game.rooms[name].controller.level;
+            var RCLProgress = "progress: " + Game.rooms[name].controller.progress + ' / ' + Game.rooms[name].controller.progressTotal;
+            var energyProgress = "energy: " + Game.rooms[name].energyAvailable + ' / ' + Game.rooms[name].energyCapacityAvailable;
+            addFormatStr = "<tr height='30'><td rowspan='3' style='padding:15px;color:"+ isUnderAttack + "'>" + name + "</td><td style='color:#AB82FF;padding:15px'>" + rcl + "</td></tr><tr height='30'><td style='color:#B0E2FF;padding:15px'>" + RCLProgress + "</td></tr><tr height='30'><td style='color:#FFEC8B;padding:15px'>" + energyProgress + "</td></tr>";
+            formatStr = formatStr + addFormatStr;
+        }
+        formatStr = formatStr + "</table>"
+        console.log(formatStr);
+
         // 显示正在生产的角色
         if (Game.spawns['Spawn1'].spawning) {
             var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];

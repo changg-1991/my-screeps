@@ -49,10 +49,24 @@ var creepController = {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_1Eva'});
         } else if ((roleCount._1Security == null || roleCount._1Security < 1) && spwanOrder._1Security) {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_1Security'});
-        } else if (roleCount._1Stealler == null || roleCount._1Stealler < 1) {
+        } else if ((roleCount._1Stealler == null || roleCount._1Stealler < 1) && spwanOrder._1Stealler) {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: '_1Stealler'});
+        } else if (roleCount._1DiggerUp == null || roleCount._1DiggerUp < 1) {
+            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE], undefined, {role: '_1DiggerUp'});
+        } else if (roleCount._1CarrierUp == null || roleCount._1CarrierUp < 1) {
+            var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], undefined, {role: '_1CarrierUp'});
         } else {
-            //
+            if ((roleCount._1Reserver == null || roleCount._1Reserver < 1) && (Memory._1ReserverBirthTime == null || Memory._1ReserverBirthTime < Game.time - 800)) {
+                var newName = Game.spawns['Spawn1'].createCreep([CLAIM,CLAIM,MOVE,MOVE], undefined, {role: '_1Reserver'});
+                if (isNaN(newName)) {
+                    Memory._1ReserverBirthTime = Game.time;
+                }
+            } else if((roleCount._1Repairer == null || roleCount._1Repairer < 1) && (Memory._1RepairerBirthTime == null || Memory._1RepairerBirthTime < Game.time - 1500)) {
+                var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: '_1Repairer'});
+                if (isNaN(newName)) {
+                    Memory._1RepairerBirthTime = Game.time;
+                }
+            }
         }
 
         // Room 2
