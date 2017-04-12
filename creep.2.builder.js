@@ -19,10 +19,10 @@ var creepModule = {
             }
         // builder处于建造状态
         } else {
-            var constructionSites = creep.room.find(FIND_CONSTRUCTION_SITES);
-            if (constructionSites.length > 0) {
-                if (creep.build(constructionSites[0]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(constructionSites[0], {visualizePathStyle: {stroke: '#09d5ff'}});
+            if (Memory._2buildList.length > 0) {
+                var constructionSite = Game.getObjectById(Memory._2buildList[0].id);
+                if (creep.build(constructionSite) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(constructionSite, {visualizePathStyle: {stroke: '#09d5ff'}});
                 }
             } else {
                 if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {

@@ -25,8 +25,8 @@ var creepModule = {
             }
         // builder处于建造状态
         } else {
-            if (Memory.buildList.length > 0) {
-                var constructionSite = Game.getObjectById(Memory.buildList[0].id);
+            if (Memory._1buildList.length > 0) {
+                var constructionSite = Game.getObjectById(Memory._1buildList[0].id);
                 if (creep.build(constructionSite) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(constructionSite, {visualizePathStyle: {stroke: '#09d5ff'}});
                 }
