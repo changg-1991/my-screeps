@@ -9,37 +9,24 @@ var creepModule = {
             creep.memory.status = 'TRANSFERING';
         }
 
-        if (!creep.memory.renewing && creep.ticksToLive < 500){
-            creep.memory.renewing = true;
-        }
-        if (creep.memory.renewing && creep.ticksToLive >= 1000) {
-            creep.memory.renewing = false;
-        }
-
-        if (creep.memory.renewing) {
-            if (Game.spawns['Spawn2'].renewCreep(creep) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(Game.spawns['Spawn2']);
+        if (creep.memory.status == 'HARVESTING') {
+            var source = Game.getObjectById(Memory.objectId._2Source);
+            var result = creep.harvest(source);
+            if (result == ERR_NOT_IN_RANGE) {
+                creep.moveTo(9, 21);
             }
         } else {
-            if (creep.memory.status == 'HARVESTING') {
-                var source = Game.getObjectById(Memory.objectId._2Source);
-                var result = creep.harvest(source);
-                if (result == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(9, 21);
+            var container = Game.getObjectById(Memory.objectId._2ContainerLeft);
+
+            if (container.store[RESOURCE_ENERGY] < container.storeCapacity) {
+                if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(container, {visualizePathStyle: {stroke: '#05ff05'}});
                 }
             } else {
-                var container = Game.getObjectById(Memory.objectId._2ContainerLeft);
+                var link = Game.getObjectById(Memory.objectId._2LinkLeft);
 
-                if (container.store[RESOURCE_ENERGY] < container.storeCapacity) {
-                    if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(container, {visualizePathStyle: {stroke: '#05ff05'}});
-                    }
-                } else {
-                    var link = Game.getObjectById(Memory.objectId._2LinkLeft);
-
-                    if (creep.transfer(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(link, {visualizePathStyle: {stroke: '#05ff05'}});
-                    }
+                if (creep.transfer(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(link, {visualizePathStyle: {stroke: '#05ff05'}});
                 }
             }
         }
