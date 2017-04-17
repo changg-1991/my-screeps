@@ -33,6 +33,8 @@ config.creep._3Builder = require('creep.3.builder');
 config.creep._3Upgrader = require('creep.3.upgrader');
 config.creep._3Repairer = require('creep.3.repairer');
 config.creep._3CarrierRight = require('creep.3.carrier.right');
+config.creep._3DiggerLeft = require('creep.3.digger.left');
+config.creep._3CarrierLeft = require('creep.3.carrier.left');
 
 // Structure
 config.structure = new Object();
@@ -46,6 +48,7 @@ Memory.objectId._1SourceRight = '5873bb8a11e3e4361b4d602b';
 Memory.objectId._1SourceSteal = '5873bb8a11e3e4361b4d6028';
 Memory.objectId._2Source = '5873bb8a11e3e4361b4d602e';
 Memory.objectId._3SourceRight = '5873bbb811e3e4361b4d65b5';
+Memory.objectId._3SourceLeft = '5873bbb811e3e4361b4d65b4';
 
 Memory.objectId._1ContainerLeft = '58da2768a3467e793134676f';
 Memory.objectId._1ContainerUp = '58eda1d060a8ee98057be586';
