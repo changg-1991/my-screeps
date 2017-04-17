@@ -50,6 +50,7 @@ Memory.objectId._3SourceRight = '5873bbb811e3e4361b4d65b5';
 Memory.objectId._1ContainerLeft = '58da2768a3467e793134676f';
 Memory.objectId._1ContainerUp = '58eda1d060a8ee98057be586';
 Memory.objectId._2ContainerLeft = '58de653068259520574e024c';
+Memory.objectId._3Container = '58f4e5325636440e7ca91873';
 
 Memory.objectId._1Storage = '58e5620346189d7d36531063';
 Memory.objectId._2Storage = '58e79fe0bca059b021f8d443';
