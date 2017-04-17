@@ -81,6 +81,19 @@ var creepController = {
         } else {
             //
         }
+
+        // Room 3
+        if (roleCount._3DiggerRight == null || roleCount._3DiggerRight < 1) {
+            var newName = Game.spawns['Spawn3'].createCreep([WORK,WORK,WORK,MOVE], undefined, {role: '_3DiggerRight'});
+        } else if (roleCount._3CarrierRight == null || roleCount._3CarrierRight < 1) {
+            var newName = Game.spawns['Spawn3'].createCreep([CARRY,CARRY,MOVE], undefined, {role: '_3CarrierRight'});
+        } else if (roleCount._3Upgrader == null || roleCount._3Upgrader < 1) {
+            var newName = Game.spawns['Spawn3'].createCreep([WORK,WORK,CARRY,CARRY,MOVE], undefined, {role: '_3Upgrader'});
+        } else if (roleCount._3Repairer == null || roleCount._3Repairer < 1) {
+            var newName = Game.spawns['Spawn3'].createCreep([WORK,CARRY,MOVE], undefined, {role: '_3Repairer'});
+        } else {
+            //
+        }
     }
 };
 

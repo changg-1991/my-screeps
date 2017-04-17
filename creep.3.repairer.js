@@ -1,14 +1,36 @@
 var creepModule = {
 
     run: function(creep) {
-        var buildList = creep.room.find(FIND_CONSTRUCTION_SITES, {
-            filter: (structure) => {
-                return structure.owner != 'changg_1991';
-            }
-        });
+        if (creep.memory.status != 'PACKING' && creep.carry.energy == 0) {
+            creep.memory.status = 'PACKING';
+        }
+        if (creep.memory.status != 'BUILDING' && creep.carry.energy == creep.carryCapacity) {
+            creep.memory.status = 'BUILDING';
+        }
 
-        if (buildList.lenth > 0) {
-            creep.moveTo(buildList[0]);
+        if (creep.memory.status == 'PACKING') {
+            var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
+            if (target) {
+                if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target);
+                }
+            }
+        } else {
+            var structures = creep.room.find(FIND_STRUCTURES, {
+                filter: (structure) => {
+                    return (structure.structureType != STRUCTURE_WALL && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800) || (structure.structureType == STRUCTURE_WALL && structure.hits < 20000);
+                }
+            });
+
+            if (structures.length > 0) {
+                if (creep.repair(structures[0]) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(structures[0], {visualizePathStyle: {stroke: '#09d5ff'}});
+                }
+            } else {
+                if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#fff905'}});
+                }
+            }
         }
     }
 };

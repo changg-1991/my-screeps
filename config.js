@@ -32,6 +32,7 @@ config.creep._3DiggerRight = require('creep.3.digger.right');
 config.creep._3Builder = require('creep.3.builder');
 config.creep._3Upgrader = require('creep.3.upgrader');
 config.creep._3Repairer = require('creep.3.repairer');
+config.creep._3CarrierRight = require('creep.3.carrier.right');
 
 // Structure
 config.structure = new Object();
