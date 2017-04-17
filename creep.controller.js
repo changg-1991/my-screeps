@@ -43,12 +43,10 @@ var creepController = {
             var newName = Game.spawns['Spawn1'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_1Artillery'});
         } else if ((roleCount._1Builder == null || roleCount._1Builder < 1) && spwanOrder._1Builder) {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: '_1Builder'});
-        } else if ((roleCount._1Exploiter == null || roleCount._1Exploiter < 1) && spwanOrder._1Exploiter) {
-            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_1Exploiter'});
         } else if ((roleCount._1Eva == null || roleCount._1Eva < 1) && spwanOrder._1Eva) {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_1Eva'});
         } else if ((roleCount._1Security == null || roleCount._1Security < 1) && spwanOrder._1Security) {
-            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_1Security'});
+            var newName = Game.spawns['Spawn1'].createCreep([ATTACK,ATTACK,MOVE,MOVE], undefined, {role: '_1Security'});
         } else if ((roleCount._1Stealler == null || roleCount._1Stealler < 1) && spwanOrder._1Stealler) {
             var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: '_1Stealler'});
         } else if (roleCount._1DiggerUp == null || roleCount._1DiggerUp < 1) {
@@ -71,7 +69,7 @@ var creepController = {
 
         // Room 2
         if (roleCount._2Digger == null || roleCount._2Digger < 1) {
-            var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE], undefined, {role: '_2Digger'});
+            var newName = Game.spawns['Spawn2'].createCreep([WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE], undefined, {role: '_2Digger'});
         } else if (roleCount._2Farmer == null || roleCount._2Farmer < 1) {
             var newName = Game.spawns['Spawn2'].createCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], undefined, {role: '_2Farmer'});
         } else if ((roleCount._2Builder == null || roleCount._2Builder < 1) && spwanOrder._2Builder) {

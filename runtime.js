@@ -1,6 +1,6 @@
 var runtime = {
     run: function() {
-        var formatStr = "<table border='1'>"
+        /*var formatStr = "<table border='1'>"
         for(var name in Game.rooms){
             // console.log(Game.rooms[name]);
             var isUnderAttack = "#C0FF3E";
@@ -14,7 +14,7 @@ var runtime = {
             formatStr = formatStr + addFormatStr;
         }
         formatStr = formatStr + "</table>"
-        console.log(formatStr);
+        console.log(formatStr);*/
 
         // 显示正在生产的角色
         if (Game.spawns['Spawn1'].spawning) {
