@@ -6,6 +6,7 @@ var creepModule = {
         if (result == ERR_NOT_IN_RANGE) {
             creep.moveTo(source, {visualizePathStyle: {stroke: '#ffffff'}});
         }
+    }
 };
 
 module.exports = creepModule;
