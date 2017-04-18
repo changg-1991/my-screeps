@@ -10,6 +10,9 @@ var structureModule = {
             } else if (structure.room.name == 'W88S59' && Memory._2repairList.length > 0) {
                 var structureToRepair = Game.getObjectById(Memory._2repairList.shift().id);
                 structure.repair(structureToRepair);
+            } else if (structure.room.name == 'W86S59' && Memory._3repairList.length > 0) {
+                var structureToRepair = Game.getObjectById(Memory._3repairList.shift().id);
+                structure.repair(structureToRepair);
             } else {
                 //
             }

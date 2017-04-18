@@ -44,6 +44,13 @@ var runtime = {
         });
 
         Memory._2buildList = Game.rooms['W88S59'].find(FIND_CONSTRUCTION_SITES);
+
+        //Room3: W86S59
+        Memory._3repairList = Game.rooms['W86S59'].find(FIND_STRUCTURES, {
+            filter: (structure) => {
+                return structure.structureType != STRUCTURE_WALL && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800;
+            }
+        });
     }
 };
 
