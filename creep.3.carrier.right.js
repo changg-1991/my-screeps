@@ -28,22 +28,22 @@ var creepModule = {
                     creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             } else {
-                var container = Game.getObjectById(Memory.objectId._3Container);
+                var towers = creep.room.find(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return structure.structureType == STRUCTURE_TOWER && structure.energy < structure.energyCapacity;
+                    }
+                });
 
-                if (container.store[RESOURCE_ENERGY] < container.storeCapacity) {
-                    if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(container, {visualizePathStyle: {stroke: '#05ff05'}});
+                if (towers.length > 0) {
+                    if (creep.transfer(towers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(towers[0], {visualizePathStyle: {stroke: '#05ff05'}});
                     }
                 } else {
-                    var towers = creep.room.find(FIND_STRUCTURES, {
-                        filter: (structure) => {
-                            return structure.structureType == STRUCTURE_TOWER && structure.energy < structure.energyCapacity;
-                        }
-                    });
+                    var container = Game.getObjectById(Memory.objectId._3Container);
 
-                    if (towers.length > 0) {
-                        if (creep.transfer(towers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(towers[0], {visualizePathStyle: {stroke: '#05ff05'}});
+                    if (container.store[RESOURCE_ENERGY] < container.storeCapacity) {
+                        if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(container, {visualizePathStyle: {stroke: '#05ff05'}});
                         }
                     }
                 }

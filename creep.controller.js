@@ -97,7 +97,7 @@ var creepController = {
             var newName = Game.spawns['Spawn3'].createCreep([WORK,WORK,WORK,WORK,WORK,CARRY,MOVE], undefined, {role: '_3Upgrader'});
         } else if (roleCount._3DiggerLeft == null || roleCount._3DiggerLeft < 1) {
             var newName = Game.spawns['Spawn3'].createCreep([WORK,WORK,WORK,WORK,WORK,MOVE,MOVE], undefined, {role: '_3DiggerLeft'});
-        } else if (roleCount._3CarrierLeft == null || roleCount._3CarrierLeft < 2) {
+        } else if (roleCount._3CarrierLeft == null || roleCount._3CarrierLeft < 3) {
             var newName = Game.spawns['Spawn3'].createCreep([CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], undefined, {role: '_3CarrierLeft'});
         } else {
             //
