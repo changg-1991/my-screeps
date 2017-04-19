@@ -30,7 +30,8 @@ var runtime = {
         // Room1: W88S58
         Memory._1repairList = Game.rooms['W88S58'].find(FIND_STRUCTURES, {
             filter: (structure) => {
-                return structure.structureType != STRUCTURE_WALL && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800;
+                return (structure.structureType != STRUCTURE_WALL && structure.structureType != STRUCTURE_RAMPART && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800)
+                    || ((structure.structureType == STRUCTURE_WALL || structure.structureType == STRUCTURE_RAMPART) && structure.hits < 2000);
             }
         });
 
