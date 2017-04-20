@@ -20,6 +20,7 @@ config.creep._1Reserver = require('creep.1.reserver');
 config.creep._1Repairer = require('creep.1.repairer');
 config.creep._1DiggerUp = require('creep.1.digger.up');
 config.creep._1CarrierUp = require('creep.1.carrier.up');
+config.creep._1Himma = require('creep.1.himma');
 // Room 2
 config.creep._2Digger = require('creep.2.digger');
 config.creep._2Farmer = require('creep.2.farmer');
