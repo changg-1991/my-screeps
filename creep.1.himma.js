@@ -15,15 +15,15 @@ var creepModule = {
                 creep.moveTo(storage, {visualizePathStyle: {stroke: '#ffffff'}});
             }
         } else {
-            var target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS, {
+            var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: function(object) {
                     return object.structureType == STRUCTURE_WALL && object.hits < 5000;
                 }
             });
 
-            if (target.length > 0) {
-                if (creep.repair(target[0]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target[0], {visualizePathStyle: {stroke: '#09d5ff'}});
+            if (target) {
+                if (creep.repair(target) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target, {visualizePathStyle: {stroke: '#09d5ff'}});
                 }
             }
         }
