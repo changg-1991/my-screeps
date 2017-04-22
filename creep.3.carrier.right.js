@@ -39,12 +39,10 @@ var creepModule = {
                         creep.moveTo(towers[0], {visualizePathStyle: {stroke: '#05ff05'}});
                     }
                 } else {
-                    var container = Game.getObjectById(Memory.objectId._3Container);
-
-                    if (container.store[RESOURCE_ENERGY] < container.storeCapacity) {
-                        if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(container, {visualizePathStyle: {stroke: '#05ff05'}});
-                        }
+                    var storage = Game.getObjectById(Memory.objectId._3Storage);
+            
+                    if (creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(storage, {visualizePathStyle: {stroke: '#05ff05'}});
                     }
                 }
             }

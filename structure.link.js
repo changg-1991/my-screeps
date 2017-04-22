@@ -10,6 +10,11 @@ var structureModule = {
                 var link = Game.getObjectById(Memory.objectId._2LinkRight);
                 structure.transferEnergy(link, 400);
             }
+        } else if (structure.room.name == 'W86S59') {
+            if (structure.id != Memory.objectId._3LinkCenter) {
+                var link = Game.getObjectById(Memory.objectId._3LinkCenter);
+                structure.transferEnergy(link, 400);
+            }
         } else {
 
         }
