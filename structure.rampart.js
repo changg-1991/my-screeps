@@ -1,6 +1,6 @@
 var structureModule = {
     run: function(structure) {
-        const targets = creep.room.find(FIND_HOSTILE_CREEPS, {
+        const targets = structure.room.find(FIND_HOSTILE_CREEPS, {
             filter: function(object) {
                 return Memory.ally.indexOf(object.owner) == -1;
             }
