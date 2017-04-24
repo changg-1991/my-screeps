@@ -27,7 +27,6 @@ var creepController = {
                 try {
                     eval('creepModules.' + creep.memory.role + '.run(creep);');
                 } catch (e) {
-                    console.log(e.name + ': ' + e.message);
                     console.log(e.stack);
                 }
                 
@@ -36,6 +35,7 @@ var creepController = {
 
         for (const name in Game.spawns) {
             var spawn = Game.spawns[name];
+
             // Room 1
             if (Game.spawns[name].room.name == 'W88S58') {
                 if (roleCount._1DiggerLeft == null || roleCount._1DiggerLeft < 1) {
@@ -113,6 +113,10 @@ var creepController = {
                 }
             } else {
                 //
+            }
+
+            if (spawn.spawning) {
+                spawn.room.visual.text('🔨' + spawn.spawning.memory.role, spawns.pos.x + 1, spawn.pos.y, {align: 'left', opacity: 0.8});
             }
         }
     }
