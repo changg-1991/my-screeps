@@ -37,7 +37,7 @@ var creepController = {
         for (const name in Game.spawns) {
             var spawn = Game.spawns[name];
             // Room 1
-            if (Game.spawns[i].room.name == 'W88S58') {
+            if (Game.spawns[name].room.name == 'W88S58') {
                 if (roleCount._1DiggerLeft == null || roleCount._1DiggerLeft < 1) {
                     var newName = spawn.createCreep([WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE], undefined, {role: '_1DiggerLeft'});
                 } else if (roleCount._1CarrierLeft == null || roleCount._1CarrierLeft < 1) {
@@ -82,7 +82,7 @@ var creepController = {
                     }
                 }
             // Room 2
-            } else if (Game.spawns[i].room.name == 'W88S59') {
+            } else if (Game.spawns[name].room.name == 'W88S59') {
                 if (roleCount._2Digger == null || roleCount._2Digger < 1) {
                     var newName = spawn.createCreep([WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE], undefined, {role: '_2Digger'});
                 } else if (roleCount._2Farmer == null || roleCount._2Farmer < 1) {
@@ -97,7 +97,7 @@ var creepController = {
                     //
                 }
             // Room 3
-            } else if (Game.spawns[i].room.name == 'W86S59') {
+            } else if (Game.spawns[name].room.name == 'W86S59') {
                 if (roleCount._3DiggerRight == null || roleCount._3DiggerRight < 1) {
                     var newName =spawn.createCreep([WORK,WORK,WORK,WORK,WORK,MOVE], undefined, {role: '_3DiggerRight'});
                 } else if (roleCount._3CarrierRight == null || roleCount._3CarrierRight < 1) {
