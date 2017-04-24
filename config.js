@@ -42,6 +42,7 @@ config.creep._3CarrierCenter = require('creep.3.carrier.center');
 config.structure = new Object();
 config.structure.link = require('structure.link');
 config.structure.tower = require('structure.tower');
+config.structure.rampart = require('structure.rampart');
 
 // Object Id
 Memory.objectId = new Object();
