@@ -28,26 +28,26 @@ var runtime = {
         }
 
         // Room1: W88S58
-        Memory._1repairList = Game.rooms['W88S58'].find(FIND_STRUCTURES, {
+        Memory._1RepairList = Game.rooms['W88S58'].find(FIND_STRUCTURES, {
             filter: (structure) => {
                 return (structure.structureType != STRUCTURE_WALL && structure.structureType != STRUCTURE_RAMPART && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800)
                     || ((structure.structureType == STRUCTURE_WALL || structure.structureType == STRUCTURE_RAMPART) && structure.hits < 2000);
             }
         });
 
-        Memory._1buildList = Game.rooms['W88S58'].find(FIND_CONSTRUCTION_SITES);
+        Memory._1BuildList = Game.rooms['W88S58'].find(FIND_CONSTRUCTION_SITES);
 
         // Room2: W88S59
-        Memory._2repairList = Game.rooms['W88S59'].find(FIND_STRUCTURES, {
+        Memory._2RepairList = Game.rooms['W88S59'].find(FIND_STRUCTURES, {
             filter: (structure) => {
                 return structure.structureType != STRUCTURE_WALL && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800;
             }
         });
 
-        Memory._2buildList = Game.rooms['W88S59'].find(FIND_CONSTRUCTION_SITES);
+        Memory._2BuildList = Game.rooms['W88S59'].find(FIND_CONSTRUCTION_SITES);
 
         //Room3: W86S59
-        Memory._3repairList = Game.rooms['W86S59'].find(FIND_STRUCTURES, {
+        Memory._3RepairList = Game.rooms['W86S59'].find(FIND_STRUCTURES, {
             filter: (structure) => {
                 return structure.structureType != STRUCTURE_WALL && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800;
             }
