@@ -10,6 +10,9 @@ var structureController = {
                 case STRUCTURE_TOWER:
                     structureModules.tower.run(structure);
                     break;
+                case STRUCTURE_RAMPART:
+                    structureModules.rampart.run(structure);
+                    break;
                 default:
                     //
             }

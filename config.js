@@ -69,5 +69,6 @@ Memory.objectId._2LinkRight = '58e9d9d3d233d37b682eb041';
 Memory.objectId._3LinkLeft = '58facd8f853991417ece9bbf';
 Memory.objectId._3LinkCenter = '58fada4a224988f9271b1e57';
 
+Memory.ally = new Array('kikooo');
 
 module.exports = config;
