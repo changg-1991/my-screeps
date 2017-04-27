@@ -37,7 +37,7 @@ var creepController = {
             let spawn = Game.spawns[name];
 
             if (spawn.spawning) {
-                spawn.room.visual.text('🔨' + spawn.spawning.memory.role, spawns.pos.x + 1, spawn.pos.y, {align: 'left', opacity: 0.8});
+                spawn.room.visual.text('🔨' + Game.creeps[spawn.spawning.name].memory.role, spawn.pos.x + 1, spawn.pos.y, {align: 'left', opacity: 0.8});
                 continue;
             }
 
