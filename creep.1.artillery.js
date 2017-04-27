@@ -1,6 +1,8 @@
 var creepModule = {
+    body: [CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+    count: 1,
+    createType: 'counting',
 
-    /** @param {Creep} creep **/
     run: function(creep) {
         if (creep.memory.status != 'PACKING' && creep.carry.energy == 0) {
             creep.memory.status = 'PACKING';

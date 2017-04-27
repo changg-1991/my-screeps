@@ -1,4 +1,7 @@
 var creepModule = {
+    body: [WORK,WORK,WORK,WORK,WORK,MOVE],
+    count: 1,
+    createType: 'counting',
 
     run: function(creep) {
         if (creep.room.name == 'W88S58') {

@@ -2,41 +2,29 @@ var config = new Object();
 
 // Creep
 config.creep = new Object();
-config.creep._0Claimer = require('creep.0.claimer');
-config.creep._0Exploiter = require('creep.0.exploiter');
+config.creep._0RoleList = ['_0Claimer', '_0Exploiter'];
 // Room 1
-config.creep._1DiggerLeft = require('creep.1.digger.left');
-config.creep._1CarrierLeft = require('creep.1.carrier.left');
-config.creep._1DiggerRight = require('creep.1.digger.right');
-config.creep._1CarrierDown = require('creep.1.carrier.down');
-config.creep._1Upgrader = require('creep.1.upgrader');
-config.creep._1Builder = require('creep.1.builder');
-config.creep._1Eva = require('creep.1.eva');
-config.creep._1Artillery = require('creep.1.artillery');
-config.creep._1Security = require('creep.1.security');
-config.creep._1Avenger = require('creep.1.avenger');
-config.creep._1Stealler = require('creep.1.stealler');
-config.creep._1Reserver = require('creep.1.reserver');
-config.creep._1Repairer = require('creep.1.repairer');
-config.creep._1DiggerUp = require('creep.1.digger.up');
-config.creep._1CarrierUp = require('creep.1.carrier.up');
-config.creep._1Himma = require('creep.1.himma');
+config.creep._1RoleList = [
+    '_1Eva', '_1DiggerLeft', '_1CarrierLeft', '_1DiggerRight', '_1CarrierDown',
+    '_1Upgrader', '_1Artillery', '_1Builder', '_1Himma', '_1Security', '_1ReserverUp',
+    '_1RepairerUp', '_1DiggerUp', '_1CarrierUp'
+];
 // Room 2
-config.creep._2Digger = require('creep.2.digger');
-config.creep._2Farmer = require('creep.2.farmer');
-config.creep._2Builder = require('creep.2.builder');
-config.creep._2Repairer = require('creep.2.repairer');
-config.creep._2Carrier = require('creep.2.carrier');
-config.creep._2Upgrader = require('creep.2.upgrader');
+config.creep._2RoleList = [
+    '_2Digger', '_2Farmer', '_2Carrier', '_2Upgrader', '_2Builder'
+];
 // Room 3
-config.creep._3DiggerRight = require('creep.3.digger.right');
-config.creep._3Builder = require('creep.3.builder');
-config.creep._3Upgrader = require('creep.3.upgrader');
-config.creep._3Repairer = require('creep.3.repairer');
-config.creep._3CarrierRight = require('creep.3.carrier.right');
-config.creep._3DiggerLeft = require('creep.3.digger.left');
-config.creep._3CarrierLeft = require('creep.3.carrier.left');
-config.creep._3CarrierCenter = require('creep.3.carrier.center');
+config.creep._3RoleList = [
+    '_3DiggerRight', '_3CarrierRight', '_3DiggerLeft', '_3CarrierCenter',
+    '_3Upgrader', '_3Builder'
+];
+
+for (const roleList in config.creep) {
+    for (const role in roleList) {
+        let moduleFile = 'creep' + anyString.substring(1).replace(/([A-Z0-9])/g,".$1").toLowerCase();
+        config.creep[role] = require(moduleFile);
+    }
+}
 
 // Structure
 config.structure = new Object();

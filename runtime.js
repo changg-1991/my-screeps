@@ -1,18 +1,19 @@
 var runtime = {
     run: function() {
-        var formatStr = "<table border='1'>"
+        // 在console展示的概览
+        let formatStr = "<table border='1'>"
         for (const name in Game.rooms) {
             const room = Game.rooms[name];
             if (room.controller == undefined) {
                 continue;
             }
-            var isUnderAttack = "#C0FF3E";
+            let isUnderAttack = "#C0FF3E";
             if (room.find(FIND_HOSTILE_CREEPS).length){
                 isUnderAttack = "#CD5B45";
             }
-            var rcl = "RCL: " + room.controller.level;
-            var RCLProgress = "progress: " + room.controller.progress + ' / ' + room.controller.progressTotal;
-            var energyProgress = "energy: " + room.energyAvailable + ' / ' + room.energyCapacityAvailable;
+            let rcl = "RCL: " + room.controller.level;
+            let RCLProgress = "progress: " + room.controller.progress + ' / ' + room.controller.progressTotal;
+            let energyProgress = "energy: " + room.energyAvailable + ' / ' + room.energyCapacityAvailable;
             addFormatStr = "<tr height='30'><td rowspan='3' style='padding:15px;color:"+ isUnderAttack + "'>" + name + "</td><td style='color:#AB82FF;padding:15px'>" + rcl + "</td></tr><tr height='30'><td style='color:#B0E2FF;padding:15px'>" + RCLProgress + "</td></tr><tr height='30'><td style='color:#FFEC8B;padding:15px'>" + energyProgress + "</td></tr>";
             formatStr = formatStr + addFormatStr;
         }

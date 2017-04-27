@@ -1,4 +1,7 @@
 var creepModule = {
+    body: [CLAIM,MOVE],
+    count: 0,
+    createType: 'counting',
 
     /** @param {Creep} creep **/
     run: function(creep) {

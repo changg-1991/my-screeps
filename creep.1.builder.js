@@ -1,6 +1,8 @@
 var creepModule = {
+    body: [WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+    count: 0,
+    createType: 'counting',
 
-    /** @param {Creep} creep **/
     run: function(creep) {
 
         if (creep.memory.status != 'HARVESTING' && creep.carry.energy == 0) {

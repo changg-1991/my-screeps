@@ -1,4 +1,7 @@
 var creepModule = {
+    body: [WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
+    count: 1,
+    createType: 'counting',
 
     run: function(creep) {
         // 确定当前digger的状态

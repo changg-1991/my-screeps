@@ -1,7 +1,9 @@
 var creepModule = {
+    body: [WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,MOVE],
+    count: 1,
+    createType: 'counting',
 
     run: function(creep) {
-        // 确定当前digger的状态
         if (creep.memory.status != 'HARVESTING' && creep.carry.energy == 0) {
             creep.memory.status = 'HARVESTING';
         }
