@@ -62,4 +62,6 @@ Memory.objectId._3LinkCenter = '58fada4a224988f9271b1e57';
 
 Memory.ally = new Array('kikooo');
 
+Memory.birthTime = new Object();
+
 module.exports = config;
