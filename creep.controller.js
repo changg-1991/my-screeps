@@ -42,7 +42,8 @@ var creepController = {
             }
 
             for (const roleList in config.creep) {
-                for (const role in roleList) {
+                for (const i in roleList) {
+                    let role = roleList[i]
                     if ((creepModules[role].count > 0 && (!roleCount[role] || roleCount[role] < creepModules[role].count))
                         && (creepModules[role].createType == 'timing' && (!Memory.birthTime[role] || Memory.birthTime[role] < Game.time - creepModules[role].createDelta))) {
 
