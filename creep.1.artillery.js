@@ -12,7 +12,7 @@ var creepModule = {
             if (!creep.memory.towerTargetIndex) {
                 creep.memory.towerTargetIndex = 0;
             } else {
-                creep.memory.towerTargetIndex = (creep.memory.towerTargetIndex + 1) % 2;
+                creep.memory.towerTargetIndex = (creep.memory.towerTargetIndex + 1) % 3;
             }
         }
         
@@ -29,16 +29,17 @@ var creepModule = {
                 }
             });
 
-            if (towers[creep.memory.towerTargetIndex].energy < towers[creep.memory.towerTargetIndex].energyCapacity) {
-                if (creep.transfer(towers[creep.memory.towerTargetIndex], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(towers[creep.memory.towerTargetIndex], {visualizePathStyle: {stroke: '#05ff05'}});
-                }
-            } else {
-                creep.memory.towerTargetIndex = (creep.memory.towerTargetIndex + 1) % 2;
+            const tmpIndex = creep.memory.towerTargetIndex;
+            while (true) {
                 if (towers[creep.memory.towerTargetIndex].energy < towers[creep.memory.towerTargetIndex].energyCapacity) {
                     if (creep.transfer(towers[creep.memory.towerTargetIndex], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(towers[creep.memory.towerTargetIndex], {visualizePathStyle: {stroke: '#05ff05'}});
                     }
+                    break;
+                }
+                creep.memory.towerTargetIndex = (creep.memory.towerTargetIndex + 1) % 3;
+                if (tmpIndex == creep.memory.towerTargetIndex) {
+                    break;
                 }
             }
         }
