@@ -41,8 +41,8 @@ var creepController = {
                 continue;
             }
 
-            for (const i in config.creep) {
-                let roleList = config.creep[i]
+            for (const i in creepModules) {
+                let roleList = creepModules[i]
                 for (const j in roleList) {
                     let role = roleList[j]
                     if ((creepModules[role].count > 0 && (!roleCount[role] || roleCount[role] < creepModules[role].count))
