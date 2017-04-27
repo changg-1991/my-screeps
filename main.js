@@ -8,5 +8,5 @@ module.exports.loop = function () {
     runtime.run();
 
     structureController.run(config.structure);
-    creepController.run(config.creep, spawnOrder);
+    creepController.run(config.creep);
 }
