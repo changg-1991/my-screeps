@@ -41,26 +41,33 @@ var creepController = {
                 continue;
             }
 
-            for (const i in creepModules) {
-                let roleList = creepModules[i]
-                for (const j in roleList) {
-                    let role = roleList[j]
-                    if ((creepModules[role].count > 0 && (!roleCount[role] || roleCount[role] < creepModules[role].count))
-                        && (creepModules[role].createType == 'timing' && (!Memory.birthTime[role] || Memory.birthTime[role] < Game.time - creepModules[role].createDelta))) {
+            var roleList = new Array()l
+            if (spawn.room.name == 'W88S58') {
+                roleList = creepModules._1RoleList;
+            } else if (spawn.room.name == 'W88S59') {
+                roleList = creepModules._2RoleList;
+            } else if (spawn.room.name == 'W56S59') {
+                roleList = creepModules._3RoleList;
+            }
 
-                        let result = spawn.createCreep(creepModules[role].body, undefined, {role: role});
-                        if (isNaN(result)) {
-                            if (roleCount[role] == null) {
-                                roleCount[role] = 1;
-                            } else {
-                                roleCount[role] += 1;
-                            }
-                            
-                            if (creepModules[role].createType == 'timing') {
-                                Memory.birthTime[role] = Game.time;
-                            }
+            for (const i in roleList) {
+                let role = roleList[i]
+                if ((creepModules[role].count > 0 && (!roleCount[role] || roleCount[role] < creepModules[role].count))
+                    && (creepModules[role].createType == 'timing' && (!Memory.birthTime[role] || Memory.birthTime[role] < Game.time - creepModules[role].createDelta))) {
+
+                    let result = spawn.createCreep(creepModules[role].body, undefined, {role: role});
+                    if (isNaN(result)) {
+                        if (roleCount[role] == null) {
+                            roleCount[role] = 1;
+                        } else {
+                            roleCount[role] += 1;
+                        }
+                        
+                        if (creepModules[role].createType == 'timing') {
+                            Memory.birthTime[role] = Game.time;
                         }
                     }
+                    break;
                 }
             }
         }
