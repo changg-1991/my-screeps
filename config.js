@@ -21,7 +21,7 @@ config.creep._3RoleList = [
 
 for (const roleList in config.creep) {
     for (const role in roleList) {
-        let moduleFile = 'creep' + anyString.substring(1).replace(/([A-Z0-9])/g,".$1").toLowerCase();
+        let moduleFile = 'creep' + role.substring(1).replace(/([A-Z0-9])/g,".$1").toLowerCase();
         config.creep[role] = require(moduleFile);
     }
 }
