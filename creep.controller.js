@@ -46,14 +46,14 @@ var creepController = {
                 roleList = creepModules._1RoleList;
             } else if (spawn.room.name == 'W88S59') {
                 roleList = creepModules._2RoleList;
-            } else if (spawn.room.name == 'W56S59') {
+            } else if (spawn.room.name == 'W86S59') {
                 roleList = creepModules._3RoleList;
             }
 
             for (const i in roleList) {
-                let role = roleList[i]
+                let role = roleList[i];
                 if ((creepModules[role].count > 0 && (!roleCount[role] || roleCount[role] < creepModules[role].count))
-                    && (creepModules[role].createType == 'timing' && (!Memory.birthTime[role] || Memory.birthTime[role] < Game.time - creepModules[role].createDelta))) {
+                    && (creepModules[role].createType == 'counting' || (!Memory.birthTime[role] || Memory.birthTime[role] < Game.time - creepModules[role].createDelta))) {
 
                     let result = spawn.createCreep(creepModules[role].body, undefined, {role: role});
                     if (isNaN(result)) {
