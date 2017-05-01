@@ -1,6 +1,6 @@
 var creepModule = {
-    body: [WORK,CARRY,MOVE],
-    count: 2,
+    body: [WORK,WORK,CARRY,CARRY,MOVE,MOVE],
+    count: 3,
     createType: 'counting',
 
     run: function(creep) {
@@ -12,7 +12,7 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'PACKING') {
-            var pos = new RoomPosition(4, 38, 'W98S23');
+            var pos = new RoomPosition(5, 39, 'W98S23');
             var target = pos.findClosestByRange(FIND_DROPPED_ENERGY);
             if (target) {
                 if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
