@@ -12,7 +12,7 @@ var creepModule = {
         }
         
         if (creep.memory.status == 'PACKING') {
-            var pos = new RoomPosition(15, 20, 'W98S23');
+            var pos = new RoomPosition(5, 39, 'W98S23');
             var target = pos.findClosestByRange(FIND_DROPPED_ENERGY);
             if (target) {
                 if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
@@ -26,10 +26,16 @@ var creepModule = {
                 }
             });
 
-            var container = Game.getObjectById(Memory.objectId._3Container);
-        
-            if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(container, {visualizePathStyle: {stroke: '#05ff05'}});
+            if (targets.length > 0) {
+                if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
+                }
+            } else {
+                var container = Game.getObjectById(Memory.objectId._3Container);
+            
+                if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(container, {visualizePathStyle: {stroke: '#05ff05'}});
+                }
             }
         }
     }
