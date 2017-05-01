@@ -1,6 +1,6 @@
 var creepModule = {
-    body: [CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
-    count: 1,
+    body: [CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
+    count: 3,
     createType: 'counting',
     
     run: function(creep) {
