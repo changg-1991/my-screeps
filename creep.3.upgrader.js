@@ -13,7 +13,7 @@ var creepModule = {
 
         if (creep.memory.status == 'PACKING') {
             var container = Game.getObjectById(Memory.objectId._3Container);
-            if (creep.withdraw(container, RESOURCE_ENERGY); == ERR_NOT_IN_RANGE) {
+            if (creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(container, {visualizePathStyle: {stroke: '#ffffff'}});
             }
         } else {
