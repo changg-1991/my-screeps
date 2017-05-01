@@ -12,4 +12,4 @@ var creepModule = {
     }
 };
 
-module.exports = creepModule;digger
+module.exports = creepModule;
