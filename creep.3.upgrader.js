@@ -12,10 +12,11 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'PACKING') {
-            var storage = Game.getObjectById(Memory.objectId._3Storage);
-
-            if(creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(storage, {visualizePathStyle: {stroke: '#ffffff'}});
+            var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
+            if (target) {
+                if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target);
+                }
             }
         } else {
             if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
