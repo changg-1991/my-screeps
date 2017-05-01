@@ -27,7 +27,7 @@ config.structure.rampart = require('structure.rampart');
 // Object Id
 Memory.objectId = new Object();
 Memory.objectId._3SourceUp = '58dbc2698283ff5308a3bd92';
-Memory.objectId._3SourceLeft = '58dbc2698283ff5308a3bd94';
+Memory.objectId._3SourceDown = '58dbc2698283ff5308a3bd94';
 
 Memory.ally = new Array('kikooo');
 
