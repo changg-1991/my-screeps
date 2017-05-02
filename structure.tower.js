@@ -9,13 +9,7 @@ var structureModule = {
         if (closestHostile) {
             structure.attack(closestHostile);
         } else {
-            if (structure.room.name == 'W88S58' && Memory._1RepairList.length > 0) {
-                var structureToRepair = Game.getObjectById(Memory._1RepairList.shift().id);
-                structure.repair(structureToRepair);
-            } else if (structure.room.name == 'W88S59' && Memory._2RepairList.length > 0) {
-                var structureToRepair = Game.getObjectById(Memory._2RepairList.shift().id);
-                structure.repair(structureToRepair);
-            } else if (structure.room.name == 'W86S59' && Memory._3RepairList.length > 0) {
+            if (structure.room.name == 'W98S23' && Memory._3RepairList.length > 0) {
                 var structureToRepair = Game.getObjectById(Memory._3RepairList.shift().id);
                 structure.repair(structureToRepair);
             } else {
