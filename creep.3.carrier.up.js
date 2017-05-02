@@ -20,12 +20,6 @@ var creepModule = {
                 }
             }
         } else {
-            var targets = creep.room.find(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) && structure.energy < structure.energyCapacity;
-                }
-            });
-
             var container = Game.getObjectById(Memory.objectId._3Container);
         
             if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {

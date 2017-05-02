@@ -28,6 +28,7 @@ config.structure.rampart = require('structure.rampart');
 Memory.objectId = new Object();
 Memory.objectId._3SourceUp = '58dbc2698283ff5308a3bd92';
 Memory.objectId._3SourceDown = '58dbc2698283ff5308a3bd94';
+Memory.objectId._3SourceRight = '58dbc2858283ff5308a3c015';
 
 Memory.objectId._3Container = '59074ca588cfce7d4895b438';
 
