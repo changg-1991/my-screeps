@@ -6,7 +6,7 @@ config.creep._0RoleList = ['_0Claimer', '_0Exploiter'];
 // W98S23
 config.creep._3RoleList = [
     '_3DiggerDown', '_3CarrierDown', '_3DiggerUp', '_3CarrierUp',
-    '_3Upgrader', '_3Builder'
+    '_3Upgrader', '_3Builder', '_3DiggerRight', '_3CarrierRight'
 ];
 
 for (const i in config.creep) {
