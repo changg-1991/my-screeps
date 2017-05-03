@@ -1,5 +1,4 @@
 var creepModule = {
-    // Game.spawns['Spawn1'].createCreep([CLAIM,MOVE], undefined, {role: '_0Claimer'});
     body: [CLAIM,MOVE],
     count: 0,
     createType: 'counting',
