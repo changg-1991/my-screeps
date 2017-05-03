@@ -12,7 +12,7 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'PACKING') {
-            var container = Game.getObjectById(Memory.objectId._3Container);
+            var container = Game.getObjectById(Memory.objectId.W98S23_storage);
             if (creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(container, {visualizePathStyle: {stroke: '#ffffff'}});
             }

@@ -19,6 +19,13 @@ var runtime = {
         }
         formatStr = formatStr + "</table>"
         console.log(formatStr);
+
+        Memory.W98S23_repairList = Game.rooms['W98S23'].find(FIND_STRUCTURES, {
+            filter: (structure) => {
+                return structure.structureType != STRUCTURE_WALL && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800;
+            }
+        });
+
     }
 };
 
