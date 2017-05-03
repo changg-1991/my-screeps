@@ -2,7 +2,6 @@ var config = new Object();
 
 // Creep
 config.creep = new Object();
-config.creep.RoleList = ['0_Claimer', '0_Exploiter'];
 // W98S23
 config.creep.W98S23_RoleList = [
     'W98S23_diggerDown', 'W98S23_carrierDown', 'W98S23_diggerUp', 'W98S23_carrierUp',
