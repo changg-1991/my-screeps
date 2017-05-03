@@ -6,7 +6,7 @@ config.creep = new Object();
 config.creep.W98S23_roleList = [
     'W98S23_diggerDown', 'W98S23_carrierDown', 'W98S23_diggerUp', 'W98S23_carrierUp',
     'W98S23_upgrader', 'W98S23_builder', 'W98S23_diggerRight', 'W98S23_carrierRight',
-    'W98S23_claimer', 'W98S23_exploiter'
+    'W98S23_diggerUpUp', 'W98S23_carrierUpUp', 'W98S23_claimer', 'W98S23_exploiter'
 ];
 // W99S21
 config.creep.W99S21_roleList = [
@@ -34,6 +34,7 @@ Memory.objectId = new Object();
 Memory.objectId.W98S23_sourceUp = '58dbc2698283ff5308a3bd92';
 Memory.objectId.W98S23_sourceDown = '58dbc2698283ff5308a3bd94';
 Memory.objectId.W98S23_sourceRight = '58dbc2858283ff5308a3c015';
+Memory.objectId.W98S23_sourceUpUp = '58dbc2698283ff5308a3bd90';
 Memory.objectId.W99S21_sourceUp = '58dbc24d8283ff5308a3bb0c';
 Memory.objectId.W99S21_sourceDown = '58dbc24d8283ff5308a3bb0e';
 
