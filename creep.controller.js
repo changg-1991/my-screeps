@@ -41,15 +41,8 @@ var creepController = {
                 continue;
             }
 
-            var roleList = new Array();
-            if (spawn.room.name == 'W88S58') {
-                //
-            } else if (spawn.room.name == 'W88S59') {
-                //
-            } else if (spawn.room.name == 'W98S23') {
-                roleList = creepModules._3RoleList;
-            }
-
+            
+            var roleList = creepModules[spawn.room.name + '_roleList'];
             for (const i in roleList) {
                 let role = roleList[i];
                 if ((creepModules[role].count > 0 && (!roleCount[role] || roleCount[role] < creepModules[role].count))
