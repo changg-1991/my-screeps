@@ -42,11 +42,7 @@ var creepModule = {
                         creep.moveTo(towers[0], {visualizePathStyle: {stroke: '#05ff05'}});
                     }
                 } else {
-                    var container = Game.getObjectById(Memory.objectId._3Container);
-                
-                    if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(container, {visualizePathStyle: {stroke: '#05ff05'}});
-                    }
+                    //
                 }
             }
         }
