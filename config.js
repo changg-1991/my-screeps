@@ -2,18 +2,19 @@ var config = new Object();
 
 // Creep
 config.creep = new Object();
-config.creep._0RoleList = ['_0Claimer', '_0Exploiter'];
+config.creep.RoleList = ['0_Claimer', '0_Exploiter'];
 // W98S23
-config.creep._3RoleList = [
-    '_3DiggerDown', '_3CarrierDown', '_3DiggerUp', '_3CarrierUp',
-    '_3Upgrader', '_3Builder', '_3DiggerRight', '_3CarrierRight'
+config.creep.W98S23_RoleList = [
+    'W98S23_diggerDown', 'W98S23_carrierDown', 'W98S23_diggerUp', 'W98S23_carrierUp',
+    'W98S23_upgrader', 'W98S23_builder', 'W98S23_diggerRight', 'W98S23_carrierRight',
+    'W98S23_claimer', 'W98S23_exploiter'
 ];
 
 for (const i in config.creep) {
     let roleList = config.creep[i]
     for (const j in roleList) {
-        let role = roleList[j]
-        let moduleFile = 'creep' + role.substring(1).replace(/([A-Z0-9])/g,".$1").toLowerCase();
+        let role = roleList[j];
+        let moduleFile = 'creep.' + role.replace('_', ".");
         config.creep[role] = require(moduleFile);
     }
 }

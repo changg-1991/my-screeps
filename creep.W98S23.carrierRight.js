@@ -18,7 +18,7 @@ var creepModule = {
                 var pos = new RoomPosition(10, 21, 'W97S23');
                 var target = pos.findClosestByRange(FIND_DROPPED_ENERGY);
                 if (target) {
-                    if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
+                    if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(target);
                     }
                 }
@@ -33,11 +33,10 @@ var creepModule = {
             let targetRoom = 'W98S23';
 
             if (creep.room.name == targetRoom) {
-                var pos = new RoomPosition(26, 30, 'W98S23');
-                if(creep.pos != pos) {
-                    creep.moveTo(26, 30);
-                } else {
-                    creep.drop(RESOURCE_ENERGY);
+                var container = Game.getObjectById(Memory.objectId._3Container);
+        
+                if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(container, {visualizePathStyle: {stroke: '#05ff05'}});
                 }
             } else {
                 const route = Game.map.findRoute(creep.room, targetRoom);
