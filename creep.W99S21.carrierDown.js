@@ -1,6 +1,6 @@
 var creepModule = {
-    body: [CARRY,CARRY,CARRY,MOVE,MOVE,MOVE],
-    count: 2,
+    body: [CARRY,CARRY,MOVE,MOVE],
+    count: 1,
     createType: 'counting',
     
     run: function(creep) {
@@ -12,7 +12,7 @@ var creepModule = {
         }
         
         if (creep.memory.status == 'PACKING') {
-            var pos = new RoomPosition(15, 20, 'W98S23');
+            var pos = new RoomPosition(7, 35, 'W99S21');
             var target = pos.findClosestByRange(FIND_DROPPED_ENERGY);
             if (target) {
                 if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
@@ -20,10 +20,10 @@ var creepModule = {
                 }
             }
         } else {
-            var storage = Game.getObjectById(Memory.objectId.W98S23_storage);
+            var container = Game.getObjectById(Memory.objectId.W99S21_container);
         
-            if (creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(storage, {visualizePathStyle: {stroke: '#05ff05'}});
+            if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(container, {visualizePathStyle: {stroke: '#05ff05'}});
             }
         }
     }

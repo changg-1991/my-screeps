@@ -30,13 +30,15 @@ config.structure.rampart = require('structure.rampart');
 
 // Object Id
 Memory.objectId = new Object();
-Memory.objectId._3SourceUp = '58dbc2698283ff5308a3bd92';
-Memory.objectId._3SourceDown = '58dbc2698283ff5308a3bd94';
-Memory.objectId._3SourceRight = '58dbc2858283ff5308a3c015';
+Memory.objectId.W98S23_sourceUp = '58dbc2698283ff5308a3bd92';
+Memory.objectId.W98S23_sourceDown = '58dbc2698283ff5308a3bd94';
+Memory.objectId.W98S23_sourceRight = '58dbc2858283ff5308a3c015';
 Memory.objectId.W99S21_sourceUp = '58dbc24d8283ff5308a3bb0c';
 Memory.objectId.W99S21_sourceDown = '58dbc24d8283ff5308a3bb0e';
 
-Memory.objectId._3Container = '59074ca588cfce7d4895b438';
+Memory.objectId.W99S21_container = '5909992a58cfe1b33654a679';
+
+Memory.objectId.W98S23_storage = '59099cb119a517fc4d128670';
 
 Memory.ally = new Array('kikooo');
 

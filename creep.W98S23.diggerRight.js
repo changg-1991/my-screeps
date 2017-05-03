@@ -7,7 +7,7 @@ var creepModule = {
         let targetRoom = 'W97S23';
 
         if (creep.room.name == targetRoom) {
-            var source = Game.getObjectById(Memory.objectId._3SourceRight);
+            var source = Game.getObjectById(Memory.objectId.W98S23_sourceRight);
             var result = creep.harvest(source);
             if (result == ERR_NOT_IN_RANGE) {
                 creep.moveTo(source, {visualizePathStyle: {stroke: '#ffffff'}});

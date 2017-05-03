@@ -4,7 +4,7 @@ var creepModule = {
     createType: 'counting',
 
     run: function(creep) {
-        var source = Game.getObjectById(Memory.objectId._3SourceUp);
+        var source = Game.getObjectById(Memory.objectId.W98S23_sourceUp);
         var result = creep.harvest(source);
         if (result == ERR_NOT_IN_RANGE) {
             creep.moveTo(source, {visualizePathStyle: {stroke: '#ffffff'}});
