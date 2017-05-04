@@ -16,7 +16,7 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'GOING') {
-            var closestHostile = structure.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+            var closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
                 filter: function(object) {
                     return Memory.ally.indexOf(object.owner) == -1;
                 }
@@ -35,7 +35,7 @@ var creepModule = {
                 }
             }
         } else {
-            var closestHostile = structure.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+            var closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
                 filter: function(object) {
                     return Memory.ally.indexOf(object.owner) == -1;
                 }
