@@ -22,15 +22,17 @@ var runtime = {
 
         Memory.W98S23_repairList = Game.rooms['W98S23'].find(FIND_STRUCTURES, {
             filter: (structure) => {
-                return (structure.structureType != STRUCTURE_WALL && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800)
-                    || (structure.structureType == STRUCTURE_WALL && structure.hits < 1000);
+                return (structure.structureType != STRUCTURE_WALL && structure.structureType != STRUCTURE_RAMPART && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800)
+                    || (structure.structureType == STRUCTURE_WALL && structure.hits < 1000)
+                    || (structure.structureType == STRUCTURE_RAMPART && structure.hits < 5000);
             }
         });
 
         Memory.W99S21_repairList = Game.rooms['W99S21'].find(FIND_STRUCTURES, {
             filter: (structure) => {
-                return (structure.structureType != STRUCTURE_WALL && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800)
-                    || (structure.structureType == STRUCTURE_WALL && structure.hits < 1000);
+                return (structure.structureType != STRUCTURE_WALL && structure.structureType != STRUCTURE_RAMPART && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800)
+                    || (structure.structureType == STRUCTURE_WALL && structure.hits < 1000)
+                    || (structure.structureType == STRUCTURE_RAMPART && structure.hits < 5000);
             }
         });
     }
