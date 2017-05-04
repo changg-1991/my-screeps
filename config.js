@@ -6,7 +6,8 @@ config.creep = new Object();
 config.creep.W98S23_roleList = [
     'W98S23_diggerDown', 'W98S23_carrierDown', 'W98S23_diggerUp', 'W98S23_carrierUp',
     'W98S23_upgrader', 'W98S23_builder', 'W98S23_diggerRight', 'W98S23_carrierRight',
-    'W98S23_diggerUpUp', 'W98S23_carrierUpUp', 'W98S23_claimer', 'W98S23_exploiter'
+    'W98S23_diggerUpUp', 'W98S23_carrierUpUp', 'W98S23_claimer', 'W98S23_exploiter',
+    'W98S23_patrol'
 ];
 // W99S21
 config.creep.W99S21_roleList = [
