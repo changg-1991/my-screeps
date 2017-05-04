@@ -12,7 +12,7 @@ config.creep.W98S23_roleList = [
 // W99S21
 config.creep.W99S21_roleList = [
     'W99S21_diggerUp', 'W99S21_carrierUp', 'W99S21_diggerDown', 'W99S21_carrierDown',
-    'W99S21_upgrader'
+    'W99S21_upgrader', 'W99S21_builder'
 ];
 
 for (const i in config.creep) {
