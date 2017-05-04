@@ -10,7 +10,8 @@ var creepModule = {
         if (creep.room.name == targetRoom) {
             if (creep.room.controller) {
                 if(creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(creep.room.controller);
+                    creep.moveTo(creep.room.controller);
+                }
             }
         } else {
             const route = Game.map.findRoute(creep.room, targetRoom);
