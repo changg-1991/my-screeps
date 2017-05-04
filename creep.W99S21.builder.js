@@ -1,5 +1,5 @@
 var creepModule = {
-    body: [WORK,WORK,CARRY,CARRY,MOVE,MOVE],
+    body: [WORK,WORK,MOVE,MOVE],
     count: 0,
     createType: 'counting',
 
@@ -12,9 +12,9 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'PACKING') {
-            var storage = Game.getObjectById(Memory.objectId.W98S23_storage);
-            if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(storage, {visualizePathStyle: {stroke: '#ffffff'}});
+            var container = Game.getObjectById(Memory.objectId.W99S21_container);
+            if (creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(container, {visualizePathStyle: {stroke: '#ffffff'}});
             }
         } else {
             var buildList = creep.room.find(FIND_CONSTRUCTION_SITES);
