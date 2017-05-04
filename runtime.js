@@ -24,7 +24,7 @@ var runtime = {
             filter: (structure) => {
                 return (structure.structureType != STRUCTURE_WALL && structure.structureType != STRUCTURE_RAMPART && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800)
                     || (structure.structureType == STRUCTURE_WALL && structure.hits < 1000)
-                    || (structure.structureType == STRUCTURE_RAMPART && structure.hits < 5000);
+                    || (structure.structureType == STRUCTURE_RAMPART && structure.hits < 20000);
             }
         });
 
@@ -32,7 +32,7 @@ var runtime = {
             filter: (structure) => {
                 return (structure.structureType != STRUCTURE_WALL && structure.structureType != STRUCTURE_RAMPART && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800)
                     || (structure.structureType == STRUCTURE_WALL && structure.hits < 1000)
-                    || (structure.structureType == STRUCTURE_RAMPART && structure.hits < 5000);
+                    || (structure.structureType == STRUCTURE_RAMPART && structure.hits < 20000);
             }
         });
     }
