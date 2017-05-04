@@ -23,8 +23,8 @@ var creepModule = {
             });
 
             if (closestHostile) {
-                if(creep.attack(target) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target);
+                if(creep.attack(closestHostile) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(closestHostile);
                 }
             } else {
                 const route = Game.map.findRoute(creep.room, endRoom);
@@ -42,8 +42,8 @@ var creepModule = {
             });
 
             if (closestHostile) {
-                if(creep.attack(target) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target);
+                if(creep.attack(closestHostile) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(closestHostile);
                 }
             } else {
                 const route = Game.map.findRoute(creep.room, startRoom);
