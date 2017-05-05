@@ -2,7 +2,7 @@ var structureModule = {
     run: function(structure) {
         var closestHostile = structure.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
             filter: function(object) {
-                return Memory.ally.indexOf(object.owner) == -1;
+                return Memory.ally.indexOf(object.owner) == -1 && object.pos.x < 40;
             }
         });
 
