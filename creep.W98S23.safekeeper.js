@@ -13,7 +13,9 @@ var creepModule = {
         });
 
         if (closestHostile) {
-            if (creep.attack(closestHostile) == ERR_NOT_IN_RANGE) {
+            if (creep.pos.isNearTo(closestHostile)) {
+                creep.attack(closestHostile);
+            } else {
                 creep.moveTo(closestHostile);
             }
             creep.heal(creep);
