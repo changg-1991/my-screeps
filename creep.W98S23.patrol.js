@@ -5,7 +5,7 @@ var creepModule = {
 
     run: function(creep) {
         var startRoom = 'W98S23';
-        var endRoom = 'W97S23';
+        var endRoom = 'W99S25';
 
         if (creep.room.name == startRoom) {
             creep.memory.status = 'GOING';
@@ -23,9 +23,13 @@ var creepModule = {
             creep.memory.status = 'GOING';
         }
 
-        //creep.moveTo(33,45);
+        if (creep.room.name == 'W99S25') {
+            creep.moveTo(38,18);
+        }
 
-        var closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+        //creep.moveTo(42,39);
+
+        /*var closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
             filter: function(object) {
                 return Memory.ally.indexOf(object.owner) == -1;
             }
@@ -87,7 +91,7 @@ var creepModule = {
             }
         } else {
 
-        }
+        }*/
     }
 };
 
