@@ -42,6 +42,8 @@ var creepModule = {
                         if (creep.attack(structure) == ERR_NOT_IN_RANGE) {
                             creep.moveTo(structure);
                         }
+                    } else {
+                        creep.moveTo(46, 23);
                     }
                 } else {
                     const route = Game.map.findRoute(creep.room, targetRoom);
