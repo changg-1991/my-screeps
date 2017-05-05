@@ -15,6 +15,10 @@ config.creep.W99S21_roleList = [
     'W99S21_diggerUp', 'W99S21_carrierUp', 'W99S21_diggerDown', 'W99S21_carrierDown',
     'W99S21_upgrader', 'W99S21_builder'
 ];
+// W99S25
+config.creep.W99S25_roleList = [
+    'W99S25_diggerUp', 'W99S25_carrierUp', 'W99S25_diggerDown', 'W99S25_carrierDown'
+];
 
 for (const i in config.creep) {
     let roleList = config.creep[i]
@@ -39,6 +43,8 @@ Memory.objectId.W98S23_sourceRight = '58dbc2858283ff5308a3c015';
 Memory.objectId.W98S23_sourceUpUp = '58dbc2698283ff5308a3bd90';
 Memory.objectId.W99S21_sourceUp = '58dbc24d8283ff5308a3bb0c';
 Memory.objectId.W99S21_sourceDown = '58dbc24d8283ff5308a3bb0e';
+Memory.objectId.W99S25_sourceUp = '58dbc24e8283ff5308a3bb19';
+Memory.objectId.W99S25_sourceDown = '58dbc24e8283ff5308a3bb1b';
 
 Memory.objectId.W99S21_container = '5909992a58cfe1b33654a679';
 
