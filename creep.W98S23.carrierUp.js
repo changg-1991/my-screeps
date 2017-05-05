@@ -1,7 +1,8 @@
 var creepModule = {
     body: [CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
     count: 1,
-    createType: 'counting',
+    createType: 'timing',
+    createDelta: 1500,
     
     run: function(creep) {
         if (creep.memory.status != 'PACKING' && creep.carry.energy == 0) {
