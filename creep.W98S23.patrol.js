@@ -23,7 +23,7 @@ var creepModule = {
             creep.memory.status = 'GOING';
         }
 
-        creep.moveTo(25,36);
+        creep.moveTo(33,45);
 
         /*var closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
             filter: function(object) {
