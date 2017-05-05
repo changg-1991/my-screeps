@@ -32,7 +32,8 @@ var creepModule = {
         if (creep.memory.status == 'PROVOKER') {
             if (closestHostile) {
                 if (creep.pos.isNearTo(closestHostile)) {
-                    creep.attack(closestHostile);
+                    var result = creep.attack(closestHostile);
+                    console.log(creep.name + ' attack: ' + result);
                 } else {
                     creep.moveTo(closestHostile);
                 }
