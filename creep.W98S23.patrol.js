@@ -23,9 +23,9 @@ var creepModule = {
             creep.memory.status = 'GOING';
         }
 
-        creep.moveTo(33,45);
+        //creep.moveTo(33,45);
 
-        /*var closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+        var closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
             filter: function(object) {
                 return Memory.ally.indexOf(object.owner) == -1;
             }
@@ -77,7 +77,7 @@ var creepModule = {
             }
         } else {
 
-        }*/
+        }
     }
 };
 
