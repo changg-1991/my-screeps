@@ -1,6 +1,6 @@
 var creepModule = {
     body: [TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,HEAL],
-    count: 1,
+    count: 3,
     createType: 'counting',
 
     run: function(creep) {
@@ -11,7 +11,7 @@ var creepModule = {
             creep.memory.status = 'PROVOKER';
         }
 
-        if (creep.getActiveBodyparts(ATTACK) < 0) {
+        if (creep.getActiveBodyparts(ATTACK) <= 0) {
             creep.memory.status = 'ESCAPE';
         }
 

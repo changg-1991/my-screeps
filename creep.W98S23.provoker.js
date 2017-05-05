@@ -11,7 +11,7 @@ var creepModule = {
             creep.memory.status = 'PROVOKER';
         }
 
-        if (creep.getActiveBodyparts(ATTACK) < 0) {
+        if (creep.getActiveBodyparts(ATTACK) <= 0) {
             creep.memory.status = 'ESCAPE';
         }
 
