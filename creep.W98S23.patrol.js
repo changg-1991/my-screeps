@@ -33,7 +33,7 @@ var creepModule = {
 
         var spawn = creep.room.find(FIND_STRUCTURES, {
             filter: function(object) {
-                return structure.structureType == STRUCTURE_SPAWN;
+                return object.structureType == STRUCTURE_SPAWN;
             }
         });
 
