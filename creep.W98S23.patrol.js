@@ -19,7 +19,7 @@ var creepModule = {
             creep.memory.status = 'ESCAPE';
         }
 
-        if (creep.memory.status = 'ESCAPE' && object.hits == object.hitsMax) {
+        if (creep.memory.status = 'ESCAPE' && creep.hits == creep.hitsMax) {
             creep.memory.status = 'GOING';
         }
 
