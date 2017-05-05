@@ -50,4 +50,8 @@ if (!Memory.birthTime) {
     Memory.birthTime = new Object();
 }
 
+if (!Memory.towerTarget) {
+    Memory.towerTarget = new Object();
+}
+
 module.exports = config;
