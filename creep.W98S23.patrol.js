@@ -27,7 +27,7 @@ var creepModule = {
 
         var closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
             filter: function(object) {
-                return Memory.ally.indexOf(object.owner) == -1 && creep.getActiveBodyparts(ATTACK) > 0 && creep.getActiveBodyparts(RANGED_ATTACK) > 0 && creep.getActiveBodyparts(HEAL) > 0;
+                return Memory.ally.indexOf(object.owner) == -1;
             }
         });
 
