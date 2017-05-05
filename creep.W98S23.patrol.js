@@ -53,7 +53,9 @@ var creepModule = {
             creep.heal(creep);
         } else if (creep.memory.status == 'COMMING') {
             if (spawn) {
-                if(creep.attack(spawn) == ERR_NOT_IN_RANGE) {
+                var result = creep.attack(spawn);
+                console.log(creep.name + ' attack: ' + result);
+                if (result == ERR_NOT_IN_RANGE) {
                     creep.moveTo(spawn);
                 }
             } else {
@@ -70,7 +72,7 @@ var creepModule = {
                     }
                 }
             }
-            creep.heal(creep);
+            //creep.heal(creep);
         } else if (creep.memory.status == 'ESCAPE') {
             if (closestHostile) {
                 const range = creep.pos.getRangeTo(closestHostile);

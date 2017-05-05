@@ -1,7 +1,7 @@
 var runtime = {
     run: function() {
         // 在console展示的概览
-        let formatStr = "<table border='1'>"
+        /*let formatStr = "<table border='1'>"
         for (const name in Game.rooms) {
             const room = Game.rooms[name];
             if (room.controller == undefined) {
@@ -18,7 +18,7 @@ var runtime = {
             formatStr = formatStr + addFormatStr;
         }
         formatStr = formatStr + "</table>"
-        console.log(formatStr);
+        console.log(formatStr);*/
 
         Memory.W98S23_repairList = Game.rooms['W98S23'].find(FIND_STRUCTURES, {
             filter: (structure) => {
