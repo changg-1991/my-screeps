@@ -30,19 +30,28 @@ var creepModule = {
         });
 
         if (creep.memory.status == 'PROVOKER') {
-            if (closestHostile) {
-                if (creep.pos.isNearTo(closestHostile)) {
-                    var result = creep.attack(closestHostile);
-                    console.log(creep.name + ' attack: ' + result);
+            if (creep.room.name == targetRoom) {
+                if (closestHostile) {
+                    if (creep.pos.isNearTo(closestHostile)) {
+                        var result = creep.attack(closestHostile);
+                        console.log(creep.name + ' attack: ' + result);
+                    } else {
+                        creep.moveTo(closestHostile);
+                    }
                 } else {
-                    creep.moveTo(closestHostile);
-                }
-            } else {
-                if (creep.room.name == targetRoom) {
                     if (structure) {
                         if (creep.attack(structure) == ERR_NOT_IN_RANGE) {
                             creep.moveTo(structure);
                         }
+                    }
+                }
+            } else {
+                if (creep.pos.inRangeTo(closestHostile, 3)) {
+                    const route = Game.map.findRoute(creep.room, homeRoom);
+                    if (route.length > 0) {
+                        const exit = creep.pos.findClosestByRange(route[0].exit);
+                        PathFinder.use(true);
+                        creep.moveTo(exit);
                     }
                 } else {
                     const route = Game.map.findRoute(creep.room, targetRoom);
@@ -55,7 +64,7 @@ var creepModule = {
             }
             creep.heal(creep);
         } else if (creep.memory.status == 'ESCAPE') {
-            if (creep.pos.inRangeTo(closestHostile, 3)) {
+            if (creep.pos.inRangeTo(closestHostile, 3) || creep.room.name == targetRoom) {
                 const route = Game.map.findRoute(creep.room, homeRoom);
                 if (route.length > 0) {
                     const exit = creep.pos.findClosestByRange(route[0].exit);
