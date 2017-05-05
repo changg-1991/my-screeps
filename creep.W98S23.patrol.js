@@ -31,7 +31,7 @@ var creepModule = {
             }
         });
 
-        var structure = creep.room.findClosestByRange(FIND_STRUCTURES);
+        var structure = creep.pos.findClosestByRange(FIND_STRUCTURES);
 
         if (creep.memory.status == 'GOING') {
             if (closestHostile) {
