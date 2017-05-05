@@ -1,11 +1,11 @@
 var creepModule = {
-    body: [TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,HEAL],
+    body: [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,HEAL],
     count: 1,
     createType: 'counting',
 
     run: function(creep) {
         var homeRoom = 'W98S23';
-        var targetRoom = 'W96S23';
+        var targetRoom = 'W95S23';
 
         if (creep.room.name != targetRoom && creep.getActiveBodyparts(ATTACK) > 0) {
             creep.memory.status = 'PROVOKER';
