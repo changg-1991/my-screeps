@@ -31,11 +31,7 @@ var creepModule = {
             }
         });
 
-        var spawn = creep.room.find(FIND_STRUCTURES, {
-            filter: function(object) {
-                return object.structureType == STRUCTURE_SPAWN;
-            }
-        });
+        var structure = creep.room.findClosestByRange(FIND_STRUCTURES);
 
         if (creep.memory.status == 'GOING') {
             if (closestHostile) {
@@ -52,11 +48,11 @@ var creepModule = {
             }
             creep.heal(creep);
         } else if (creep.memory.status == 'COMMING') {
-            if (spawn) {
-                var result = creep.attack(spawn);
-                console.log(creep.name + ' attack: ' + result);
+            if (structure) {
+                var result = creep.attack(structure);
+                console.log(creep.name + ' attack ' + structure + ': ' + result);
                 if (result == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(spawn);
+                    creep.moveTo(structure);
                 }
             } else {
                 if (closestHostile) {
