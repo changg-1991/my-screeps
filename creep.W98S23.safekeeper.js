@@ -13,7 +13,7 @@ var creepModule = {
         });
 
         if (closestHostile) {
-            if(creep.attack(closestHostile) == ERR_NOT_IN_RANGE) {
+            if (creep.attack(closestHostile) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(closestHostile);
             }
             creep.heal(creep);
@@ -25,6 +25,8 @@ var creepModule = {
                     PathFinder.use(true);
                     creep.moveTo(exit);
                 }
+            } else {
+                creep.moveTo(44, 26);
             }
         }
     }
