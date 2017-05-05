@@ -7,7 +7,7 @@ var creepModule = {
         var homeRoom = 'W98S23';
         var targetRoom = 'W96S23';
 
-        if (creep.room.name != targetRoom && creep.getActiveBodyparts(ATTACK) > 0) {
+        if (creep.room.name != targetRoom && creep.hits > creep.hitsMax * 0.8) {
             creep.memory.status = 'PROVOKER';
         }
 
