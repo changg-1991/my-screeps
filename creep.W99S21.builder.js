@@ -1,5 +1,5 @@
 var creepModule = {
-    body: [WORK,WORK,MOVE,MOVE],
+    body: [WORK,WORK,CARRY,CARRY,MOVE,MOVE],
     count: 2,
     createType: 'counting',
 
