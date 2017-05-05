@@ -19,7 +19,7 @@ var creepModule = {
             creep.memory.status = 'ESCAPE';
         }
 
-        if (creep.memory.status = 'ESCAPE' && creep.hits == creep.hitsMax) {
+        if (creep.memory.status == 'ESCAPE' && creep.hits == creep.hitsMax) {
             creep.memory.status = 'GOING';
         }
 
@@ -27,7 +27,13 @@ var creepModule = {
 
         var closestHostile = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
             filter: function(object) {
-                return Memory.ally.indexOf(object.owner) == -1;
+                return Memory.ally.indexOf(object.owner) == -1 && creep.getActiveBodyparts(ATTACK) > 0 && creep.getActiveBodyparts(RANGED_ATTACK) > 0 && creep.getActiveBodyparts(HEAL) > 0;
+            }
+        });
+
+        var spawn = creep.room.find(FIND_STRUCTURES, {
+            filter: function(object) {
+                return structure.structureType == STRUCTURE_SPAWN;
             }
         });
 
@@ -46,16 +52,22 @@ var creepModule = {
             }
             creep.heal(creep);
         } else if (creep.memory.status == 'COMMING') {
-            if (closestHostile) {
-                if(creep.attack(closestHostile) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(closestHostile);
+            if (spawn) {
+                if(creep.attack(spawn) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(spawn);
                 }
             } else {
-                const route = Game.map.findRoute(creep.room, startRoom);
-                if (route.length > 0) {
-                    const exit = creep.pos.findClosestByRange(route[0].exit);
-                    PathFinder.use(true);
-                    creep.moveTo(exit);
+                if (closestHostile) {
+                    if(creep.attack(closestHostile) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(closestHostile);
+                    }
+                } else {
+                    const route = Game.map.findRoute(creep.room, startRoom);
+                    if (route.length > 0) {
+                        const exit = creep.pos.findClosestByRange(route[0].exit);
+                        PathFinder.use(true);
+                        creep.moveTo(exit);
+                    }
                 }
             }
             creep.heal(creep);
