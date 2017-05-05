@@ -1,5 +1,5 @@
 var creepModule = {
-    body: [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,HEAL],
+    body: [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,HEAL],
     count: 0,
     createType: 'counting',
 
@@ -11,7 +11,7 @@ var creepModule = {
             creep.memory.status = 'PROVOKER';
         }
 
-        if (creep.getActiveBodyparts(ATTACK) <= 0) {
+        if (creep.hits < creep.hitsMax * 0.7) {
             creep.memory.status = 'ESCAPE';
         }
 
