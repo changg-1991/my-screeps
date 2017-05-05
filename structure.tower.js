@@ -11,7 +11,7 @@ var structureModule = {
                 Memory.towerTarget[structure.id] = closestHostile;
             }
         } else {
-            if (!Game.getObjectById(Memory.towerTarget[structure.id])) {
+            if (!Game.getObjectById(Memory.towerTarget[structure.id].id)) {
                 if (closestHostile) {
                     Memory.towerTarget[structure.id] = closestHostile;
                 } else {
@@ -20,8 +20,8 @@ var structureModule = {
             }
         }
 
-        if (Game.getObjectById(Memory.towerTarget[structure.id])) {
-            structure.attack(Game.getObjectById(Memory.towerTarget[structure.id]));
+        if (Memory.towerTarget[structure.id]) {
+            structure.attack(Game.getObjectById(Memory.towerTarget[structure.id].id));
         } else {
             if (Memory[structure.room.name + '_repairList'].length > 0) {
                 var structureToRepair = Game.getObjectById(Memory[structure.room.name + '_repairList'].shift().id);
