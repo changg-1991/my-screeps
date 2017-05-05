@@ -1,5 +1,5 @@
 var creepModule = {
-    body: [TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,HEAL],
+    body: [TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,HEAL],
     count: 3,
     createType: 'counting',
 
@@ -57,11 +57,15 @@ var creepModule = {
             }
             creep.heal(creep);
         } else if (creep.memory.status == 'ESCAPE') {
-            const route = Game.map.findRoute(creep.room, homeRoom);
-            if (route.length > 0) {
-                const exit = creep.pos.findClosestByRange(route[0].exit);
-                PathFinder.use(true);
-                creep.moveTo(exit);
+            if (creep.pos.inRangeTo(closestHostile, 3)) {
+                const route = Game.map.findRoute(creep.room, homeRoom);
+                if (route.length > 0) {
+                    const exit = creep.pos.findClosestByRange(route[0].exit);
+                    PathFinder.use(true);
+                    creep.moveTo(exit);
+                }
+            } else {
+                //
             }
             creep.heal(creep);
         } else {
