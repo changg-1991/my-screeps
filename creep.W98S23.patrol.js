@@ -5,7 +5,7 @@ var creepModule = {
 
     run: function(creep) {
         var startRoom = 'W98S23';
-        var endRoom = 'W98S25';
+        var endRoom = 'W97S23';
 
         if (creep.room.name == startRoom) {
             creep.memory.status = 'GOING';
