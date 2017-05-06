@@ -13,7 +13,7 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'HARVESTING') {
-            let targetRoom = 'W99S25';
+            let targetRoom = 'W99S24';
 
             if (creep.room.name == targetRoom) {
                 var source = Game.getObjectById(Memory.objectId.W99S25_sourceUpUp);
