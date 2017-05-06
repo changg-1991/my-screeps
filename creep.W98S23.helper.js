@@ -44,9 +44,12 @@ var creepModule = {
                         creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                     }
                 } else {
-                    var container = Game.getObjectById(Memory.objectId.W99S25_container);
-                    if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(container, {visualizePathStyle: {stroke: '#05ff05'}});
+                    var buildList = creep.room.find(FIND_CONSTRUCTION_SITES);
+
+                    if (buildList.length > 0) {
+                        if (creep.build(buildList[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(buildList[0], {visualizePathStyle: {stroke: '#05ff05'}});
+                        }
                     }
                 }
             } else {
