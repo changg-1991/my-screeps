@@ -20,7 +20,7 @@ var creepModule = {
                 }
             }
         } else {
-            var buildList = creep.room.find(FIND_CONSTRUCTION_SITES {
+            var buildList = creep.room.find(FIND_CONSTRUCTION_SITES, {
                 filter: (structure) => {
                     return structure.structureType == STRUCTURE_TOWER
                 }
