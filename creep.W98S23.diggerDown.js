@@ -12,10 +12,17 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'HARVESTING') {
-            var source = Game.getObjectById(Memory.objectId.W98S23_sourceDown);
+            /*var source = Game.getObjectById(Memory.objectId.W98S23_sourceDown);
             var result = creep.harvest(source);
             if (result == ERR_NOT_IN_RANGE) {
                 creep.moveTo(source, {visualizePathStyle: {stroke: '#ffffff'}});
+            }*/
+            var pos = new RoomPosition(5, 39, 'W98S23');
+            var target = pos.findClosestByRange(FIND_DROPPED_ENERGY);
+            if (target) {
+                if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target);
+                }
             }
         } else {
             var link = Game.getObjectById(Memory.objectId.W98S23_linkDown);
