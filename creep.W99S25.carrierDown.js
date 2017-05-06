@@ -1,6 +1,6 @@
 var creepModule = {
-    body: [WORK,WORK,CARRY,CARRY,MOVE,MOVE],
-    count: 4,
+    body: [CARRY,CARRY,CARRY,CARRY,MOVE,MOVE],
+    count: 1,
     createType: 'counting',
 
     run: function(creep) {
@@ -20,8 +20,9 @@ var creepModule = {
                 }
             }
         } else {
-            if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#fff905'}});
+            var container = Game.getObjectById(Memory.objectId.W99S25_container);
+            if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(container, {visualizePathStyle: {stroke: '#05ff05'}});
             }
         }
     }
