@@ -17,11 +17,7 @@ var creepModule = {
                 creep.moveTo(container, {visualizePathStyle: {stroke: '#ffffff'}});
             }
         } else {
-            var buildList = creep.room.find(FIND_CONSTRUCTION_SITES, {
-                filter: (structure) => {
-                    return structure.structureType == STRUCTURE_TOWER
-                }
-            });
+            var buildList = creep.room.find(FIND_CONSTRUCTION_SITES);
 
             if (buildList.length > 0) {
                 if (creep.build(buildList[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
