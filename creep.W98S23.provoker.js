@@ -62,7 +62,7 @@ var creepModule = {
                     }
                 }
             }
-            creep.heal(creep);
+            //creep.heal(creep);
         } else if (creep.memory.status == 'ESCAPE') {
             if (creep.pos.inRangeTo(closestHostile, 3) || creep.room.name == targetRoom) {
                 const route = Game.map.findRoute(creep.room, homeRoom);
