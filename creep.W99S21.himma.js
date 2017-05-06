@@ -12,7 +12,7 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'PACKING') {
-            var storage = Game.getObjectById(Memory.objectId.W98S23_storage);
+            var storage = Game.getObjectById(Memory.objectId.W99S21_storage);
 
             if(creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(storage, {visualizePathStyle: {stroke: '#ffffff'}});
@@ -20,7 +20,7 @@ var creepModule = {
         } else {
             var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: function(object) {
-                    return object.structureType == STRUCTURE_WALL && object.hits < 100000;
+                    return object.structureType == STRUCTURE_WALL && object.hits < 30000;
                 }
             });
 

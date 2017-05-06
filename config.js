@@ -4,7 +4,7 @@ var config = new Object();
 config.creep = new Object();
 // W98S23
 config.creep.W98S23_roleList = [
-    'W98S23_farmer', 'W98S23_diggerDown', 'W98S23_carrierDown', 'W98S23_diggerUp',
+    'W98S23_farmer', 'W98S23_diggerDown', 'W98S23_transfer', 'W98S23_carrierDown', 'W98S23_diggerUp',
     'W98S23_carrierUp', 'W98S23_upgrader', 'W98S23_artillery','W98S23_builder',
     'W98S23_diggerRight', 'W98S23_carrierRight', 'W98S23_diggerUpUp', 'W98S23_carrierUpUp',
     'W98S23_claimer', 'W98S23_exploiter', 'W98S23_patrol', 'W98S23_himma', 'W98S23_reserveRight',
@@ -13,7 +13,7 @@ config.creep.W98S23_roleList = [
 // W99S21
 config.creep.W99S21_roleList = [
     'W99S21_diggerUp', 'W99S21_carrierUp', 'W99S21_diggerDown', 'W99S21_carrierDown',
-    'W99S21_upgrader', 'W99S21_builder'
+    'W99S21_upgrader', 'W99S21_builder', 'W99S21_himma'
 ];
 // W99S25
 config.creep.W99S25_roleList = [
@@ -50,6 +50,9 @@ Memory.objectId.W99S21_container = '5909992a58cfe1b33654a679';
 
 Memory.objectId.W98S23_storage = '59099cb119a517fc4d128670';
 Memory.objectId.W99S21_storage = '590c70b87d189c611d9c90be';
+
+Memory.objectId.W98S23_linkCenter = '590cebb48b01e59720ce9598';
+Memory.objectId.W98S23_linkDown = '590ce5c7f4b336eb542b3e1e';
 
 Memory.ally = new Array('kikooo');
 
