@@ -13,13 +13,20 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'HARVESTING') {
-            let targetRoom = 'W99S24';
+            let targetRoom = 'W99S25';
 
             if (creep.room.name == targetRoom) {
-                var source = Game.getObjectById(Memory.objectId.W99S25_sourceUpUp);
+                /*var source = Game.getObjectById(Memory.objectId.W99S25_sourceUpUp);
                 var result = creep.harvest(source);
                 if (result == ERR_NOT_IN_RANGE) {
                     creep.moveTo(source, {visualizePathStyle: {stroke: '#ffffff'}});
+                }*/
+                var pos = new RoomPosition(13, 4, 'W99S25');
+                var target = pos.findClosestByRange(FIND_DROPPED_ENERGY);
+                if (target) {
+                    if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(target);
+                    }
                 }
             } else {
                 const route = Game.map.findRoute(creep.room, targetRoom);
