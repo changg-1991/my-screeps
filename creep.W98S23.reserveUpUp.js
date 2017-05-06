@@ -1,6 +1,6 @@
 var creepModule = {
     body: [CLAIM,CLAIM,MOVE,MOVE],
-    count: 0,
+    count: 1,
     createType: 'timing',
     createDelta: 800,
 

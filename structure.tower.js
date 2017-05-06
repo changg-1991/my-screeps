@@ -1,23 +1,33 @@
 var structureModule = {
     run: function(structure) {
-        var closestHostile = structure.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
-            filter: function(object) {
-                return Memory.ally.indexOf(object.owner) == -1 && object.pos.x < 40;
-            }
-        });
+        if (structure.room.name == 'W98S23') {
+            var closestHostile = structure.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+                filter: function(object) {
+                    return Memory.ally.indexOf(object.owner) == -1 && object.pos.x < 40;
+                }
+            });
 
-        if (!Memory.towerTarget[structure.id]) {
-            if (closestHostile) {
-                Memory.towerTarget[structure.id] = closestHostile;
-            }
-        } else {
-            if (!Game.getObjectById(Memory.towerTarget[structure.id].id)) {
+            if (!Memory.towerTarget[structure.id]) {
                 if (closestHostile) {
                     Memory.towerTarget[structure.id] = closestHostile;
-                } else {
-                    delete Memory.towerTarget[structure.id];
+                }
+            } else {
+                if (!Game.getObjectById(Memory.towerTarget[structure.id].id)) {
+                    if (closestHostile) {
+                        Memory.towerTarget[structure.id] = closestHostile;
+                    } else {
+                        delete Memory.towerTarget[structure.id];
+                    }
                 }
             }
+        } else {
+            var closestHostile = structure.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+                filter: function(object) {
+                    return Memory.ally.indexOf(object.owner) == -1;
+                }
+            });
+
+            Memory.towerTarget[structure.id] = closestHostile;
         }
 
         if (Memory.towerTarget[structure.id]) {
