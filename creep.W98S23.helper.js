@@ -1,8 +1,8 @@
 var creepModule = {
     body: [WORK,CARRY,CARRY,MOVE,MOVE,MOVE],
-    count: 3,
+    count: 2,
     ccreateType: 'timing',
-    createDelta: 500,
+    createDelta: 750,
 
     run: function(creep) {
         if (creep.memory.status != 'HARVESTING' && creep.carry.energy == 0) {
@@ -44,12 +44,8 @@ var creepModule = {
                         creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                     }
                 } else {
-                    var buildList = creep.room.find(FIND_CONSTRUCTION_SITES);
-
-                    if (buildList.length > 0) {
-                        if (creep.build(buildList[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(buildList[0], {visualizePathStyle: {stroke: '#05ff05'}});
-                        }
+                    if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#fff905'}});
                     }
                 }
             } else {
