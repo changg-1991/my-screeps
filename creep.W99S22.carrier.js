@@ -16,7 +16,7 @@ var creepModule = {
             let targetRoom = 'W99S22';
 
             if (creep.room.name == targetRoom) {
-                var pos = new RoomPosition(32, 18, 'W99S25');
+                var pos = new RoomPosition(32, 18, 'W99S22');
                 var target = pos.findClosestByRange(FIND_DROPPED_ENERGY);
                 if (target) {
                     if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
