@@ -20,7 +20,7 @@ var creepModule = {
         } else {
             var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: function(object) {
-                    return object.structureType == STRUCTURE_WALL && object.hits < 30000;
+                    return object.structureType == STRUCTURE_WALL && object.hits < 80000;
                 }
             });
 
