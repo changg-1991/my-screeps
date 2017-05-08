@@ -12,9 +12,9 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'PACKING') {
-            var W98S23_storage = Game.getObjectById(Memory.objectId.W98S23_storage);
-            if (creep.withdraw(W98S23_storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(W98S23_storage, {visualizePathStyle: {stroke: '#ffffff'}});
+            var storage = Game.getObjectById(Memory.objectId.W98S23_storage);
+            if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(storage, {visualizePathStyle: {stroke: '#ffffff'}});
             }
         } else {
             if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {

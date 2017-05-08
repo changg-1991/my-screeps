@@ -31,9 +31,9 @@ var creepModule = {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             } else {
-                var container = Game.getObjectById(Memory.objectId.W99S25_container);
-                if (creep.transfer(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(container, {visualizePathStyle: {stroke: '#05ff05'}});
+                var storage = Game.getObjectById(Memory.objectId.W99S25_storage);
+                if (creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(storage, {visualizePathStyle: {stroke: '#05ff05'}});
                 }
             }
         }

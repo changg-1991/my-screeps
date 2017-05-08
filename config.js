@@ -55,6 +55,7 @@ Memory.objectId.W99S25_container = '590d39ff234a6c61148a40c3';
 
 Memory.objectId.W98S23_storage = '59099cb119a517fc4d128670';
 Memory.objectId.W99S21_storage = '590c70b87d189c611d9c90be';
+Memory.objectId.W99S25_storage = '5910437838a3c4d571f990a4';
 
 Memory.objectId.W98S23_linkCenter = '590cebb48b01e59720ce9598';
 Memory.objectId.W98S23_linkDown = '590ce5c7f4b336eb542b3e1e';
