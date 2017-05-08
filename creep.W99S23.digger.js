@@ -1,14 +1,14 @@
 var creepModule = {
-    body: [WORK,WORK,WORK,WORK,WORK,MOVE,MOVE,MOVE],
-    count: 1,
+    body: [WORK,WORK,WORK,MOVE,MOVE,MOVE],
+    count: 2,
     createType: 'timing',
-    createDelta: 1500,
+    createDelta: 1400,
 
     run: function(creep) {
-        let targetRoom = 'W99S22';
+        let targetRoom = 'W99S23';
 
         if (creep.room.name == targetRoom) {
-            var source = Game.getObjectById(Memory.objectId.W99S22_source);
+            var source = Game.getObjectById(Memory.objectId.W99S23_source);
             var result = creep.harvest(source);
             if (result == ERR_NOT_IN_RANGE) {
                 creep.moveTo(source, {visualizePathStyle: {stroke: '#ffffff'}});

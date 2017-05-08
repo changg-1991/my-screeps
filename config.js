@@ -14,7 +14,7 @@ config.creep.W98S23_roleList = [
 config.creep.W99S21_roleList = [
     'W99S21_farmer', 'W99S21_diggerDown', 'W99S21_transfer', 'W99S21_diggerUp', 'W99S21_carrierUp',
     'W98S23_artillery', 'W99S21_upgrader', 'W99S21_builder', 'W99S21_himma', 'W99S22_digger',
-    'W99S22_carrier', 'W99S22_reserver'
+    'W99S22_carrier', 'W99S22_reserver', 'W99S23_digger', 'W99S23_carrier', 'W99S23_reserver'
 ];
 // W99S25
 config.creep.W99S25_roleList = [
@@ -49,6 +49,7 @@ Memory.objectId.W99S25_sourceUp = '58dbc24e8283ff5308a3bb19';
 Memory.objectId.W99S25_sourceDown = '58dbc24e8283ff5308a3bb1b';
 Memory.objectId.W99S25_sourceUpUp = '58dbc24e8283ff5308a3bb17';
 Memory.objectId.W99S22_source = '58dbc24d8283ff5308a3bb10';
+Memory.objectId.W99S23_source = '58dbc24e8283ff5308a3bb14';
 
 Memory.objectId.W99S25_container = '590d39ff234a6c61148a40c3';
 
