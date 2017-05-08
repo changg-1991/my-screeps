@@ -12,7 +12,7 @@ config.creep.W98S23_roleList = [
 ];
 // W99S21
 config.creep.W99S21_roleList = [
-    'W99S21_diggerUp', 'W99S21_carrierUp', 'W99S21_diggerDown', 'W99S21_carrierDown',
+    'W99S21_farmer', 'W99S21_diggerDown', 'W98S23_transfer', 'W99S21_diggerUp', 'W99S21_carrierUp', 'W99S21_carrierDown',
     'W99S21_upgrader', 'W99S21_builder', 'W99S21_himma', 'W99S22_digger', 'W99S22_carrier',
     'W99S22_reserver'
 ];
@@ -57,6 +57,8 @@ Memory.objectId.W99S21_storage = '590c70b87d189c611d9c90be';
 
 Memory.objectId.W98S23_linkCenter = '590cebb48b01e59720ce9598';
 Memory.objectId.W98S23_linkDown = '590ce5c7f4b336eb542b3e1e';
+Memory.objectId.W99S21_linkCenter = '590f4e4a78e99f495daa27f3';
+Memory.objectId.W99S21_linkLeft = '590fd754e95dd3464314d3ff';
 
 Memory.ally = new Array('kikooo');
 
