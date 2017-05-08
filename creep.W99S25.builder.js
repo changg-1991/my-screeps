@@ -12,9 +12,9 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'PACKING') {
-            var container = Game.getObjectById(Memory.objectId.W99S25_container);
-            if (creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(container, {visualizePathStyle: {stroke: '#ffffff'}});
+            var storage = Game.getObjectById(Memory.objectId.W99S25_storage);
+            if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(storage, {visualizePathStyle: {stroke: '#05ff05'}});
             }
         } else {
             var buildList = creep.room.find(FIND_CONSTRUCTION_SITES);
