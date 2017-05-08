@@ -8,7 +8,7 @@ config.creep.W98S23_roleList = [
     'W98S23_carrierUp', 'W98S23_upgrader', 'W98S23_artillery','W98S23_builder',
     'W98S23_diggerRight', 'W98S23_carrierRight', 'W98S23_diggerUpUp', 'W98S23_carrierUpUp',
     'W98S23_claimer', 'W98S23_exploiter', 'W98S23_patrol', 'W98S23_himma', 'W98S23_reserveRight',
-    'W98S23_safekeeper', 'W98S23_provoker', 'W98S23_reserveUpUp', 'W98S23_helper'
+    'W98S23_safekeeper', 'W98S23_provoker', 'W98S23_reserveUpUp', 'W99S24_carrier'
 ];
 // W99S21
 config.creep.W99S21_roleList = [
@@ -47,7 +47,7 @@ Memory.objectId.W99S21_sourceUp = '58dbc24d8283ff5308a3bb0c';
 Memory.objectId.W99S21_sourceDown = '58dbc24d8283ff5308a3bb0e';
 Memory.objectId.W99S25_sourceUp = '58dbc24e8283ff5308a3bb19';
 Memory.objectId.W99S25_sourceDown = '58dbc24e8283ff5308a3bb1b';
-Memory.objectId.W99S25_sourceUpUp = '58dbc24e8283ff5308a3bb17';
+Memory.objectId.W99S24_source = '58dbc24e8283ff5308a3bb17';
 Memory.objectId.W99S22_source = '58dbc24d8283ff5308a3bb10';
 Memory.objectId.W99S23_source = '58dbc24e8283ff5308a3bb14';
 

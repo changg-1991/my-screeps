@@ -1,5 +1,5 @@
 var creepModule = {
-    body: [WORK,CARRY,CARRY,MOVE,MOVE,MOVE],
+    body: [WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
     count: 2,
     ccreateType: 'timing',
     createDelta: 750,
@@ -16,7 +16,7 @@ var creepModule = {
             let targetRoom = 'W99S24';
 
             if (creep.room.name == targetRoom) {
-                var source = Game.getObjectById(Memory.objectId.W99S25_sourceUpUp);
+                var source = Game.getObjectById(Memory.objectId.W99S24_source);
                 var result = creep.harvest(source);
                 if (result == ERR_NOT_IN_RANGE) {
                     creep.moveTo(source, {visualizePathStyle: {stroke: '#ffffff'}});
