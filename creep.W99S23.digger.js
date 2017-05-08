@@ -6,7 +6,6 @@ var creepModule = {
 
     run: function(creep) {
         let targetRoom = 'W99S23';
-
         if (creep.room.name == targetRoom) {
             var source = Game.getObjectById(Memory.objectId.W99S23_source);
             var result = creep.harvest(source);
