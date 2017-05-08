@@ -18,7 +18,7 @@ var creepModule = {
                 creep.moveTo(source, {visualizePathStyle: {stroke: '#ffffff'}});
             }
         } else {
-            var link = Game.getObjectById(Memory.objectId.W99S21_linkDown);
+            var link = Game.getObjectById(Memory.objectId.W99S21_linkLeft);
             if (creep.transfer(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(link, {visualizePathStyle: {stroke: '#05ff05'}});
             }
