@@ -31,7 +31,7 @@ var creepModule = {
                 //
             }
         }
-    }
+    },
 
     getBody: function(roomName) {
         var body = []
