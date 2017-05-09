@@ -45,10 +45,21 @@ var creepController = {
             var roleList = creepModules[spawn.room.name + '_roleList'];
             for (const i in roleList) {
                 let role = roleList[i];
+                var roomName = '';
+                var roleName = '';
+                [roomName, roleName] = role.split('_')
+
                 if ((creepModules[role].count > 0 && (!roleCount[role] || roleCount[role] < creepModules[role].count))
                     && (creepModules[role].createType == 'counting' || (!Memory.birthTime[role] || Memory.birthTime[role] < Game.time - creepModules[role].createDelta))) {
 
-                    let result = spawn.createCreep(creepModules[role].body, undefined, {role: role});
+                    var body = []
+                    if (roleName == 'farmer') {
+                        body = creepModules[role].getBody(roomName);
+                    } else {
+                        body = creepModules[role].body;
+                    }
+
+                    let result = spawn.createCreep(body, undefined, {role: role});
                     if (isNaN(result)) {
                         if (roleCount[role] == null) {
                             roleCount[role] = 1;

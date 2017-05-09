@@ -32,6 +32,15 @@ var creepModule = {
             }
         }
     }
+
+    getBody: function(roomName) {
+        var body = []
+        if (Game.rooms[roomName].energyAvailable <= 300) {
+            body = [CARRY,CARRY,CARRY,CARRY,MOVE,MOVE]
+        } else {
+            body = [CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE]
+        }
+    }
 };
 
 module.exports = creepModule;
