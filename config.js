@@ -18,7 +18,7 @@ config.creep.W99S21_roleList = [
 ];
 // W99S25
 config.creep.W99S25_roleList = [
-    'W99S25_diggerUp', 'W99S25_carrierUp', 'W99S25_diggerDown', 'W99S25_carrierDown',
+    'W99S25_farmer', 'W99S25_diggerUp', 'W99S25_carrierUp', 'W99S25_diggerDown', 'W99S25_carrierDown',
     'W99S25_artillery', 'W99S25_upgrader', 'W99S25_builder'
 ];
 

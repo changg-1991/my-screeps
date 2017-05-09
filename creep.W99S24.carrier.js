@@ -33,21 +33,9 @@ var creepModule = {
             let targetRoom = 'W99S25';
 
             if (creep.room.name == targetRoom) {
-                var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) && structure.energy < structure.energyCapacity;
-                    }
-                });
-
-                if (target) {
-                    if(creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-                    }
-                } else {
-                    var storage = Game.getObjectById(Memory.objectId.W99S25_storage);
-                    if (creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(storage, {visualizePathStyle: {stroke: '#05ff05'}});
-                    }
+                var storage = Game.getObjectById(Memory.objectId.W99S25_storage);
+                if (creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(storage, {visualizePathStyle: {stroke: '#05ff05'}});
                 }
             } else {
                 const route = Game.map.findRoute(creep.room, targetRoom);
@@ -57,9 +45,7 @@ var creepModule = {
                     creep.moveTo(exit);
                 }
             }
-        }
-
-        
+        }        
     }
 };
 
