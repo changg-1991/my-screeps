@@ -36,7 +36,6 @@ var creepModule = {
 
             if (creep.room.name == targetRoom) {
                 var storage = Game.getObjectById(Memory.objectId.W99S21_storage);
-        
                 if (creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(storage, {visualizePathStyle: {stroke: '#05ff05'}});
                 }

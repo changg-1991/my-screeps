@@ -8,7 +8,7 @@ config.creep.W98S23_roleList = [
     'W98S23_carrierUp', 'W98S23_upgrader', 'W98S23_artillery','W98S23_builder',
     'W98S23_diggerRight', 'W98S23_carrierRight', 'W98S23_diggerUpUp', 'W98S23_carrierUpUp',
     'W98S23_claimer', 'W98S23_exploiter', 'W98S23_patrol', 'W98S23_himma', 'W98S23_reserveRight',
-    'W98S23_safekeeper', 'W98S23_provoker', 'W98S23_reserveUpUp', 'W99S24_carrier'
+    'W98S23_safekeeper', 'W98S23_provoker', 'W98S23_reserveUpUp', 'W99S24_reserver'
 ];
 // W99S21
 config.creep.W99S21_roleList = [
@@ -19,7 +19,7 @@ config.creep.W99S21_roleList = [
 // W99S25
 config.creep.W99S25_roleList = [
     'W99S25_farmer', 'W99S25_diggerUp', 'W99S25_carrierUp', 'W99S25_diggerDown', 'W99S25_carrierDown',
-    'W99S25_artillery', 'W99S25_upgrader', 'W99S25_builder'
+    'W99S25_artillery', 'W99S25_upgrader', 'W99S25_builder', 'W99S24_digger', 'W99S24_carrier'
 ];
 
 for (const i in config.creep) {
