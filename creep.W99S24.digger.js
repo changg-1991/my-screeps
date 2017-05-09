@@ -1,8 +1,8 @@
 var creepModule = {
-    body: [WORK,WORK,WORK,MOVE,MOVE,MOVE],
-    count: 2,
+    body: [WORK,WORK,WORK,WORK,WORK,MOVE,MOVE],
+    count: 1,
     createType: 'timing',
-    createDelta: 1400,
+    createDelta: 1500,
 
     run: function(creep) {
         let targetRoom = 'W99S24';
