@@ -20,6 +20,34 @@ var runtime = {
         formatStr = formatStr + "</table>"
         console.log(formatStr);*/
 
+        for (const name in Game.rooms) {
+            const room = Game.rooms[name];
+            
+            if (room.controller == undefined) {
+                continue;
+            }
+
+            if (room.controller.owner.username == 'changg_1991') {
+                room.memory.role = 'claim';
+            } else if (room.controller.reservation.username == 'changg_1991') {
+                room.memory.role = 'reserve';
+            } else {
+
+            }
+        }
+
+        for (const name in Memory.rooms) {
+            const room = Game.rooms[name];
+
+            let hostiles = room.find(FIND_HOSTILE_CREEPS, {
+                filter: function(object) {
+                    return Memory.ally.indexOf(object.owner.username) == -1;
+                }
+            });
+
+            // 检查hostiles的组成 是invade还是敌人、个数 等等
+        }
+
         Memory.W98S23_repairList = Game.rooms['W98S23'].find(FIND_STRUCTURES, {
             filter: (structure) => {
                 return (structure.structureType != STRUCTURE_WALL && structure.structureType != STRUCTURE_RAMPART && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800)

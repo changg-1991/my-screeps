@@ -3,7 +3,7 @@ var structureModule = {
         if (structure.room.name == 'W98S23') {
             var closestHostile = structure.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
                 filter: function(object) {
-                    return Memory.ally.indexOf(object.owner) == -1 && (object.pos.x < 40 || (object.pos.x == 45 && object.pos.y == 1) || (object.pos.x == 45 && object.pos.y == 2));
+                    return Memory.ally.indexOf(object.owner.username) == -1 && (object.pos.x < 40 || (object.pos.x == 45 && object.pos.y == 1) || (object.pos.x == 45 && object.pos.y == 2));
                 }
             });
 
@@ -23,7 +23,7 @@ var structureModule = {
         } else if (structure.room.name == 'W99S25') {
             var closestHostile = structure.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
                 filter: function(object) {
-                    return Memory.ally.indexOf(object.owner) == -1 && object.pos.x < 40;
+                    return Memory.ally.indexOf(object.owner.username) == -1 && object.pos.x < 40;
                 }
             });
 
@@ -43,7 +43,7 @@ var structureModule = {
         } else {
             var closestHostile = structure.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
                 filter: function(object) {
-                    return Memory.ally.indexOf(object.owner) == -1;
+                    return Memory.ally.indexOf(object.owner.username) == -1;
                 }
             });
 

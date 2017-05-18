@@ -2,7 +2,7 @@ var structureModule = {
     run: function(structure) {
         const targets = structure.room.find(FIND_HOSTILE_CREEPS, {
             filter: function(object) {
-                return Memory.ally.indexOf(object.owner) == -1;
+                return Memory.ally.indexOf(object.owner.username) == -1;
             }
         });
 
