@@ -1,17 +1,20 @@
 var creepModule = {
 
     run: function(creep) {
-        if (creep.memory.status != 'HARVESTING' && creep.carry.energy == 0) {
-            creep.memory.status = 'HARVESTING';
+        if (creep.memory.status != 'PACKING' && creep.carry.energy == 0) {
+            creep.memory.status = 'PACKING';
         }
         if (creep.memory.status != 'UPGRADING' && creep.carry.energy == creep.carryCapacity) {
             creep.memory.status = 'UPGRADING';
         }
         
-        if (creep.memory.status == 'HARVESTING') {
-            var source = Game.getObjectById(Memory.objectId.W94S29_sourceLeft);
-            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(source);
+        if (creep.memory.status == 'PACKING') {
+            var pos = new RoomPosition(11, 23, 'W94S29');
+            var target = pos.findClosestByRange(FIND_DROPPED_ENERGY);
+            if (target) {
+                if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target);
+                }
             }
         } else {
             if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
