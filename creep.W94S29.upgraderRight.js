@@ -9,7 +9,7 @@ var creepModule = {
         }
         
         if (creep.memory.status == 'HARVESTING') {
-            var source = Game.getObjectById(Memory.objectId.W94S29_sourceLeft);
+            var source = Game.getObjectById(Memory.objectId.W94S29_sourceRight);
             if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(source);
             }
