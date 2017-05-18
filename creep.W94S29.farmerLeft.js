@@ -9,7 +9,7 @@ var creepModule = {
         }
         
         if (creep.memory.status == 'HARVESTING') {
-            var source = Game.getObjectById(Memory.objectId.W94S29_sourceRight);
+            var source = Game.getObjectById(Memory.objectId.W94S29_sourceLeft);
             if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(source);
             }
@@ -39,11 +39,15 @@ var creepModule = {
     },
 
     getBody: function(roomName) {
-        return [CARRY,WORK,MOVE];
+        if (Game.rooms[roomName].energyAvailable <= 300) {
+            return [WORK,CARRY,MOVE]
+        } else {
+            return [WORK,WORK,CARRY,CARRY,MOVE,MOVE]
+        }
     },
 
     getCount: function(roomName) {
-        return 2;
+        return 1;
     },
 
     getCreateType: function(roomName) {

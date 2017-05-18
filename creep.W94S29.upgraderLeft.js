@@ -21,7 +21,7 @@ var creepModule = {
     },
 
     getBody: function(roomName) {
-        return [CARRY,WORK,MOVE];
+        return [WORK,WORK,WORK,CARRY,MOVE];
     },
 
     getCount: function(roomName) {
