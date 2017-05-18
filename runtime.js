@@ -47,30 +47,6 @@ var runtime = {
 
             // 检查hostiles的组成 是invade还是敌人、个数 等等
         }
-
-        Memory.W98S23_repairList = Game.rooms['W98S23'].find(FIND_STRUCTURES, {
-            filter: (structure) => {
-                return (structure.structureType != STRUCTURE_WALL && structure.structureType != STRUCTURE_RAMPART && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800)
-                    || (structure.structureType == STRUCTURE_WALL && structure.hits < 1000)
-                    || (structure.structureType == STRUCTURE_RAMPART && structure.hits < 20000);
-            }
-        });
-
-        Memory.W99S21_repairList = Game.rooms['W99S21'].find(FIND_STRUCTURES, {
-            filter: (structure) => {
-                return (structure.structureType != STRUCTURE_WALL && structure.structureType != STRUCTURE_RAMPART && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800)
-                    || (structure.structureType == STRUCTURE_WALL && structure.hits < 1000)
-                    || (structure.structureType == STRUCTURE_RAMPART && structure.hits < 20000);
-            }
-        });
-
-        Memory.W99S25_repairList = Game.rooms['W99S25'].find(FIND_STRUCTURES, {
-            filter: (structure) => {
-                return (structure.structureType != STRUCTURE_WALL && structure.structureType != STRUCTURE_RAMPART && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800)
-                    || (structure.structureType == STRUCTURE_WALL && structure.hits < 1000)
-                    || (structure.structureType == STRUCTURE_RAMPART && structure.hits < 20000);
-            }
-        });
     }
 };
 
