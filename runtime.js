@@ -27,13 +27,13 @@ var runtime = {
                 continue;
             }
 
-            if (room.controller.owner.username == 'changg_1991') {
+            /*if (room.controller.owner.username == 'changg_1991') {
                 room.memory.role = 'claim';
             } else if (room.controller.reservation.username == 'changg_1991') {
                 room.memory.role = 'reserve';
             } else {
 
-            }
+            }*/
         }
 
         for (const name in Memory.rooms) {
