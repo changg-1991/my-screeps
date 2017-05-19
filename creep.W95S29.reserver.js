@@ -1,15 +1,10 @@
 var creepModule = {
-    body: [CLAIM,MOVE],
-    count: 0,
-    createType: 'counting',
-
-    /** @param {Creep} creep **/
+    
     run: function(creep) {
-        let targetRoom = 'W99S21';
-
+        let targetRoom = 'W95S29';
         if (creep.room.name == targetRoom) {
             if (creep.room.controller) {
-                if (creep.claimController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                if(creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(creep.room.controller);
                 }
             }
@@ -20,7 +15,23 @@ var creepModule = {
                 creep.moveTo(exit);
             }
         }
-    }
+    },
+
+    getBody: function(roomName) {
+        return [CLAIM,MOVE,MOVE];
+    },
+
+    getCount: function(roomName) {
+        return 0;
+    },
+
+    getCreateType: function(roomName) {
+        return 'timing';
+    },
+
+    getCreateDelta: function(roomName) {
+        return 400;
+    },
 };
 
 module.exports = creepModule;

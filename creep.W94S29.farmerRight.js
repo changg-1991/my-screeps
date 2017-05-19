@@ -9,9 +9,12 @@ var creepModule = {
         }
         
         if (creep.memory.status == 'HARVESTING') {
-            var source = Game.getObjectById(Memory.objectId.W94S29_sourceRight);
-            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(source);
+            var pos = new RoomPosition(16, 24, 'W94S29');
+            var target = pos.findClosestByRange(FIND_DROPPED_ENERGY);
+            if (target) {
+                if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target);
+                }
             }
         } else {
             var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {

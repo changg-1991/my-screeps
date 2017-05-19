@@ -1,8 +1,4 @@
 var creepModule = {
-    body: [WORK,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE],
-    count: 2,
-    ccreateType: 'timing',
-    createDelta: 750,
 
     run: function(creep) {
         if (creep.memory.status != 'PACKING' && creep.carry.energy == 0) {
@@ -13,10 +9,9 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'PACKING') {
-            let targetRoom = 'W99S24';
-
+            let targetRoom = 'W95S29';
             if (creep.room.name == targetRoom) {
-                var pos = new RoomPosition(7, 44, 'W99S24');
+                var pos = new RoomPosition(26, 20, 'W95S29');
                 var target = pos.findClosestByRange(FIND_DROPPED_ENERGY);
                 if (target) {
                     if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
@@ -27,20 +22,18 @@ var creepModule = {
                 const route = Game.map.findRoute(creep.room, targetRoom);
                 if (route.length > 0) {
                     const exit = creep.pos.findClosestByRange(route[0].exit);
-                    PathFinder.use(true);
                     creep.moveTo(exit);
                 }
             }
         } else {
-            let targetRoom = 'W99S25';
-
+            let targetRoom = 'W94S29';
             if (creep.room.name == targetRoom) {
-                var storage = Game.getObjectById(Memory.objectId.W99S25_storage);
-                if (creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(storage, {visualizePathStyle: {stroke: '#05ff05'}});
+                if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(creep.room.controller);
                 }
             } else {
                 var constructionSite = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
+
                 if (constructionSite) {
                     if (creep.build(constructionSite, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(constructionSite, {visualizePathStyle: {stroke: '#05ff05'}});
@@ -54,13 +47,28 @@ var creepModule = {
                     const route = Game.map.findRoute(creep.room, targetRoom);
                     if (route.length > 0) {
                         const exit = creep.pos.findClosestByRange(route[0].exit);
-                        PathFinder.use(true);
                         creep.moveTo(exit);
                     }
                 }
             }
-        }        
-    }
+        }
+    },
+
+    getBody: function(roomName) {
+        return [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
+    },
+
+    getCount: function(roomName) {
+        return 1;
+    },
+
+    getCreateType: function(roomName) {
+        return 'timing';
+    },
+
+    getCreateDelta: function(roomName) {
+        return 1500;
+    },
 };
 
 module.exports = creepModule;
