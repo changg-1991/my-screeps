@@ -46,19 +46,28 @@ var creepModule = {
 
                 if (constructionSite) {
                     if (creep.build(constructionSite) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(constructionSite, {visualizePathStyle: {stroke: '#05ff05'}});
+                        creep.moveTo(constructionSite);
                     }
                 } else {
                     const found = creep.pos.lookFor(LOOK_STRUCTURES);
-                    if (found.length && found[0].hits < found[0].hitsMax * 0.9 && found[0].hitsMax - found[0].hits > 800) {
-                        creep.repair(found[0]);
-                    }
-
-                    const route = Game.map.findRoute(creep.room, targetRoom);
-                    if (route.length > 0) {
-                        const exit = creep.pos.findClosestByRange(route[0].exit);
-                        creep.moveTo(exit);
-                    }
+                    if (found.length && found[0].hits < found[0].hitsMax * 0.9) {
+                        if (found[0].hits < found[0].hitsMax * 0.8) {
+                            creep.repair(found[0]);
+                        } else {
+                            creep.repair(found[0]);
+                            const route = Game.map.findRoute(creep.room, targetRoom);
+                            if (route.length > 0) {
+                                const exit = creep.pos.findClosestByRange(route[0].exit);
+                                creep.moveTo(exit);
+                            }
+                        }
+                    } else {
+                        const route = Game.map.findRoute(creep.room, targetRoom);
+                        if (route.length > 0) {
+                            const exit = creep.pos.findClosestByRange(route[0].exit);
+                            creep.moveTo(exit);
+                        }
+                    }                    
                 }
             }
         }
