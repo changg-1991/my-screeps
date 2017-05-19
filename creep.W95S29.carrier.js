@@ -28,14 +28,24 @@ var creepModule = {
         } else {
             let targetRoom = 'W94S29';
             if (creep.room.name == targetRoom) {
-                if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(creep.room.controller);
+                var target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
+                    filter: (creep) => {
+                        return creep.carry.energy <= (creep.carryCapacity - 20);
+                    }
+                });
+                if (target) {
+                    if (creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(target);
+                    }
                 }
+                /*if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(creep.room.controller);
+                }*/
             } else {
-                var constructionSite = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
+                var constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
 
                 if (constructionSite) {
-                    if (creep.build(constructionSite, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    if (creep.build(constructionSite) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(constructionSite, {visualizePathStyle: {stroke: '#05ff05'}});
                     }
                 } else {
@@ -55,11 +65,11 @@ var creepModule = {
     },
 
     getBody: function(roomName) {
-        return [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
+        return [WORK,CARRY,CARRY,CARRY,MOVE,MOVE];
     },
 
     getCount: function(roomName) {
-        return 1;
+        return 2;
     },
 
     getCreateType: function(roomName) {

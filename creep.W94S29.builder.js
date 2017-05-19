@@ -16,7 +16,7 @@ var creepModule = {
         } else {
             var buildList = creep.room.find(FIND_CONSTRUCTION_SITES);
             if (buildList.length > 0) {
-                if (creep.build(buildList[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                if (creep.build(buildList[0]) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(buildList[0]);
                 }
             } else {
