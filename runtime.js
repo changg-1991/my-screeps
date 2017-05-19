@@ -47,6 +47,15 @@ var runtime = {
 
             // 检查hostiles的组成 是invade还是敌人、个数 等等
         }
+
+        // W94S29
+        Memory.W94S29_repairList = Game.rooms['W94S29'].find(FIND_STRUCTURES, {
+            filter: (structure) => {
+                return (structure.structureType != STRUCTURE_WALL && structure.structureType != STRUCTURE_RAMPART && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800)
+                    || (structure.structureType == STRUCTURE_WALL && structure.hits < 1000)
+                    || (structure.structureType == STRUCTURE_RAMPART && structure.hits < 5000);
+            }
+        });
     }
 };
 
