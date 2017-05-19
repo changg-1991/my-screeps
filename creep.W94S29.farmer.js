@@ -1,14 +1,14 @@
 var creepModule = {
 
     run: function(creep) {
-        if (creep.memory.status != 'HARVESTING' && creep.carry.energy == 0) {
-            creep.memory.status = 'HARVESTING';
+        if (creep.memory.status != 'PACKING' && creep.carry.energy == 0) {
+            creep.memory.status = 'PACKING';
         }
         if (creep.memory.status != 'TRANSFERING' && creep.carry.energy == creep.carryCapacity) {
             creep.memory.status = 'TRANSFERING';
         }
         
-        if (creep.memory.status == 'HARVESTING') {
+        if (creep.memory.status == 'PACKING') {
             var pos = new RoomPosition(11, 23, 'W94S29');
             var target = pos.findClosestByRange(FIND_DROPPED_ENERGY);
             if (target) {
@@ -33,8 +33,25 @@ var creepModule = {
                         creep.moveTo(buildList[0]);
                     }
                 } else {
-                    if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(creep.room.controller);
+                    var towerCount = 1;
+                    var towers = creep.room.find(FIND_STRUCTURES, {
+                        filter: (structure) => {
+                            return structure.structureType == STRUCTURE_TOWER;
+                        }
+                    });
+
+                    const tmpIndex = creep.memory.towerTargetIndex;
+                    while (true) {
+                        if (towers[creep.memory.towerTargetIndex].energy < towers[creep.memory.towerTargetIndex].energyCapacity) {
+                            if (creep.transfer(towers[creep.memory.towerTargetIndex], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                                creep.moveTo(towers[creep.memory.towerTargetIndex], {visualizePathStyle: {stroke: '#05ff05'}});
+                            }
+                            break;
+                        }
+                        creep.memory.towerTargetIndex = (creep.memory.towerTargetIndex + 1) % towerCount;
+                        if (tmpIndex == creep.memory.towerTargetIndex) {
+                            break;
+                        }
                     }
                 }
             }
@@ -42,11 +59,7 @@ var creepModule = {
     },
 
     getBody: function(roomName) {
-        if (Game.rooms[roomName].energyAvailable <= 300) {
-            return [WORK,CARRY,MOVE]
-        } else {
-            return [WORK,WORK,CARRY,CARRY,MOVE,MOVE]
-        }
+        return [CARRY,CARRY,CARRY,MOVE,MOVE,MOVE];
     },
 
     getCount: function(roomName) {

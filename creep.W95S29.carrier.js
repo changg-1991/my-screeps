@@ -30,7 +30,7 @@ var creepModule = {
             if (creep.room.name == targetRoom) {
                 var target = creep.pos.findClosestByPath(FIND_MY_CREEPS, {
                     filter: (creep) => {
-                        return creep.carry.energy <= (creep.carryCapacity - 20);
+                        return creep.memory.role != 'W95S29_carrier' && creep.carry.energy <= (creep.carryCapacity - 20);
                     }
                 });
                 if (target) {

@@ -1,34 +1,47 @@
 var creepModule = {
 
     run: function(creep) {
-        if (creep.memory.status != 'HARVESTING' && creep.carry.energy == 0) {
-            creep.memory.status = 'HARVESTING';
+        if (creep.memory.status != 'PACKING' && creep.carry.energy == 0) {
+            creep.memory.status = 'PACKING';
         }
         if (creep.memory.status != 'BUILDING' && creep.carry.energy == creep.carryCapacity) {
             creep.memory.status = 'BUILDING';
         }
         
-        if (creep.memory.status == 'HARVESTING') {
-            var source = Game.getObjectById(Memory.objectId.W94S29_sourceLeft);
-            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(source);
+        if (creep.memory.status == 'PACKING') {
+            var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
+            if (target) {
+                if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target);
+                }
             }
         } else {
-            var buildList = creep.room.find(FIND_CONSTRUCTION_SITES);
-            if (buildList.length > 0) {
-                if (creep.build(buildList[0]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(buildList[0]);
+            var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                filter: (structure) => {
+                    return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) && structure.energy < structure.energyCapacity;
+                }
+            });
+            if (target) {
+                if(creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target);
                 }
             } else {
-                if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(creep.room.controller);
+                var buildList = creep.room.find(FIND_CONSTRUCTION_SITES);
+                if (buildList.length > 0) {
+                    if (creep.build(buildList[0]) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(buildList[0]);
+                    }
+                } else {
+                    if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(creep.room.controller);
+                    }
                 }
             }
         }
     },
 
     getBody: function(roomName) {
-        return [CARRY,WORK,MOVE];
+        return [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
     },
 
     getCount: function(roomName) {
