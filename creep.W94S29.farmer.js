@@ -1,11 +1,18 @@
 var creepModule = {
 
     run: function(creep) {
+        var towerCount = 1;
+
         if (creep.memory.status != 'PACKING' && creep.carry.energy == 0) {
             creep.memory.status = 'PACKING';
         }
         if (creep.memory.status != 'TRANSFERING' && creep.carry.energy == creep.carryCapacity) {
             creep.memory.status = 'TRANSFERING';
+            if (!creep.memory.towerTargetIndex) {
+                creep.memory.towerTargetIndex = 0;
+            } else {
+                creep.memory.towerTargetIndex = (creep.memory.towerTargetIndex + 1) % towerCount;
+            }
         }
         
         if (creep.memory.status == 'PACKING') {
@@ -27,31 +34,23 @@ var creepModule = {
                     creep.moveTo(target);
                 }
             } else {
-                var buildList = creep.room.find(FIND_CONSTRUCTION_SITES);
-                if (buildList.length > 0) {
-                    if (creep.build(buildList[0]) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(buildList[0]);
+                var towers = creep.room.find(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return structure.structureType == STRUCTURE_TOWER;
                     }
-                } else {
-                    var towerCount = 1;
-                    var towers = creep.room.find(FIND_STRUCTURES, {
-                        filter: (structure) => {
-                            return structure.structureType == STRUCTURE_TOWER;
-                        }
-                    });
+                });
 
-                    const tmpIndex = creep.memory.towerTargetIndex;
-                    while (true) {
-                        if (towers[creep.memory.towerTargetIndex].energy < towers[creep.memory.towerTargetIndex].energyCapacity) {
-                            if (creep.transfer(towers[creep.memory.towerTargetIndex], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                                creep.moveTo(towers[creep.memory.towerTargetIndex], {visualizePathStyle: {stroke: '#05ff05'}});
-                            }
-                            break;
+                const tmpIndex = creep.memory.towerTargetIndex;
+                while (true) {
+                    if (towers[creep.memory.towerTargetIndex].energy < towers[creep.memory.towerTargetIndex].energyCapacity) {
+                        if (creep.transfer(towers[creep.memory.towerTargetIndex], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(towers[creep.memory.towerTargetIndex]);
                         }
-                        creep.memory.towerTargetIndex = (creep.memory.towerTargetIndex + 1) % towerCount;
-                        if (tmpIndex == creep.memory.towerTargetIndex) {
-                            break;
-                        }
+                        break;
+                    }
+                    creep.memory.towerTargetIndex = (creep.memory.towerTargetIndex + 1) % towerCount;
+                    if (tmpIndex == creep.memory.towerTargetIndex) {
+                        break;
                     }
                 }
             }
