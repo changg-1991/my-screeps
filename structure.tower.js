@@ -3,7 +3,7 @@ var structureModule = {
         if (structure.room.name == 'W94S29') {
             var closestHostile = structure.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
                 filter: function(object) {
-                    return Memory.ally.indexOf(object.owner.username) == -1 && (object.pos.y > 10 || object.pos.y < 40);
+                    return Memory.ally.indexOf(object.owner.username) == -1 && (object.pos.y > 10 && object.pos.y < 40);
                 }
             });
 
