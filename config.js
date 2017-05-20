@@ -5,7 +5,7 @@ config.creep = new Object();
 // W94S29
 config.creep.W94S29_roleList = [
     'W94S29_farmer', 'W94S29_diggerRight', 'W94S29_diggerLeft',
-    'W94S29_upgraderRight', 'W94S29_upgraderLeft', 'W94S29_reserver', 'W95S29_digger',
+    'W94S29_upgraderRight', 'W94S29_upgraderLeft', 'W95S29_reserver', 'W95S29_digger',
     'W95S29_carrier', 'W94S29_builder'
 ];
 
