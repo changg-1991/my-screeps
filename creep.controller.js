@@ -52,9 +52,13 @@ var creepController = {
                 var creepBody = creepModules[role].getBody(roomName);
                 var creepCount = creepModules[role].getCount(roomName);
                 var creepCreateType = creepModules[role].getCreateType(roomName);
+                var creepCreateDelta = 0;
+                if (creepCreateType == 'timing') {
+                    creepCreateDelta = creepModules[role].getCreateDelta(roomName);
+                }
 
                 if ((creepCount > 0 && (!roleCount[role] || roleCount[role] < creepCount))
-                    && (creepCreateType == 'counting' || (!Memory.birthTime[role] || Memory.birthTime[role] < Game.time - creepModules[role].createDelta))) {
+                    && (creepCreateType == 'counting' || (!Memory.birthTime[role] || Memory.birthTime[role] < Game.time - creepCreateDelta))) {
 
                     let result = spawn.createCreep(creepBody, undefined, {role: role});
                     if (isNaN(result)) {
@@ -64,7 +68,7 @@ var creepController = {
                             roleCount[role] += 1;
                         }
                         
-                        if (creepModules[role].createType == 'timing') {
+                        if (creepCreateType == 'timing') {
                             Memory.birthTime[role] = Game.time;
                         }
                     }
