@@ -1,7 +1,7 @@
 var creepModule = {
 
     run: function(creep) {
-        var towerCount = 1;
+        var towerCount = 2;
 
         if (creep.memory.status != 'PACKING' && creep.carry.energy == 0) {
             creep.memory.status = 'PACKING';
