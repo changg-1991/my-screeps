@@ -45,7 +45,7 @@ var creepModule = {
                 }
             } else {
                 var storage = Game.getObjectById(Memory.objectId.W94S29_storage);
-                if (creep.transfer(storage) == ERR_NOT_IN_RANGE) {
+                if (creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(storage);
                 }
             }
