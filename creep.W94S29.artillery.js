@@ -27,8 +27,8 @@ var creepModule = {
             } else {
                 if (towers.length > 0) {
                     var storage = Game.getObjectById(Memory.objectId.W94S29_storage);
-                    if (creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(target);
+                    if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(storage);
                     }
                 }
             }
