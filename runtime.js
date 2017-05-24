@@ -57,7 +57,7 @@ var runtime = {
             }
         });
 
-        var Memory.W94S29_constructionSites = Game.rooms['W94S29'].find(FIND_CONSTRUCTION_SITES);
+        Memory.W94S29_constructionSites = Game.rooms['W94S29'].find(FIND_CONSTRUCTION_SITES);
     }
 };
 
