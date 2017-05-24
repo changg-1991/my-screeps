@@ -4,7 +4,7 @@ var config = new Object();
 config.creep = new Object();
 // W94S29
 config.creep.W94S29_roleList = [
-    'W94S29_farmer', 'W94S29_diggerRight', 'W94S29_diggerLeft',
+    'W94S29_farmer', 'W94S29_diggerRight', 'W94S29_diggerLeft', 'W94S29_artillery',
     'W94S29_upgraderRight', 'W94S29_upgraderLeft', 'W95S29_reserver', 'W95S29_digger',
     'W95S29_carrier', 'W94S29_builder'
 ];
@@ -29,6 +29,8 @@ Memory.objectId = new Object();
 Memory.objectId.W94S29_sourceLeft = '58dbc2e08283ff5308a3cae8';
 Memory.objectId.W94S29_sourceRight = '58dbc2e08283ff5308a3cae9';
 Memory.objectId.W95S29_source = '58dbc2c28283ff5308a3c730';
+
+Memory.objectId.W94S29_storage = '592093fcd1c41e5ee8957af0';
 
 Memory.ally = new Array('kikooo');
 

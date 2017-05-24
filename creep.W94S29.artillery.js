@@ -1,51 +1,59 @@
 var creepModule = {
 
     run: function(creep) {
-        var towerCount = 1;
+        var towers = creep.room.find(FIND_STRUCTURES, {
+            filter: function (structure) {
+                return structure.structureType == STRUCTURE_TOWER && structure.energy < structure.energyCapacity;
+            }
+        });
+
         if (creep.memory.status != 'PACKING' && creep.carry.energy == 0) {
             creep.memory.status = 'PACKING';
         }
         if (creep.memory.status != 'UNPACKING' && creep.carry.energy == creep.carryCapacity) {
             creep.memory.status = 'UNPACKING';
-            if (!creep.memory.towerTargetIndex) {
-                creep.memory.towerTargetIndex = 0;
-            } else {
-                creep.memory.towerTargetIndex = (creep.memory.towerTargetIndex + 1) % towerCount;
-            }
         }
         
         if (creep.memory.status == 'PACKING') {
-            var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY);
+            var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, {
+                filter: function(object) {
+                    return object.amount > 1000;
+                }
+            });
             if (target) {
                 if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target);
                 }
+            } else {
+                if (towers.length > 0) {
+                    var storage = Game.getObjectById(Memory.objectId.W94S29_storage);
+                    if (creep.withdraw(target) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(target);
+                    }
+                }
             }
         } else {
-            var towers = creep.room.find(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return structure.structureType == STRUCTURE_TOWER;
-                }
-            });
-
-            const tmpIndex = creep.memory.towerTargetIndex;
-            while (true) {
-                if (towers[creep.memory.towerTargetIndex].energy < towers[creep.memory.towerTargetIndex].energyCapacity) {
-                    if (creep.transfer(towers[creep.memory.towerTargetIndex], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(towers[creep.memory.towerTargetIndex]);
+            if (towers.length > 0) {
+                var index = 0;
+                for (i = 0; i < towers.length - 1; i++) {
+                    if (towers[i + 1].energy < towers[i]) {
+                        index = i + 1;
                     }
-                    break;
                 }
-                creep.memory.towerTargetIndex = (creep.memory.towerTargetIndex + 1) % towerCount;
-                if (tmpIndex == creep.memory.towerTargetIndex) {
-                    break;
+                if (creep.transfer(towers[index], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(towers[index]);
+                }
+            } else {
+                var storage = Game.getObjectById(Memory.objectId.W94S29_storage);
+                if (creep.transfer(target) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target);
                 }
             }
         }
     },
 
     getBody: function(roomName) {
-        return [CARRY,CARRY,CARRY,MOVE,MOVE,MOVE];
+        return [CARRY,CARRY,CARRY,CARRY,MOVE,MOVE];
     },
 
     getCount: function(roomName) {
