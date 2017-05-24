@@ -27,10 +27,9 @@ var creepModule = {
                     creep.moveTo(target);
                 }
             } else {
-                var buildList = creep.room.find(FIND_CONSTRUCTION_SITES);
-                if (buildList.length > 0) {
-                    if (creep.build(buildList[0]) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(buildList[0]);
+                if (Memory.W94S29_constructionSites.length > 0) {
+                    if (creep.build(Memory.W94S29_constructionSites[0]) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(Memory.W94S29_constructionSites[0]);
                     }
                 } else {
                     if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
@@ -46,7 +45,11 @@ var creepModule = {
     },
 
     getCount: function(roomName) {
-        return 2;
+        if (Memory.W94S29_constructionSites.length > 0) {
+            return 2;
+        } else {
+            return 0;
+        }
     },
 
     getCreateType: function(roomName) {

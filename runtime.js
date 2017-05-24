@@ -27,13 +27,13 @@ var runtime = {
                 continue;
             }
 
-            /*if (room.controller.owner.username == 'changg_1991') {
+            if (room.controller.owner && room.controller.owner.username == 'changg_1991') {
                 room.memory.role = 'claim';
-            } else if (room.controller.reservation.username == 'changg_1991') {
+            } else if (room.controller.reservation && room.controller.reservation.username == 'changg_1991') {
                 room.memory.role = 'reserve';
             } else {
 
-            }*/
+            }
         }
 
         for (const name in Memory.rooms) {
@@ -56,6 +56,8 @@ var runtime = {
                     || (structure.structureType == STRUCTURE_RAMPART && structure.hits < 5000);
             }
         });
+
+        var Memory.W94S29_constructionSites = Game.rooms['W94S29'].find(FIND_CONSTRUCTION_SITES);
     }
 };
 

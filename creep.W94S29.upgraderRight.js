@@ -24,11 +24,15 @@ var creepModule = {
     },
 
     getBody: function(roomName) {
-        return [WORK,WORK,WORK,WORK,CARRY,MOVE];
+        return [WORK,WORK,WORK,WORK,WORK,CARRY,MOVE];
     },
 
     getCount: function(roomName) {
-        return 1;
+        if (Memory.W94S29_constructionSites.length > 0) {
+            return 1;
+        } else {
+            return 2;
+        }
     },
 
     getCreateType: function(roomName) {
