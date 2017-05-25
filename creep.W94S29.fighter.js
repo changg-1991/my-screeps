@@ -1,11 +1,11 @@
 var creepModule = {
 
     run: function(creep) {
-        if (creep.memory.status != 'FORWORD' && creep.hits < creep.hitsMax * 0.8) {
-            creep.memory.status = 'FORWORD';
-        }
-        if (creep.memory.status != 'BACKWARD' && creep.hits > creep.hitsMax * 0.95) {
+        if (creep.memory.status != 'BACKWARD' && creep.hits < creep.hitsMax * 0.8) {
             creep.memory.status = 'BACKWARD';
+        }
+        if (creep.memory.status != 'FORWARD' && creep.hits > creep.hitsMax * 0.95) {
+            creep.memory.status = 'FORWARD';
         }
 
         let targetRoom = '';
