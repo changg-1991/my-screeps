@@ -42,7 +42,7 @@ var creepModule = {
                     } else {
                         const targets = creep.pos.findInRange(FIND_MY_CREEPS, 1, {
                             filter: function(object) {
-                                return creep.hits < creep.hitsMax;
+                                return object.hits < object.hitsMax;
                             }
                         });
                         if (targets.length > 0) {
@@ -69,11 +69,15 @@ var creepModule = {
     },
 
     getCount: function(roomName) {
-        return 1;
+        return 2;
     },
 
     getCreateType: function(roomName) {
-        return 'counting';
+        return 'timing';
+    },
+
+    getCreateDelta: function(roomName) {
+        return 1400;
     },
 };
 
