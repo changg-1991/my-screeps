@@ -7,7 +7,7 @@ var creepModule = {
         if (creep.hits < creep.hitsMax * 0.8) {
             Game.flags.unite_1.setColor(COLOR_WHITE);
         } else {
-            if (Game.flags.unite_1.color == COLOR_WHITE) {
+            if (creep.hits > creep.hitsMax * 0.95 && Game.flags.unite_1.color == COLOR_WHITE) {
                 Game.flags.unite_1.setColor(COLOR_WHITE, COLOR_CYAN);
             }
         }
@@ -42,19 +42,16 @@ var creepModule = {
                     }
                 }
             } else if (purpose == 'uniting_2') {
-                const target = creep.pos.findClosestByRange(FIND_MY_CREEPS, {
-                    filter: function(object) {
-                        return object.hits < object.hitsMax;
-                    }
-                });
-
-                if (target) {
-                    if(creep.heal(target) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(target);
-                    }
+                if (creep.pos != Game.flags.unite_1.pos) {
+                    creep.moveTo(Game.flags.unite_1);
                 } else {
-                    if (!creep.pos.isNearTo(Game.flags.unite_1)) {
-                        creep.moveTo(Game.flags.unite_1);
+                    if (creep.hits < creep.hitsMax * 0.95) {
+                        creep.heal(creep);
+                    } else {
+                        const targets = creep.pos.findInRange(FIND_MY_CREEPS, 1);
+                        if (targets.length > 0) {
+                            creep.heal(targets[0]);
+                        }
                     }
                 }
             } else {
