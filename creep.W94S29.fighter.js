@@ -45,10 +45,16 @@ var creepModule = {
                     creep.moveTo(target);
                 }
             } else if (purpose == 'uniting_2') {
-                const target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS);
-                if (target) {
-                    if(creep.attack(target) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(target);
+                if (creep.hits < creep.hitsMax * 0.8) {
+                    if (!creep.pos.isNearTo(Game.flags.unite_1)) {
+                        creep.moveTo(Game.flags.unite_1);
+                    }
+                } else {
+                    const target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS);
+                    if (target) {
+                        if(creep.attack(target) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(target);
+                        }
                     }
                 }
             } else {
