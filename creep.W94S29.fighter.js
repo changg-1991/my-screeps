@@ -57,7 +57,11 @@ var creepModule = {
                         creep.moveTo(Game.flags.unite_1);
                     }
                 } else {
-                    const target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS);
+                    const target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS, {
+                        filter: function(object) {
+                            return object.pos.y > 2;
+                        }
+                    });
                     if (target) {
                         if(creep.attack(target) == ERR_NOT_IN_RANGE) {
                             creep.moveTo(target);
