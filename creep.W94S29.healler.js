@@ -42,7 +42,7 @@ var creepModule = {
                     }
                 }
             } else if (purpose == 'uniting_2') {
-                if (creep.pos != Game.flags.unite_1.pos) {
+                if (creep.pos.isEqualTo(Game.flags.unite_1)) {
                     creep.moveTo(Game.flags.unite_1);
                 } else {
                     if (creep.hits < creep.hitsMax * 0.95) {
