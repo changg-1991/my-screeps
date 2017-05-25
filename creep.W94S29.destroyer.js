@@ -7,7 +7,7 @@ var creepModule = {
         if (creep.hits < creep.hitsMax * 0.8) {
             Game.flags.unite_1.setColor(COLOR_WHITE, COLOR_WHITE);
         } else {
-            if (Game.flags.unite_1.color == COLOR_WHITE) {
+            if (creep.hits > creep.hitsMax * 0.95 && Game.flags.unite_1.color == COLOR_WHITE) {
                 Game.flags.unite_1.setColor(COLOR_WHITE, COLOR_CYAN);
             }
         }
