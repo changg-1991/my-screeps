@@ -66,6 +66,10 @@ var creepModule = {
                         if(creep.attack(target) == ERR_NOT_IN_RANGE) {
                             creep.moveTo(target);
                         }
+                    } else {
+                        if (!creep.pos.isNearTo(Game.flags.unite_1)) {
+                            creep.moveTo(Game.flags.unite_1);
+                        }
                     }
                 }
             } else {
