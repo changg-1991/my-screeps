@@ -1,22 +1,21 @@
 var creepModule = {
 
     run: function(creep) {
+        if (creep.memory.status != 'FORWORD' && creep.hits < creep.hitsMax * 0.8) {
+            creep.memory.status = 'FORWORD';
+        }
+        if (creep.memory.status != 'BACKWARD' && creep.hits > creep.hitsMax * 0.95) {
+            creep.memory.status = 'BACKWARD';
+        }
+
         let targetRoom = '';
         let purpose = '';
-
-        if (creep.hits < creep.hitsMax * 0.8) {
-            Game.flags.unite_1.setColor(COLOR_WHITE, COLOR_WHITE);
-        } else {
-            if (creep.hits > creep.hitsMax * 0.95 && Game.flags.unite_1.color == COLOR_WHITE) {
-                Game.flags.unite_1.setColor(COLOR_WHITE, COLOR_CYAN);
-            }
-        }
 
         if (Game.flags.unite_0.color == COLOR_WHITE) {
             targetRoom = 'W94S29';
             purpose = 'uniting_1';
         } else if (Game.flags.unite_1.color == COLOR_WHITE) {
-            if (Game.flags.unite_1.secondaryColor == COLOR_WHITE) {
+            if (creep.memory.status == 'BACKWARD') {
                 targetRoom = 'W92S29';
                 purpose = 'uniting_2';
             } else {

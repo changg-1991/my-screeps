@@ -1,6 +1,13 @@
 var creepModule = {
 
     run: function(creep) {
+        if (creep.memory.status != 'FORWORD' && creep.hits < creep.hitsMax * 0.8) {
+            creep.memory.status = 'FORWORD';
+        }
+        if (creep.memory.status != 'BACKWARD' && creep.hits > creep.hitsMax * 0.95) {
+            creep.memory.status = 'BACKWARD';
+        }
+
         let targetRoom = '';
         let purpose = '';
 
@@ -45,7 +52,7 @@ var creepModule = {
                     creep.moveTo(target);
                 }
             } else if (purpose == 'uniting_2') {
-                if (creep.hits < creep.hitsMax * 0.8) {
+                if (creep.memory.status == 'BACKWARD') {
                     if (!creep.pos.isNearTo(Game.flags.unite_1)) {
                         creep.moveTo(Game.flags.unite_1);
                     }

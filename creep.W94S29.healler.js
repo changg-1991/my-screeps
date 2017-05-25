@@ -4,14 +4,6 @@ var creepModule = {
         let targetRoom = '';
         let purpose = '';
 
-        if (creep.hits < creep.hitsMax * 0.8) {
-            Game.flags.unite_1.setColor(COLOR_WHITE);
-        } else {
-            if (creep.hits > creep.hitsMax * 0.95 && Game.flags.unite_1.color == COLOR_WHITE) {
-                Game.flags.unite_1.setColor(COLOR_WHITE, COLOR_CYAN);
-            }
-        }
-
         if (Game.flags.unite_0.color == COLOR_WHITE) {
             targetRoom = 'W94S29';
             purpose = 'uniting_1';
@@ -42,7 +34,7 @@ var creepModule = {
                     }
                 }
             } else if (purpose == 'uniting_2') {
-                if (creep.pos.isEqualTo(Game.flags.unite_1)) {
+                if (!creep.pos.isEqualTo(Game.flags.unite_1)) {
                     creep.moveTo(Game.flags.unite_1);
                 } else {
                     if (creep.hits < creep.hitsMax * 0.95) {
