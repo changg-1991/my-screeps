@@ -31,7 +31,7 @@ var creepModule = {
         if (Memory.W94S29_constructionSites.length > 0) {
             return 1;
         } else {
-            return 2;
+            return 1;
         }
     },
 
