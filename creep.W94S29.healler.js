@@ -40,7 +40,11 @@ var creepModule = {
                     if (creep.hits < creep.hitsMax * 0.95) {
                         creep.heal(creep);
                     } else {
-                        const targets = creep.pos.findInRange(FIND_MY_CREEPS, 1);
+                        const targets = creep.pos.findInRange(FIND_MY_CREEPS, 1， {
+                            filter: function(object) {
+                                return creep.hits < creep.hitsMax;
+                            }
+                        });
                         if (targets.length > 0) {
                             creep.heal(targets[0]);
                         }
