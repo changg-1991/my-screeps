@@ -4,26 +4,12 @@ var creepModule = {
         let targetRoom = '';
         let purpose = '';
 
-        if (creep.hits < creep.hitsMax * 0.8) {
-            Game.flags.unite_1.setColor(COLOR_WHITE, COLOR_WHITE);
-        } else {
-            if (Game.flags.unite_1.color == COLOR_WHITE) {
-                Game.flags.unite_1.setColor(COLOR_WHITE, COLOR_CYAN);
-            }
-        }
-
         if (Game.flags.unite_0.color == COLOR_WHITE) {
             targetRoom = 'W94S29';
             purpose = 'uniting_1';
         } else if (Game.flags.unite_1.color == COLOR_WHITE) {
-            if (Game.flags.unite_1.secondaryColor == COLOR_WHITE) {
-                targetRoom = 'W92S29';
-                purpose = 'uniting_2';
-            } else {
-                targetRoom = 'W92S28';
-                purpose = 'invading_1';
-            }
-            
+            targetRoom = 'W92S29';
+            purpose = 'uniting_2';
         } else if (Game.flags.unite_2.color == COLOR_CYAN) {
             targetRoom = 'W92S28';
             purpose = 'invading_2';
@@ -39,9 +25,12 @@ var creepModule = {
                 const extensions = creep.room.find(FIND_HOSTILE_STRUCTURES, {
                     filter: { structureType: STRUCTURE_EXTENSION }
                 });
+                const hostileCreep = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS);
 
                 if (tower) {
                     var target = tower;
+                } else if (hostileCreep) {
+                    var target = hostileCreep;
                 } else if (extensions.length > 0) {
                     var target = extensions[0];
                 } else if (storage) {
@@ -52,22 +41,15 @@ var creepModule = {
                     var target = '';
                 }
 
-                if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
+                if (creep.attack(target) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target);
                 }
-            } else if (purpose == 'invading_1') {
-                if (!creep.pos.isNearTo(Game.flags.point_1)) {
-                    creep.moveTo(Game.flags.point_1);
-                } else if (!creep.pos.isNearTo(Game.flags.point_2)) {
-                    creep.moveTo(Game.flags.point_2);
-                } else if (!creep.pos.isNearTo(Game.flags.point_3)) {
-                    creep.moveTo(Game.flags.point_3);
-                } else {
-                    //
-                }
             } else if (purpose == 'uniting_2') {
-                if (!creep.pos.isNearTo(Game.flags.unite_1)) {
-                    creep.moveTo(Game.flags.unite_1);
+                const target = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS);
+                if (target) {
+                    if(creep.attack(target) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(target);
+                    }
                 }
             } else {
                 if (!creep.pos.isNearTo(Game.flags.unite_0)) {
@@ -85,11 +67,11 @@ var creepModule = {
     },
 
     getBody: function(roomName) {
-        return [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,WORK,WORK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
+        return [TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
     },
 
     getCount: function(roomName) {
-        return 1;
+        return 2;
     },
 
     getCreateType: function(roomName) {
