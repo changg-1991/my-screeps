@@ -13,7 +13,7 @@ var creepModule = {
             if (creep.memory.status == 'PACKING') {
                 var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, {
                     filter: function(object) {
-                        return object.amount > 300;
+                        return object.amount > 200;
                     }
                 });
                 if (target) {
@@ -43,11 +43,11 @@ var creepModule = {
     },
 
     getBody: function(roomName) {
-        return [WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE];
+        return [WORK,CARRY,MOVE];
     },
 
     getCount: function(roomName) {
-        return 3;
+        return 8;
     },
 
     getCreateType: function(roomName) {
