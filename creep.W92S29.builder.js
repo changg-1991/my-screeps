@@ -9,8 +9,11 @@ var creepModule = {
         }
         
         if (creep.memory.status == 'PACKING') {
-            var pos = new RoomPosition(44, 8, 'W92S29');
-            var target = pos.findClosestByRange(FIND_DROPPED_ENERGY);
+            var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY{
+                filter: function(object) {
+                    return object.amount > 300;
+                }
+            });
             if (target) {
                 if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target);
@@ -46,7 +49,7 @@ var creepModule = {
     },
 
     getCount: function(roomName) {
-        return 0;
+        return 3;
     },
 
     getCreateType: function(roomName) {
