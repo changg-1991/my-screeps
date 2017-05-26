@@ -26,6 +26,7 @@ var creepModule = {
         
         if (creep.room.name == targetRoom) {
             if (purpose == 'invading_2') {
+                const spawn = Game.getObjectById('591912937a11b8c4556cfad4');
                 const hostileCreep = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS);
 
                 if (hostileCreep) {
@@ -79,7 +80,7 @@ var creepModule = {
     },
 
     getCount: function(roomName) {
-        return 2;
+        return 0;
     },
 
     getCreateType: function(roomName) {

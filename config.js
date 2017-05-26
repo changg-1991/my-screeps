@@ -7,7 +7,7 @@ config.creep.W94S29_roleList = [
     'W94S29_farmer', 'W94S29_diggerRight', 'W94S29_diggerLeft', 'W94S29_artillery',
     'W94S29_upgraderRight', 'W94S29_upgraderLeft', 'W95S29_reserver', 'W95S29_digger',
     'W95S29_carrier', 'W94S29_builder', 'W94S29_destroyer', 'W94S29_fighter', 'W94S29_healler',
-    'W94S29_claimer'
+    'W94S29_claimer', 'W92S29_builder', 'W92S29_diggerLeft', 'W92S29_diggerRight'
 ];
 
 for (const i in config.creep) {
@@ -32,6 +32,9 @@ Memory.objectId.W94S29_sourceRight = '58dbc2e08283ff5308a3cae9';
 Memory.objectId.W95S29_source = '58dbc2c28283ff5308a3c730';
 
 Memory.objectId.W94S29_storage = '592093fcd1c41e5ee8957af0';
+
+Memory.objectId.W92S29_sourceLeft = '58dbc3188283ff5308a3d07a';
+Memory.objectId.W92S29_sourceRight = '58dbc3188283ff5308a3d079';
 
 Memory.ally = new Array('kikooo');
 
