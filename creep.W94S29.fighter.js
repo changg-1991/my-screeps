@@ -17,7 +17,7 @@ var creepModule = {
         } else if (Game.flags.unite_1.color == COLOR_WHITE) {
             targetRoom = 'W92S29';
             purpose = 'uniting_2';
-        } else if (Game.flags.unite_2.color == COLOR_CYAN) {
+        } else if (Game.flags.unite_2.color == COLOR_WHITE) {
             targetRoom = 'W92S28';
             purpose = 'invading_2';
         } else {
@@ -26,22 +26,10 @@ var creepModule = {
         
         if (creep.room.name == targetRoom) {
             if (purpose == 'invading_2') {
-                const tower = Game.getObjectById('591c18872997ca4aaef3a1e9');
-                const storage = Game.getObjectById('5920c7599f4763c41fe0349d');
-                const spawn = Game.getObjectById('591912937a11b8c4556cfad4');
-                const extensions = creep.room.find(FIND_HOSTILE_STRUCTURES, {
-                    filter: { structureType: STRUCTURE_EXTENSION }
-                });
                 const hostileCreep = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS);
 
-                if (tower) {
-                    var target = tower;
-                } else if (hostileCreep) {
+                if (hostileCreep) {
                     var target = hostileCreep;
-                } else if (extensions.length > 0) {
-                    var target = extensions[0];
-                } else if (storage) {
-                    var target = storage;
                 } else if (spawn) {
                     var target = spawn;
                 } else {

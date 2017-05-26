@@ -10,7 +10,7 @@ var creepModule = {
         } else if (Game.flags.unite_1.color == COLOR_WHITE) {
             targetRoom = 'W92S29';
             purpose = 'uniting_2';
-        } else if (Game.flags.unite_2.color == COLOR_CYAN) {
+        } else if (Game.flags.unite_2.color == COLOR_WHITE) {
             targetRoom = 'W92S28';
             purpose = 'invading_2';
         } else {
