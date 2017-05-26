@@ -10,7 +10,7 @@ config.creep.W94S29_roleList = [
     'W92S29_diggerLeft', 'W92S29_diggerRight', 'W92S29_builder'
 ];
 // W92S29
-config.creep.W94S29_roleList = [
+config.creep.W92S29_roleList = [
     'W92S29_builder2'
 ];
 for (const i in config.creep) {
