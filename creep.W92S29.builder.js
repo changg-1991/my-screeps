@@ -9,7 +9,7 @@ var creepModule = {
         }
         
         if (creep.memory.status == 'PACKING') {
-            var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY{
+            var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, {
                 filter: function(object) {
                     return object.amount > 300;
                 }
