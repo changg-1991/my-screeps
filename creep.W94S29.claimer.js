@@ -4,7 +4,7 @@ var creepModule = {
         let targetRoom = 'W92S29';
         if (creep.room.name == targetRoom) {
             if (creep.room.controller) {
-                if (creep.claim(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                if (creep.claimController(creep.room.controller) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(creep.room.controller);
                 }
             }
