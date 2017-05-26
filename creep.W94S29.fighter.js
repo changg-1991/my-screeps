@@ -99,7 +99,7 @@ var creepModule = {
     },
 
     getCreateDelta: function(roomName) {
-        return 800;
+        return 600;
     },
 };
 

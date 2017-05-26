@@ -83,11 +83,11 @@ var creepModule = {
     },
 
     getBody: function(roomName) {
-        return [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,WORK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
+        return [TOUGH,TOUGH,TOUGH,WORK,WORK,WORK,WORK,WORK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
     },
 
     getCount: function(roomName) {
-        return 3;
+        return 2;
     },
 
     getCreateType: function(roomName) {
