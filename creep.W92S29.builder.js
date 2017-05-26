@@ -7,39 +7,48 @@ var creepModule = {
         if (creep.memory.status != 'BUILDING' && creep.carry.energy == creep.carryCapacity) {
             creep.memory.status = 'BUILDING';
         }
-        
-        if (creep.memory.status == 'PACKING') {
-            var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, {
-                filter: function(object) {
-                    return object.amount > 300;
+
+        let targetRoom = 'W92S29';
+        if (creep.room.name == targetRoom) {
+            if (creep.memory.status == 'PACKING') {
+                var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, {
+                    filter: function(object) {
+                        return object.amount > 300;
+                    }
+                });
+                if (target) {
+                    if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(target);
+                    }
                 }
-            });
-            if (target) {
-                if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target);
+            } else {
+                var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) && structure.energy < structure.energyCapacity;
+                    }
+                });
+                if (target) {
+                    if(creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(target);
+                    }
+                } else {
+                    var constructionSites = Game.rooms['W94S29'].find(FIND_CONSTRUCTION_SITES);
+                    if (constructionSites.length > 0) {
+                        if (creep.build(constructionSites[0]) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(constructionSites[0]);
+                        }
+                    } else {
+                        if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(creep.room.controller);
+                        }
+                    }
                 }
             }
         } else {
-            var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) && structure.energy < structure.energyCapacity;
-                }
-            });
-            if (target) {
-                if(creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target);
-                }
-            } else {
-                var constructionSites = Game.rooms['W94S29'].find(FIND_CONSTRUCTION_SITES);
-                if (constructionSites.length > 0) {
-                    if (creep.build(constructionSites[0]) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(constructionSites[0]);
-                    }
-                } else {
-                    if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(creep.room.controller);
-                    }
-                }
+            const route = Game.map.findRoute(creep.room, targetRoom);
+            if (route.length > 0) {
+                const exit = creep.pos.findClosestByRange(route[0].exit);
+                creep.moveTo(exit);
             }
         }
     },
