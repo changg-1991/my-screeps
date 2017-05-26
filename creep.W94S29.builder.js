@@ -32,8 +32,18 @@ var creepModule = {
                         creep.moveTo(Memory.W94S29_constructionSites[0]);
                     }
                 } else {
-                    if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(creep.room.controller);
+                    var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                        filter: function(object) {
+                            return (object.structureType == STRUCTURE_WALL || object.structureType == STRUCTURE_RAMPART) && object.hits < Memory.rooms.W94S29.wallHits + 10000;
+                        }
+                    });
+
+                    if (target) {
+                        if (creep.repair(target) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(target);
+                        }
+                    } else {
+                        Memory.rooms.W94S29.wallHits = Memory.rooms.W94S29.wallHits + 10000;
                     }
                 }
             }
@@ -41,14 +51,18 @@ var creepModule = {
     },
 
     getBody: function(roomName) {
-        return [WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE];
+        if (Memory.W94S29_constructionSites.length > 0) {
+            return [WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE];
+        } else {
+            return [WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE];
+        }
     },
 
     getCount: function(roomName) {
         if (Memory.W94S29_constructionSites.length > 0) {
             return 2;
         } else {
-            return 0;
+            return 1;
         }
     },
 

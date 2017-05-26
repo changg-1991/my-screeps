@@ -46,4 +46,8 @@ if (!Memory.towerTarget) {
     Memory.towerTarget = new Object();
 }
 
+if (!Memory.rooms.W94S29.wallHits) {
+    Memory.rooms.W94S29.wallHits = 1000;
+}
+
 module.exports = config;
