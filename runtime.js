@@ -57,6 +57,14 @@ var runtime = {
         });
 
         Memory.W94S29_constructionSites = Game.rooms['W94S29'].find(FIND_CONSTRUCTION_SITES);
+
+        // W92S29
+        Memory.W92S29_repairList = Game.rooms['W92S29'].find(FIND_STRUCTURES, {
+            filter: (structure) => {
+                return (structure.structureType != STRUCTURE_WALL && structure.structureType != STRUCTURE_RAMPART && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800)
+                    || ((structure.structureType == STRUCTURE_WALL || structure.structureType == STRUCTURE_RAMPART) && structure.hits > Memory.rooms.W94S29.wallHits - 10000 && structure.hits < Memory.rooms.W94S29.wallHits);
+            }
+        });
     }
 };
 
