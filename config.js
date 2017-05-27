@@ -39,7 +39,7 @@ Memory.objectId.W94S29_storage = '592093fcd1c41e5ee8957af0';
 Memory.objectId.W92S29_sourceLeft = '58dbc3188283ff5308a3d07a';
 Memory.objectId.W92S29_sourceRight = '58dbc3188283ff5308a3d079';
 
-Memory.ally = new Array('kikooo');
+Memory.ally = new Array('kikooo', 'Time_Shift');
 
 if (!Memory.birthTime) {
     Memory.birthTime = new Object();
