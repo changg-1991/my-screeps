@@ -8,6 +8,7 @@ var creepModule = {
         }
         if (creep.memory.status != 'BUILDING' && creep.carry.energy == creep.carryCapacity) {
             creep.memory.status = 'BUILDING';
+            delete creep.memory.packingTarget;
         }
 
         if (creep.memory.status == 'PACKING') {
