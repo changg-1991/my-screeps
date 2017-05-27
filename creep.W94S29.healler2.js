@@ -5,7 +5,7 @@ var creepModule = {
         let purpose = '';
 
         if (Game.flags.dawn_0.color == COLOR_WHITE || Game.flags.dawn_1.color == COLOR_WHITE) {
-            if (room.find(FIND_HOSTILE_CREEPS).length) {
+            if (creep.room.find(FIND_HOSTILE_CREEPS).length) {
                 targetRoom = 'W94S29';
                 purpose = 'return_1';
             } else {
