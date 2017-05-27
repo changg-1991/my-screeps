@@ -20,7 +20,10 @@ var creepModule = {
                 purpose = 'uniting_1';
             }
         } else if (Game.flags.dawn_1.color == COLOR_WHITE) {
-            if (creep.memory.status == 'BACKWARD') {
+            if (creep.room.find(FIND_HOSTILE_CREEPS).length) {
+                targetRoom = 'W94S29';
+                purpose = 'return_1';
+            } else if (creep.memory.status == 'BACKWARD') {
                 targetRoom = 'W94S29';
                 purpose = 'uniting_1';
             } else {
