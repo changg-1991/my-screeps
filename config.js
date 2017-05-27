@@ -11,7 +11,7 @@ config.creep.W94S29_roleList = [
 ];
 // W92S29
 config.creep.W92S29_roleList = [
-    'W92S29_builder2'
+    'W92S29_carrier', 'W92S29_farmer', 'W92S29_builder2'
 ];
 for (const i in config.creep) {
     let roleList = config.creep[i]
