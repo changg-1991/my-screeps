@@ -11,21 +11,28 @@ var creepModule = {
         }
         
         if (creep.memory.status == 'PACKING') {
-            var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, {
-                filter: function(object) {
-                    return object.amount > 1000;
+            if (!creep.memory.packingTarget || creep.memory.packingTargetTimeOut < Game.time) {
+                creep.memory.packingTarget = Memory.objectId.W94S29_storage;
+                creep.memory.packingTargetTimeOut = Game.time + 8;
+
+                var target = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
+                    filter: function(object) {
+                        return object.resourceType == RESOURCE_ENERGY && object.amount > 800;
+                    }
+                });
+                if (target) {
+                    creep.memory.packingTarget = target.id;
                 }
-            });
-            if (target) {
+            }
+            
+            var target = Game.getObjectById(creep.memory.packingTarget);
+            if (target.resourceType) {
                 if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target);
                 }
             } else {
-                if (!energyFull) {
-                    var storage = Game.getObjectById(Memory.objectId.W94S29_storage);
-                    if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(storage);
-                    }
+                if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(storage);
                 }
             }
         } else {
@@ -50,7 +57,7 @@ var creepModule = {
     },
 
     getBody: function(roomName) {
-        return [CARRY,CARRY,CARRY,CARRY,MOVE,MOVE];
+        return [CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE];
     },
 
     getCount: function(roomName) {

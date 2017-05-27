@@ -11,11 +11,20 @@ var creepModule = {
         let targetRoom = 'W92S29';
         if (creep.room.name == targetRoom) {
             if (creep.memory.status == 'PACKING') {
-                var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, {
-                    filter: function(object) {
-                        return object.amount > 300;
+                if (!creep.memory.packingTarget || creep.memory.packingTargetTimeOut < Game.time) {
+                    var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, {
+                        filter: function(object) {
+                            return object.amount > 300;
+                        }
+                    });
+
+                    if (target) {
+                        creep.memory.packingTarget = target.id;
+                        creep.memory.packingTargetTimeOut = Game.time + 8;
                     }
-                });
+                }
+
+                var target = Game.getObjectById(creep.memory.packingTarget);
                 if (target) {
                     if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(target);

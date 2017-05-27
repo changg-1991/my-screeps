@@ -17,34 +17,23 @@ var creepModule = {
                 }
             }
         } else {
-            var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) && structure.energy < structure.energyCapacity;
-                }
-            });
-            if (target) {
-                if(creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target);
+            if (Memory.W94S29_constructionSites.length > 0) {
+                if (creep.build(Memory.W94S29_constructionSites[0]) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(Memory.W94S29_constructionSites[0]);
                 }
             } else {
-                if (Memory.W94S29_constructionSites.length > 0) {
-                    if (creep.build(Memory.W94S29_constructionSites[0]) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(Memory.W94S29_constructionSites[0]);
+                var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                    filter: function(object) {
+                        return (object.structureType == STRUCTURE_WALL || object.structureType == STRUCTURE_RAMPART) && object.hits < Memory.rooms.W94S29.wallHits + 10000;
+                    }
+                });
+
+                if (target) {
+                    if (creep.repair(target) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(target);
                     }
                 } else {
-                    var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                        filter: function(object) {
-                            return (object.structureType == STRUCTURE_WALL || object.structureType == STRUCTURE_RAMPART) && object.hits < Memory.rooms.W94S29.wallHits + 10000;
-                        }
-                    });
-
-                    if (target) {
-                        if (creep.repair(target) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(target);
-                        }
-                    } else {
-                        Memory.rooms.W94S29.wallHits = Memory.rooms.W94S29.wallHits + 10000;
-                    }
+                    Memory.rooms.W94S29.wallHits = Memory.rooms.W94S29.wallHits + 10000;
                 }
             }
         }
