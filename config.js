@@ -7,11 +7,11 @@ config.creep.W94S29_roleList = [
     'W94S29_farmer', 'W94S29_diggerRight', 'W94S29_diggerLeft', 'W94S29_artillery',
     'W94S29_upgraderRight', 'W94S29_upgraderLeft', 'W95S29_reserver', 'W95S29_digger',
     'W95S29_carrier', 'W94S29_builder', 'W94S29_destroyer', 'W94S29_fighter', 'W94S29_healler',
-    'W92S29_diggerLeft', 'W92S29_diggerRight', 'W92S29_builder', 'W94S29_destroyer2', 'W94S29_healler2'
+    'W92S29_diggerLeft', 'W92S29_builder', 'W94S29_destroyer2', 'W94S29_healler2'
 ];
 // W92S29
 config.creep.W92S29_roleList = [
-    'W92S29_carrier', 'W92S29_farmer', 'W92S29_builder2'
+    'W92S29_carrier', 'W92S29_diggerRight', 'W92S29_farmer', 'W92S29_builder2'
 ];
 for (const i in config.creep) {
     let roleList = config.creep[i]
