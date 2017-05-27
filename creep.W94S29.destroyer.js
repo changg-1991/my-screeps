@@ -81,7 +81,11 @@ var creepModule = {
     },
 
     getCount: function(roomName) {
-        return 0;
+        if (Game.time >  19401552 + 1000) {
+            return 2;
+        } else {
+            return 0;
+        }
     },
 
     getCreateType: function(roomName) {
