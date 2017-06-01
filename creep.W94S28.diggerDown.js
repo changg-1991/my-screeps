@@ -11,7 +11,13 @@ var creepModule = {
             const route = Game.map.findRoute(creep.room, targetRoom);
             if (route.length > 0) {
                 const exit = creep.pos.findClosestByRange(route[0].exit);
-                creep.moveTo(exit);
+                creep.moveTo(exit, {
+                    costCallback: function(roomName, costMatrix) {
+                        if (roomName == 'W94S28') {
+                            costMatrix.set(14, 45, 0);
+                        }
+                    }
+                });
             }
         }
     },
