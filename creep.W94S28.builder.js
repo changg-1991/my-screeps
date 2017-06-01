@@ -33,17 +33,19 @@ var creepModule = {
                     }
                 }
 
-                var target = Game.getObjectById(creep.memory.packingTarget);
-                if (target.store) {
-                    if (creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(target);
-                    }
-                } else if (target.resourceType) {
-                    if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(target);
-                    }
-                } else {
+                if (creep.memory.packingTarget) {
+                    var target = Game.getObjectById(creep.memory.packingTarget);
+                    if (target.store) {
+                        if (creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(target);
+                        }
+                    } else if (target.resourceType) {
+                        if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(target);
+                        }
+                    } else {
 
+                    }
                 }
             } else {
                 var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
