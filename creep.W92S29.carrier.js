@@ -13,9 +13,9 @@ var creepModule = {
 
         if (creep.memory.status == 'PACKING') {
             if (!creep.memory.packingTarget || creep.memory.packingTargetTimeOut < Game.time) {
-                var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, {
+                var target = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
                     filter: function(object) {
-                        return object.amount > 300;
+                        return object.resourceType == RESOURCE_ENERGY && object.amount > 300;
                     }
                 });
 

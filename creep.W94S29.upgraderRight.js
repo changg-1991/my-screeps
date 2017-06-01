@@ -10,7 +10,11 @@ var creepModule = {
         
         if (creep.memory.status == 'PACKING') {
             var pos = new RoomPosition(16, 24, 'W94S29');
-            var target = pos.findClosestByRange(FIND_DROPPED_ENERGY);
+            var target = pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
+                filter: function(object) {
+                    return object.resourceType == RESOURCE_ENERGY;
+                }
+            });
             if (target) {
                 if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target);

@@ -15,9 +15,9 @@ var creepModule = {
         }
         
         if (creep.memory.status == 'PACKING') {
-            var target = creep.pos.findClosestByRange(FIND_DROPPED_ENERGY, {
+            var target = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
                 filter: function(object) {
-                    return object.amount > 1000;
+                    return object.resourceType == RESOURCE_ENERGY && object.amount > 800;
                 }
             });
             if (target) {
