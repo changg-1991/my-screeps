@@ -14,11 +14,7 @@ var creepModule = {
                 });
             }
         } else {
-            const route = Game.map.findRoute(creep.room, targetRoom);
-            if (route.length > 0) {
-                const exit = creep.pos.findClosestByRange(route[0].exit);
-                creep.moveTo(exit);
-            }
+            creep.moveTo(23, 0);
         }
     },
 
