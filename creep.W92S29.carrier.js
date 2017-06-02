@@ -32,15 +32,9 @@ var creepModule = {
                 }
             }
         } else {
-            var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return structure.structureType == STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] < structure.storeCapacity;
-                }
-            });
-            if (target) {
-                if(creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target);
-                }
+            var storage = Game.getObjectById(Memory.objectId.W92S29_storage);
+            if (creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(storage, {visualizePathStyle: {stroke: '#05ff05'}});
             }
         }
     },
@@ -50,7 +44,7 @@ var creepModule = {
     },
 
     getCount: function(roomName) {
-        return 3;
+        return 4;
     },
 
     getCreateType: function(roomName) {
