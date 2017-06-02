@@ -41,7 +41,13 @@ var structureModule = {
                 }
             }
         } else {
-            //
+            var closestHostile = structure.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+                filter: function(object) {
+                    return Memory.ally.indexOf(object.owner.username) == -1;
+                }
+            });
+
+            Memory.towerTarget[structure.id] = closestHostile;
         }
 
         if (Memory.towerTarget[structure.id]) {
