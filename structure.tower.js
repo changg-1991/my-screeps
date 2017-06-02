@@ -1,4 +1,5 @@
 var structureModule = {
+
     run: function(structure) {
         if (structure.room.name == 'W94S29') {
             var closestHostile = structure.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {

@@ -1,4 +1,5 @@
 var structureModule = {
+
     run: function(structure) {
         const targets = structure.room.find(FIND_HOSTILE_CREEPS, {
             filter: function(object) {
