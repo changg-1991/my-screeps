@@ -13,7 +13,7 @@ var creepModule = {
             if (!creep.memory.packingTarget || creep.memory.packingTargetTimeOut < Game.time) {
                 var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                     filter: (structure) => {
-                        return structure.structureType == STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] > 1000;
+                        return structure.structureType == STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] > 0;
                     }
                 });
 

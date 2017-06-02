@@ -12,16 +12,9 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'PACKING') {
-            var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return structure.structureType == STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] > 0;
-                }
-            });
-
-            if (target) {
-                if (creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target);
-                }
+            var storage = Game.getObjectById(Memory.objectId.W92S29_storage);
+            if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(storage);
             }
         } else {
             var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
