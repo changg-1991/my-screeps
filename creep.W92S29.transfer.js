@@ -11,12 +11,12 @@ var creepModule = {
         if (creep.memory.status == 'PACKING') {
             var link = Game.getObjectById(Memory.objectId.W92S29_linkCenter);
             if (creep.withdraw(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(link, {visualizePathStyle: {stroke: '#ffffff'}});
+                creep.moveTo(link);
             }
         } else {
             var storage = Game.getObjectById(Memory.objectId.W92S29_storage);
             if (creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(storage, {visualizePathStyle: {stroke: '#05ff05'}});
+                creep.moveTo(storage);
             }
         }
     },

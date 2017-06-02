@@ -12,40 +12,9 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'PACKING') {
-            if (!creep.memory.packingTarget || creep.memory.packingTargetTimeOut < Game.time) {
-                var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return structure.structureType == STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] > 0;
-                    }
-                });
-
-                if (!target) {
-                    var target = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
-                        filter: function(object) {
-                            return object.resourceType == RESOURCE_ENERGY && object.amount > 300;
-                        }
-                    });
-                }
-
-                if (target) {
-                    creep.memory.packingTarget = target.id;
-                    creep.memory.packingTargetTimeOut = Game.time + 8;
-                }
-            }
-
-            if (creep.memory.packingTarget) {
-                var target = Game.getObjectById(creep.memory.packingTarget);
-                if (target.store) {
-                    if (creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(target);
-                    }
-                } else if (target.resourceType) {
-                    if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(target);
-                    }
-                } else {
-
-                }
+            var storage = Game.getObjectById(Memory.objectId.W92S29_storage);
+            if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(storage);
             }
         } else {
             var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
