@@ -20,7 +20,7 @@ config.creep.W94S28_roleList = [
 ];
 
 // W92S28
-config.creep.W94S28_roleList = [
+config.creep.W92S28_roleList = [
     'W92S28_builder'
 ];
 
@@ -68,6 +68,18 @@ if (!Memory.towerTarget) {
 
 if (!Memory.rooms.W94S29.wallHits) {
     Memory.rooms.W94S29.wallHits = 1000;
+}
+
+if (!Memory.rooms.W92S29.wallHits) {
+    Memory.rooms.W92S29.wallHits = 1000;
+}
+
+if (!Memory.rooms.W94S28.wallHits) {
+    Memory.rooms.W94S28.wallHits = 1000;
+}
+
+if (!Memory.rooms.W92S28.wallHits) {
+    Memory.rooms.W92S28.wallHits = 1000;
 }
 
 module.exports = config;
