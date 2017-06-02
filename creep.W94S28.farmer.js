@@ -12,14 +12,20 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'PACKING') {
-            var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return structure.structureType == STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] > 0;
+            var target = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
+                filter: function(object) {
+                    return object.resourceType == RESOURCE_ENERGY && object.amount > 300;
                 }
             });
 
             if (target) {
-                if (creep.withdraw(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.memory.packingTarget = target.id;
+                creep.memory.packingTargetTimeOut = Game.time + 8;
+            }
+
+            var target = Game.getObjectById(creep.memory.packingTarget);
+            if (target) {
+                if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target);
                 }
             }
