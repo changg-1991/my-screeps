@@ -12,22 +12,14 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'PACKING') {
-            if (!creep.memory.packingTarget || creep.memory.packingTargetTimeOut < Game.time) {
-                var target = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
-                    filter: function(object) {
-                        return object.resourceType == RESOURCE_ENERGY && object.amount > 300;
-                    }
-                });
-
-                if (target) {
-                    creep.memory.packingTarget = target.id;
-                    creep.memory.packingTargetTimeOut = Game.time + 8;
+            var pos = new RoomPosition(16, 7, 'W92S29');
+            var target = pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
+                filter: function(object) {
+                    return object.resourceType == RESOURCE_ENERGY;
                 }
-            }
-
-            var target = Game.getObjectById(creep.memory.packingTarget);
+            });
             if (target) {
-                if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
+                if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target);
                 }
             }
@@ -44,7 +36,7 @@ var creepModule = {
     },
 
     getCount: function(roomName) {
-        return 4;
+        return 3;
     },
 
     getCreateType: function(roomName) {

@@ -1,8 +1,6 @@
 var creepModule = {
 
     run: function(creep) {
-        var energyFull = creep.room.energyAvailable < creep.room.energyCapacityAvailable ? false : true;
-
         if (creep.memory.status != 'PACKING' && creep.carry.energy == 0) {
             creep.memory.status = 'PACKING';
         }
@@ -17,25 +15,14 @@ var creepModule = {
                 creep.moveTo(storage);
             }
         } else {
-            var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) && structure.energy < structure.energyCapacity;
-                }
-            });
-            if (target) {
-                if (creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target);
+            var constructionSites = Game.rooms['W92S29'].find(FIND_CONSTRUCTION_SITES);
+            if (constructionSites.length > 0) {
+                if (creep.build(constructionSites[0]) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(constructionSites[0]);
                 }
             } else {
-                var constructionSites = Game.rooms['W92S29'].find(FIND_CONSTRUCTION_SITES);
-                if (constructionSites.length > 0) {
-                    if (creep.build(constructionSites[0]) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(constructionSites[0]);
-                    }
-                } else {
-                    if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(creep.room.controller);
-                    }
+                if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(creep.room.controller);
                 }
             }
         }
@@ -46,7 +33,7 @@ var creepModule = {
     },
 
     getCount: function(roomName) {
-        return 3;
+        return 4;
     },
 
     getCreateType: function(roomName) {
