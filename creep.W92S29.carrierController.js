@@ -1,11 +1,13 @@
 var creepModule = {
 
     run: function(creep) {
+        var energyFull = creep.room.energyAvailable < creep.room.energyCapacityAvailable ? false : true;
+
         if (creep.memory.status != 'PACKING' && creep.carry.energy == 0) {
             creep.memory.status = 'PACKING';
         }
-        if (creep.memory.status != 'BUILDING' && creep.carry.energy == creep.carryCapacity) {
-            creep.memory.status = 'BUILDING';
+        if (creep.memory.status != 'UNPACKING' && creep.carry.energy == creep.carryCapacity) {
+            creep.memory.status = 'UNPACKING';
             delete creep.memory.packingTarget;
         }
 
@@ -15,25 +17,25 @@ var creepModule = {
                 creep.moveTo(storage);
             }
         } else {
-            var constructionSites = Game.rooms['W92S29'].find(FIND_CONSTRUCTION_SITES);
-            if (constructionSites.length > 0) {
-                if (creep.build(constructionSites[0]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(constructionSites[0]);
+            var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                filter: (structure) => {
+                    return structure.structureType == STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] < structure.storeCapacity;
                 }
-            } else {
-                if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(creep.room.controller);
+            });
+            if (target) {
+                if(creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target);
                 }
             }
         }
     },
 
     getBody: function(roomName) {
-        return [WORK,WORK,WORK,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE];
+        return [CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE];
     },
 
     getCount: function(roomName) {
-        return 2;
+        return 1;
     },
 
     getCreateType: function(roomName) {
