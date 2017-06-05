@@ -62,6 +62,10 @@ Memory.objectId.W92S29_linkCenter = '592f8b661c8b90d606019835';
 
 Memory.objectId.W92S29_storage = '592c4dc0195eca196f68cf6d';
 
+Memory.objectId.W91S28_source = '58dbc3328283ff5308a3d2f3';
+
+Memory.objectId.W92S28_storage = '593509f7f6154c0c22a74002';
+
 Memory.ally = new Array('kikooo', 'Time_Shift');
 
 if (!Memory.birthTime) {
