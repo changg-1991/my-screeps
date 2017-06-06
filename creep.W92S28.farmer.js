@@ -12,7 +12,7 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'PACKING') {
-            var storage = Game.getObjectById(Memory.objectId.W92S29_storage);
+            var storage = Game.getObjectById(Memory.objectId.W92S28_storage);
             if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(storage);
             }
