@@ -52,18 +52,10 @@ var creepModule = {
                             creep.repair(found[0]);
                         } else {
                             creep.repair(found[0]);
-                            const route = Game.map.findRoute(creep.room, targetRoom);
-                            if (route.length > 0) {
-                                const exit = creep.pos.findClosestByRange(route[0].exit);
-                                creep.moveTo(exit);
-                            }
+                            creep.moveTo(0, 30);
                         }
                     } else {
-                        const route = Game.map.findRoute(creep.room, targetRoom);
-                        if (route.length > 0) {
-                            const exit = creep.pos.findClosestByRange(route[0].exit);
-                            creep.moveTo(exit);
-                        }
+                        creep.moveTo(0, 30);
                     }                    
                 }
             }
