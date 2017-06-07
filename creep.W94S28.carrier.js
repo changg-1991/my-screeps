@@ -30,7 +30,7 @@ var creepModule = {
                 }
             }
         } else {
-            var storage = Game.getObjectById(Memory.objectId.W92S28_storage);
+            var storage = Game.getObjectById(Memory.objectId.W94S28_storage);
             if (creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(storage);
             }
@@ -38,7 +38,7 @@ var creepModule = {
     },
 
     getBody: function(roomName) {
-        return [CARRY,CARRY,CARRY,MOVE,MOVE,MOVE];
+        return [CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE];
     },
 
     getCount: function(roomName) {

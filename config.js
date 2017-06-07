@@ -17,7 +17,7 @@ config.creep.W92S29_roleList = [
 
 // W94S28
 config.creep.W94S28_roleList = [
-    'W94S28_farmer', 'W94S28_builder'
+    'W94S28_carrier', 'W94S28_farmer', 'W94S28_builder'
 ];
 
 // W92S28
@@ -69,6 +69,11 @@ Memory.objectId.W92S28_storage = '593509f7f6154c0c22a74002';
 
 Memory.objectId.W92S28_linkUp = '59375a3c4b693f5249a9c941';
 Memory.objectId.W92S28_linkCenter = '5937683ea1e23f000a0623cc';
+
+Memory.objectId.W94S28_storage = '5934f94cf6154c0c22a739ec';
+
+Memory.objectId.W94S28_linkUp = '5937990b949bd0931b9a76ed';
+Memory.objectId.W94S28_linkCenter = '5937913944a3c81711ee8210';
 
 Memory.ally = new Array('kikooo', 'Time_Shift');
 
