@@ -11,8 +11,20 @@ var creepModule = {
 
         if (creep.memory.status == 'PACKING') {
             var storage = Game.getObjectById(Memory.objectId.W94S28_storage);
-            if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(storage);
+            if (storage && storage.store[RESOURCE_ENERGY] > 1000) {
+                if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(storage);
+                }
+            } else {
+                var target = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
+                    filter: function(object) {
+                        return object.resourceType == RESOURCE_ENERGY && object.amount > 300;
+                    }
+                });
+                if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target);
+                }
+
             }
         } else {
             var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
