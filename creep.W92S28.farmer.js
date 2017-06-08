@@ -42,7 +42,11 @@ var creepModule = {
     },
 
     getBody: function(roomName) {
-        return [CARRY,CARRY,CARRY,MOVE,MOVE,MOVE];
+        if (creep.room.energyAvailable <= 300) {
+            return [CARRY,CARRY,CARRY,MOVE,MOVE,MOVE];
+        } else {
+            return [CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
+        }
     },
 
     getCount: function(roomName) {
