@@ -55,7 +55,7 @@ var creepModule = {
                             creep.moveTo(0, 30);
                         }
                     } else {
-                        creep.moveTo(0, 30);
+                        creep.moveTo(49, 39);
                     }                    
                 }
             }
