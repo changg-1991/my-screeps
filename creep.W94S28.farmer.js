@@ -42,11 +42,11 @@ var creepModule = {
     },
 
     getBody: function(roomName) {
-        if (Game.rooms.W92S28.energyAvailable <= 300) {
+        if (Game.rooms.W94S28.energyAvailable <= 300) {
             return [CARRY,CARRY,CARRY,MOVE,MOVE,MOVE];
         } else {
             var bodyPart = []
-            var bodyPartCount = Game.rooms.W92S28.energyAvailable / 100;
+            var bodyPartCount = Game.rooms.W94S28.energyAvailable / 100 > 5 : 5 : Game.rooms.W92S28.energyAvailable / 100 ;
             while (bodyPartCount > 0) {
                 bodyPart.push(CARRY);
                 bodyPart.push(MOVE);
