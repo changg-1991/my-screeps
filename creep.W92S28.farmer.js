@@ -42,7 +42,7 @@ var creepModule = {
     },
 
     getBody: function(roomName) {
-        if (creep.room.energyAvailable <= 300) {
+        if (Game.rooms.W92S28.energyAvailable <= 300) {
             return [CARRY,CARRY,CARRY,MOVE,MOVE,MOVE];
         } else {
             return [CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
