@@ -5,12 +5,13 @@ var creepModule = {
         if (creep.room.name == targetRoom) {
             if (creep.room.controller) {
                 if(creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(creep.room.controller,
+                    creep.moveTo(creep.room.controller, {
                         costCallback: function(roomName, costMatrix) {
                             if (roomName == 'W94S27') {
                                 costMatrix.set(3, 39, 0);
                                 costMatrix.set(3, 40, 0);
                             }
+                        }
                     });
                 }
             }
