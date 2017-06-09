@@ -8,8 +8,11 @@ var creepModule = {
                     creep.moveTo(creep.room.controller, {
                         costCallback: function(roomName, costMatrix) {
                             if (roomName == 'W94S27') {
-                                costMatrix.set(3, 39, 0);
-                                costMatrix.set(3, 40, 0);
+                                for (i = 0; i < 50; i++) {
+                                    for (j = 0; j < 50; j++) {
+                                        costMatrix.set(i, j, 0);
+                                    }
+                                }
                             }
                         }
                     });
