@@ -12,23 +12,12 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'PACKING') {
-            var target = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
+            var pos = new RoomPosition(36, 46, 'W92S28');
+            var target = pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
                 filter: function(object) {
-                    return object.resourceType == RESOURCE_ENERGY && object.amount > 600;
+                    return object.resourceType == RESOURCE_ENERGY;
                 }
             });
-
-            if (target) {
-                creep.memory.packingTarget = target.id;
-                creep.memory.packingTargetTimeOut = Game.time + 8;
-            }
-
-            var target = Game.getObjectById(creep.memory.packingTarget);
-            if (target) {
-                if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target);
-                }
-            }
         } else {
             var storage = Game.getObjectById(Memory.objectId.W92S28_storage);
             if (creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
