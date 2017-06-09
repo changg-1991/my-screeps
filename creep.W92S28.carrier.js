@@ -18,6 +18,12 @@ var creepModule = {
                     return object.resourceType == RESOURCE_ENERGY;
                 }
             });
+
+            if (target) {
+                if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target);
+                }
+            }
         } else {
             var storage = Game.getObjectById(Memory.objectId.W92S28_storage);
             if (creep.transfer(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
