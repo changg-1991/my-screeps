@@ -17,7 +17,7 @@ config.creep.W92S29_roleList = [
 
 // W94S28
 config.creep.W94S28_roleList = [
-    'W94S28_carrier', 'W94S28_farmer', 'W94S28_builder'
+    'W94S28_carrier', 'W94S28_farmer', 'W94S28_builder', 'W95S28_reserver', 'W94S27_reserver'
 ];
 
 // W92S28
