@@ -32,8 +32,12 @@ var creepModule = {
                     creep.moveTo(constructionSites[0]);
                 }
             } else {
-                if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(creep.room.controller);
+                if (creep.room.status == 'INVADED') {
+                    creep.moveTo(32, 13);
+                } else {
+                    if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(creep.room.controller);
+                    }
                 }
             }
         }

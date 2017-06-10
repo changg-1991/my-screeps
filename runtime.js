@@ -37,14 +37,17 @@ var runtime = {
         }
 
         for (const name in Memory.rooms) {
-            const room = Game.rooms[name];
-
-            if (room) {
+            if (Game.rooms[name]) {
+                const room = Game.rooms[name];
                 let hostiles = room.find(FIND_HOSTILE_CREEPS, {
                     filter: function(object) {
                         return Memory.ally.indexOf(object.owner.username) == -1;
                     }
                 });
+
+                if (hostiles && hostiles.length > 0) {
+                    Game.rooms[name].status = 'INVADED';
+                }
             }
 
             // 检查hostiles的组成 是invade还是敌人、个数 等等

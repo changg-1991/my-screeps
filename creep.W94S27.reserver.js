@@ -4,15 +4,14 @@ var creepModule = {
         let targetRoom = 'W94S27';
         if (creep.room.name == targetRoom) {
             if (creep.room.controller) {
-                if(creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                if (creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(creep.room.controller, {
+                        reusePath: 15,
+                        maxOps: 5000,
                         costCallback: function(roomName, costMatrix) {
                             if (roomName == 'W94S27') {
-                                for (i = 0; i < 50; i++) {
-                                    for (j = 0; j < 50; j++) {
-                                        costMatrix.set(i, j, 0);
-                                    }
-                                }
+                                costMatrix.set(3, 39, 0);
+                                costMatrix.set(3, 40, 0);
                             }
                         }
                     });

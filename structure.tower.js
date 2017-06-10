@@ -41,6 +41,26 @@ var structureModule = {
                     }
                 }
             }
+        } else if (structure.room.name == 'W94S28') {
+            var closestHostile = structure.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+                filter: function(object) {
+                    return Memory.ally.indexOf(object.owner.username) == -1 && (object.pos.y >= 13 && object.pos.y >= 13);
+                }
+            });
+
+            if (!Memory.towerTarget[structure.id]) {
+                if (closestHostile) {
+                    Memory.towerTarget[structure.id] = closestHostile;
+                }
+            } else {
+                if (!Game.getObjectById(Memory.towerTarget[structure.id].id)) {
+                    if (closestHostile) {
+                        Memory.towerTarget[structure.id] = closestHostile;
+                    } else {
+                        delete Memory.towerTarget[structure.id];
+                    }
+                }
+            }
         } else {
             var closestHostile = structure.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
                 filter: function(object) {
