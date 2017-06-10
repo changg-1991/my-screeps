@@ -47,6 +47,8 @@ var runtime = {
 
                 if (hostiles && hostiles.length > 0) {
                     Game.rooms[name].status = 'INVADED';
+                } else {
+                    Game.rooms[name].status = 'GOOD';
                 }
             }
 
