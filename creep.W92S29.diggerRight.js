@@ -26,11 +26,15 @@ var creepModule = {
     },
 
     getCount: function(roomName) {
-        return 1;
+        return 2;
     },
 
     getCreateType: function(roomName) {
-        return 'counting';
+        return 'timing';
+    },
+
+    getCreateDelta: function(roomName) {
+        return 1400;
     },
 };
 

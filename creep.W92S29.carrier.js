@@ -32,11 +32,11 @@ var creepModule = {
     },
 
     getBody: function(roomName) {
-        return [CARRY,CARRY,CARRY,MOVE,MOVE,MOVE];
+        return [CARRY,CARRY,MOVE,MOVE];
     },
 
     getCount: function(roomName) {
-        return 3;
+        return 2;
     },
 
     getCreateType: function(roomName) {
