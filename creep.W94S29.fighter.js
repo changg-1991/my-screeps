@@ -77,7 +77,7 @@ var creepModule = {
 
     getBody: function(roomName) {
         //return [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
-        return [TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
+        return [TOUGH,TOUGH,TOUGH,MOVE,MOVE,MOVE,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE];
     },
 
     getCount: function(roomName) {
@@ -89,7 +89,7 @@ var creepModule = {
     },
 
     getCreateDelta: function(roomName) {
-        return 9999999999;
+        return 100;
     },
 };
 
