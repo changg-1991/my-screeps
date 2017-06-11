@@ -10,14 +10,14 @@ var creepModule = {
         }
 
         if (creep.memory.status == 'PACKING') {
-            var pos = new RoomPosition(25, 4, 'W94S29');
-            var target = pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
-                filter: function(object) {
-                    return object.resourceType == RESOURCE_UTRIUM;
+            var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                filter: (structure) => {
+                    return structure.structureType == RESOURCE_UTRIUM && structure.store[RESOURCE_UTRIUM] > 0;
                 }
             });
+
             if (target) {
-                if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
+                if (creep.withdraw(target, RESOURCE_UTRIUM) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target);
                 }
             }
@@ -30,7 +30,7 @@ var creepModule = {
     },
 
     getBody: function(roomName) {
-        return [CARRY,CARRY,CARRY,MOVE,MOVE,MOVE];
+        return [CARRY,CARRY,MOVE,MOVE];
     },
 
     getCount: function(roomName) {
