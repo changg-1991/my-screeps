@@ -7,6 +7,7 @@ config.creep.W94S29_roleList = [
     'W94S29_farmer', 'W94S29_diggerRight', 'W94S29_diggerLeft', 'W94S29_artillery',
     'W94S29_upgraderRight', 'W94S29_upgraderLeft', 'W95S29_reserver', 'W95S29_digger',
     'W95S29_carrier', 'W94S29_builder', 'W94S28_diggerUp', 'W94S28_diggerDown', 'W92S29_diggerRight',
+    'W94S29_miner', 'W94S29_mineralCarrier',
     'W94S29_fighter'
 ];
 // W92S29
@@ -78,6 +79,8 @@ Memory.objectId.W94S28_linkCenter = '5937913944a3c81711ee8210';
 
 Memory.objectId.W93S28_sourceLeft = '58dbc2fa8283ff5308a3cde6';
 Memory.objectId.W93S28_sourceRight = '58dbc2fa8283ff5308a3cde8';
+
+Memory.objectId.W94S29_mineral = '58dbc90334e898064bcc22dc';
 
 Memory.ally = new Array('kikooo', 'Time_Shift');
 
