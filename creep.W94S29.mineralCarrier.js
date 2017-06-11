@@ -2,7 +2,7 @@ var creepModule = {
 
     run: function(creep) {
 
-        if (creep.memory.status != 'PACKING' && creep.carry.RESOURCE_UTRIUM == 0) {
+        if (creep.memory.status != 'PACKING' && creep.carry.RESOURCE_UTRIUM == undefined) {
             creep.memory.status = 'PACKING';
         }
         if (creep.memory.status != 'UNPACKING' && creep.carry.RESOURCE_UTRIUM == creep.carryCapacity) {
