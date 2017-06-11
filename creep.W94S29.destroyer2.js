@@ -13,25 +13,14 @@ var creepModule = {
 
         if (Game.flags.dawn_0.color == COLOR_WHITE) {
             if (creep.room.find(FIND_HOSTILE_CREEPS).length) {
-                targetRoom = 'W94S29';
+                targetRoom = 'W94S28';
                 purpose = 'return_1';
-            } else {
-                targetRoom = 'W94S29';
-                purpose = 'uniting_1';
-            }
-        } else if (Game.flags.dawn_1.color == COLOR_WHITE) {
-            if (creep.room.find(FIND_HOSTILE_CREEPS).length) {
-                targetRoom = 'W94S29';
-                purpose = 'return_1';
-            } else if (creep.memory.status == 'BACKWARD') {
-                targetRoom = 'W94S29';
-                purpose = 'uniting_1';
             } else {
                 targetRoom = 'W94S28';
-                purpose = 'invading_1';
+                purpose = 'uniting_1';
             }
         } else if (Game.flags.dawn_2.color == COLOR_WHITE) {
-            targetRoom = 'W94S28';
+            targetRoom = 'W95S27';
             purpose = 'invading_2';
         } else {
             //
@@ -39,24 +28,13 @@ var creepModule = {
         
         if (creep.room.name == targetRoom) {
             if (purpose == 'invading_2') {
-                const rampart = Game.getObjectById('5922700bb8b50c362ce9d48d');
-                const tower1 = Game.getObjectById('591f51ec00512a601233348f');
-                const tower2 = Game.getObjectById('591542c571d3769f2ccd3c94');
-                const storage = Game.getObjectById('5918e534d38877d178e04122');
-                const extensions = creep.room.find(FIND_HOSTILE_STRUCTURES, {
-                    filter: { structureType: STRUCTURE_EXTENSION }
-                });
+                const tower = Game.getObjectById('593c2bbbcb74fa230f4ae700');
+                const spawn = Game.getObjectById('593b23deb0ce727673f796e4');
 
-                if (rampart) {
-                    var target = rampart;
-                } else if (tower1) {
-                    var target = tower1;
-                } else if (tower2) {
-                    var target = tower2;
-                } else if (storage) {
-                    var target = storage;
-                } else if (extensions.length > 0) {
-                    var target = extensions[0];
+                if (tower) {
+                    var target = tower;
+                } else if (spawn) {
+                    var target = spawn;
                 } else {
                     var target = '';
                 }
@@ -64,8 +42,6 @@ var creepModule = {
                 if (creep.dismantle(target) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target);
                 }
-            } else if (purpose == 'invading_1') {
-                //
             } else if (purpose == 'uniting_1') {
                 if (!creep.pos.isNearTo(Game.flags.dawn_0)) {
                     creep.moveTo(Game.flags.dawn_0);
@@ -87,19 +63,15 @@ var creepModule = {
     },
 
     getBody: function(roomName) {
-        return [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,WORK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
+        return [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,WORK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
     },
 
     getCount: function(roomName) {
-        return 0;
+        return 5;
     },
 
     getCreateType: function(roomName) {
-        return 'timing';
-    },
-
-    getCreateDelta: function(roomName) {
-        return 1500;
+        return 'counting';
     },
 };
 
