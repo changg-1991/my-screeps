@@ -12,7 +12,7 @@ var creepModule = {
         if (creep.memory.status == 'PACKING') {
             var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: (structure) => {
-                    return structure.structureType == RESOURCE_UTRIUM && structure.store[RESOURCE_UTRIUM] > 0;
+                    return structure.structureType == STRUCTURE_CONTAINER && structure.store[RESOURCE_UTRIUM] > 0;
                 }
             });
 
