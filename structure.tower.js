@@ -24,7 +24,7 @@ var structureModule = {
         } else if (structure.room.name == 'W92S29') {
             var closestHostile = structure.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
                 filter: function(object) {
-                    return Memory.ally.indexOf(object.owner.username) == -1 && (object.pos.y >= 7 && object.pos.y <= 32);
+                    return Memory.ally.indexOf(object.owner.username) == -1 && object.pos.y <= 40;
                 }
             });
 
