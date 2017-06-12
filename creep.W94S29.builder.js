@@ -9,16 +9,9 @@ var creepModule = {
         }
         
         if (creep.memory.status == 'PACKING') {
-            var pos = new RoomPosition(11, 23, 'W94S29');
-            var target = pos.findClosestByRange(FIND_DROPPED_RESOURCES, {
-                filter: function(object) {
-                    return object.resourceType == RESOURCE_ENERGY;
-                }
-            });
-            if (target) {
-                if (creep.pickup(target) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target);
-                }
+            var storage = Memory.objectId.W94S29_storage;
+            if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(storage);
             }
         } else {
             if (Memory.W94S29_constructionSites.length > 0) {
