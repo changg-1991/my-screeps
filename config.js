@@ -6,13 +6,12 @@ config.creep = new Object();
 config.creep.W94S29_roleList = [
     'W94S29_farmer', 'W94S29_diggerRight', 'W94S29_diggerLeft', 'W94S29_artillery',
     'W94S29_upgraderRight', 'W94S29_upgraderLeft', 'W95S29_reserver', 'W95S29_digger',
-    'W95S29_carrier', 'W94S29_builder', 'W94S28_diggerUp', 'W94S28_diggerDown', 'W92S29_diggerRight',
-    'W94S29_miner', 'W94S29_mineralCarrier',
-    'W94S29_fighter'
+    'W95S29_carrier', 'W94S29_builder', 'W94S28_diggerUp', 'W94S28_diggerDown',
+    'W94S29_miner', 'W94S29_mineralCarrier'
 ];
 // W92S29
 config.creep.W92S29_roleList = [
-    'W92S29_farmer', 'W92S29_carrier', 'W92S29_transfer', 'W92S29_diggerLeft', 'W92S29_builder',
+    'W92S29_farmer', 'W92S29_diggerRight', 'W92S29_transfer', 'W92S29_diggerLeft', 'W92S29_carrier', 'W92S29_builder',
     'W92S29_carrierController', 'W92S29_upgrader'
 ];
 
@@ -23,7 +22,7 @@ config.creep.W94S28_roleList = [
 
 // W92S28
 config.creep.W92S28_roleList = [
-    'W92S28_farmer', 'W92S28_builder'
+    'W92S28_farmer', 'W92S28_diggerDown', 'W92S28_carrier', 'W92S28_builder'
 ];
 
 for (const i in config.creep) {
