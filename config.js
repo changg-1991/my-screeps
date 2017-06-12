@@ -69,8 +69,8 @@ Memory.objectId.W91S28_source = '58dbc3328283ff5308a3d2f3';
 
 Memory.objectId.W92S28_storage = '593509f7f6154c0c22a74002';
 
-Memory.objectId.W92S28_linkUp = '59375a3c4b693f5249a9c941';
-Memory.objectId.W92S28_linkCenter = '5937683ea1e23f000a0623cc';
+Memory.objectId.W92S28_linkUp = '593e5258366eee7f7496f88f';
+Memory.objectId.W92S28_linkCenter = '593e3c2e9e987a0215f3991e';
 
 Memory.objectId.W94S28_storage = '5934f94cf6154c0c22a739ec';
 
