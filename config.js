@@ -13,7 +13,7 @@ config.creep.W94S29_roleList = [
 // W92S29
 config.creep.W92S29_roleList = [
     'W92S29_farmer', 'W92S29_carrier', 'W92S29_transfer', 'W92S29_diggerLeft', 'W92S29_builder',
-    'W92S29_upgrader',
+    'W92S29_carrierController', 'W92S29_upgrader',
     'W92S28_builder'
 ];
 
