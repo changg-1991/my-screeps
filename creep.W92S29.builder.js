@@ -21,8 +21,18 @@ var creepModule = {
                     creep.moveTo(constructionSites[0]);
                 }
             } else {
-                if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(creep.room.controller);
+                var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                    filter: function(object) {
+                        return (object.structureType == STRUCTURE_WALL || object.structureType == STRUCTURE_RAMPART) && object.hits < Memory.rooms.W92S29.wallHits + 10000;
+                    }
+                });
+
+                if (target) {
+                    if (creep.repair(target) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(target);
+                    }
+                } else {
+                    Memory.rooms.W92S29.wallHits = Memory.rooms.W92S29.wallHits + 10000;
                 }
             }
         }
