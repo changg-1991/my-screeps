@@ -17,12 +17,12 @@ config.creep.W92S29_roleList = [
 
 // W94S28
 config.creep.W94S28_roleList = [
-    'W94S28_carrier', 'W94S28_farmer', 'W94S28_builder', 'W95S28_reserver', 'W94S27_reserver'
+    'W94S28_carrier', 'W94S28_farmer', 'W94S28_transfer', 'W95S28_reserver', 'W94S27_reserver'
 ];
 
 // W92S28
 config.creep.W92S28_roleList = [
-    'W92S28_farmer', 'W92S28_diggerDown', 'W92S28_carrier', 'W92S28_builder',
+    'W92S28_farmer', 'W92S28_diggerUp', 'W92S28_diggerUp', 'W92S28_diggerDown', 'W92S28_carrier', 'W92S28_builder',
     'W91S28_reserver', 'W91S28_digger', 'W91S28_carrier',
     'W93S28_reserver', 'W93S28_diggerLeft', 'W91S28_carrierLeft'
 
