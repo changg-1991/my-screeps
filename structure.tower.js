@@ -76,7 +76,7 @@ var structureModule = {
         } else {
             if (Memory[structure.room.name + '_repairList'].length > 0) {
                 var structureToRepair = Game.getObjectById(Memory[structure.room.name + '_repairList'].shift().id);
-                structure.repair(structureToRepair);
+                //structure.repair(structureToRepair);
             } else {
                 //
             }

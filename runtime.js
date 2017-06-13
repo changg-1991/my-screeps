@@ -63,6 +63,16 @@ var runtime = {
             }
         });
 
+        var target = Game.rooms['W94S29'].find(FIND_STRUCTURES, {
+            filter: function(object) {
+                return (object.structureType == STRUCTURE_WALL || object.structureType == STRUCTURE_RAMPART) && object.hits < Memory.rooms.W92S29.wallHits + 10000;
+            }
+        });
+
+        if (!target || target.length == 0) {
+            Memory.rooms.W94S29.wallHits = Memory.rooms.W94S29.wallHits + 10000;
+        }
+
         Memory.W94S29_constructionSites = Game.rooms['W94S29'].find(FIND_CONSTRUCTION_SITES);
 
         // W92S29
@@ -72,6 +82,16 @@ var runtime = {
                     || ((structure.structureType == STRUCTURE_WALL || structure.structureType == STRUCTURE_RAMPART) && structure.hits > Memory.rooms.W92S29.wallHits - 10000 && structure.hits < Memory.rooms.W92S29.wallHits);
             }
         });
+
+        var target = Game.rooms['W92S29'].find(FIND_STRUCTURES, {
+            filter: function(object) {
+                return (object.structureType == STRUCTURE_WALL || object.structureType == STRUCTURE_RAMPART) && object.hits < Memory.rooms.W92S29.wallHits + 10000;
+            }
+        });
+
+        if (!target || target.length == 0)) {
+            Memory.rooms.W92S29.wallHits = Memory.rooms.W92S29.wallHits + 10000;
+        }
 
         // W94S28
         Memory.W94S28_repairList = Game.rooms['W94S28'].find(FIND_STRUCTURES, {

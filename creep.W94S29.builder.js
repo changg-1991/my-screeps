@@ -29,8 +29,6 @@ var creepModule = {
                     if (creep.repair(target) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(target);
                     }
-                } else {
-                    Memory.rooms.W94S29.wallHits = Memory.rooms.W94S29.wallHits + 10000;
                 }
             }
         }

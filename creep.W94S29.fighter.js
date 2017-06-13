@@ -8,38 +8,26 @@ var creepModule = {
             creep.memory.status = 'FORWARD';
         }
 
-        let targetRoom = '';
-        let purpose = '';
-
-        if (Game.flags.unite_0.color == COLOR_WHITE) {
-            targetRoom = 'W94S29';
-            purpose = 'uniting_1';
-        } else if (Game.flags.unite_1.color == COLOR_WHITE) {
-            targetRoom = 'W92S29';
-            purpose = 'uniting_2';
-        } else if (Game.flags.unite_2.color == COLOR_WHITE) {
-            targetRoom = 'W92S28';
-            purpose = 'invading_2';
-        } else {
-            //
-        }
+        let targetRoom = 'W95S28';
+        let purpose = 'invading_2';
         
         if (creep.room.name == targetRoom) {
             if (purpose == 'invading_2') {
-                const spawn = Game.getObjectById('591912937a11b8c4556cfad4');
+                creep.moveTo(28, 6);
+                /*const spawn = Game.getObjectById('593b23deb0ce727673f796e4');
                 const hostileCreep = creep.pos.findClosestByPath(FIND_HOSTILE_CREEPS);
 
-                if (hostileCreep) {
-                    var target = hostileCreep;
-                } else if (spawn) {
+                if (spawn) {
                     var target = spawn;
+                } else if (hostileCreep) {
+                    var target = hostileCreep;
                 } else {
                     var target = '';
                 }
 
                 if (creep.attack(target) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target);
-                }
+                }*/
             } else if (purpose == 'uniting_2') {
                 if (creep.memory.status == 'BACKWARD') {
                     if (!creep.pos.isNearTo(Game.flags.unite_1)) {
@@ -76,12 +64,11 @@ var creepModule = {
     },
 
     getBody: function(roomName) {
-        //return [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
-        return [TOUGH,TOUGH,TOUGH,MOVE,MOVE,MOVE,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE];
+        return [TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
     },
 
     getCount: function(roomName) {
-        return 0;
+        return 6;
     },
 
     getCreateType: function(roomName) {

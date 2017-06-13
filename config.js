@@ -7,7 +7,8 @@ config.creep.W94S29_roleList = [
     'W94S29_farmer', 'W94S29_diggerRight', 'W94S29_diggerLeft', 'W94S29_artillery',
     'W94S29_upgraderRight', 'W94S29_upgraderLeft', 'W95S29_reserver', 'W95S29_digger',
     'W95S29_carrier', 'W94S29_builder', 'W94S28_diggerUp', 'W94S28_diggerDown',
-    'W94S29_miner', 'W94S29_mineralCarrier'
+    'W94S29_miner', 'W94S29_mineralCarrier',
+    'W94S29_destroy2', 'W94S29_fighter'
 ];
 // W92S29
 config.creep.W92S29_roleList = [
