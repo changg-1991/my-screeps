@@ -79,7 +79,7 @@ var creepModule = {
     },
 
     getCount: function(roomName) {
-        return 10;
+        return 0;
     },
 
     getCreateType: function(roomName) {
