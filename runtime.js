@@ -89,7 +89,7 @@ var runtime = {
             }
         });
 
-        if (!target || target.length == 0)) {
+        if (!target || target.length == 0) {
             Memory.rooms.W92S29.wallHits = Memory.rooms.W92S29.wallHits + 10000;
         }
 
