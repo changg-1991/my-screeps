@@ -56,7 +56,7 @@ var runtime = {
         }
 
         // W94S29
-        Memory.W94S29_repairList = Game.rooms['W94S29'].find(FIND_STRUCTURES, {
+        /*Memory.W94S29_repairList = Game.rooms['W94S29'].find(FIND_STRUCTURES, {
             filter: (structure) => {
                 return (structure.structureType != STRUCTURE_WALL && structure.structureType != STRUCTURE_RAMPART && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800)
                     || ((structure.structureType == STRUCTURE_WALL || structure.structureType == STRUCTURE_RAMPART) && structure.hits > Memory.rooms.W94S29.wallHits - 10000 && structure.hits < Memory.rooms.W94S29.wallHits);
@@ -107,7 +107,7 @@ var runtime = {
                 return (structure.structureType != STRUCTURE_WALL && structure.structureType != STRUCTURE_RAMPART && structure.hits < structure.hitsMax * 0.9 && structure.hitsMax - structure.hits > 800)
                     || ((structure.structureType == STRUCTURE_WALL || structure.structureType == STRUCTURE_RAMPART) && structure.hits > Memory.rooms.W92S28.wallHits - 10000 && structure.hits < Memory.rooms.W92S28.wallHits);
             }
-        });
+        });*/
     }
 };
 
