@@ -32,6 +32,10 @@ var creepModule = {
                     if (creep.build(constructionSites[0]) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(constructionSites[0]);
                     }
+                } else {
+                    if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(creep.room.controller);
+                    }
                 }
             }
         }
