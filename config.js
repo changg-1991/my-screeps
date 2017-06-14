@@ -4,7 +4,7 @@ var config = new Object();
 config.creep = new Object();
 
 // W98S23
-config.creep.W94S28_roleList = [
+config.creep.W98S23_roleList = [
     'W98S23_builder'
 ];
 
